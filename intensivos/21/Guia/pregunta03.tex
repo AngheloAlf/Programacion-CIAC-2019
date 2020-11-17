@@ -1,0 +1,41 @@
+\section{Listas de Correos}
+
+Una forma tradicional de formar grupos en internet es la creación de listas de correos.
+Este sistema permite mandar un correo a todos los integrantes de la lista sin tener que enviarle a cada integrante distinto un correo por separado.
+Considere el siguiente diccionario donde se guarda información sobre listas de correo ficticias:
+
+\begin{lstlisting}[style=consola]
+listasCorreos = {
+  # lista: (suscritos, dominio, categoria)
+  'mechones'   : (100, 'mechones.utfsm.cl' , 'A'),
+  'pregrado'   : (300, 'pregrado.utfsm.cl' , 'B'),
+  'postgrado'  : (120, 'postgrado.utfsm.cl', 'B'),
+  'profesores' : (50,  'docente.usm.cl'    , 'A'),
+  'practicas'  : (400, 'practicas.utfsm.cl', 'C')
+}
+\end{lstlisting}
+  
+El diccionario indica, para cada lista de correos, el total de suscritos, el dominio web de la lista y una categoría usada para clasificar estas listas.
+La categoría A corresponde a listas públicas de preguntas y respuestas.
+La categoría B es para listas de información oficial y la categoría C indica que en la lista se envía información externa como ofertas laborales.
+  
+\begin{itemize}
+    \item[a.-] Escriba una función llamada \texttt{suscritosPorCategoria(listas, categoria)} que retorne el número total de suscritos en todas las listas de correo que tengan la categoría recibida por la función.
+
+\begin{lstlisting}[style=consola]
+>> [*suscritosPorCategoria(listasCorreos, 'A')*]
+150
+>> [*suscritosPorCategoria(listasCorreos, 'B')*]
+420
+>> [*suscritosPorCategoria(listasCorreos, 'C')*]
+400
+\end{lstlisting}
+
+    \item[b.-] Escriba una función llamada \texttt{vistaCategoria(listas)}, que retorne un diccionario de recuento. Este diccionario debe tener como llave las distintas categorías posibles. Como valor, el diccionario debe contener una lista de dos elementos, el primero es un número correspondiente a la cantidad de listas de correo que se clasifican en dicha categoría y el segundo elemento es el listado de los nombres de estas.
+
+\begin{lstlisting}[style=consola]
+>> [*vistaCategoria(listasCorreos)*]
+{'A': [2, ['profesores', 'mechones']], 'C': [1, ['practicas']],
+'B': [2, ['postgrado', 'pregrado']]}
+\end{lstlisting}
+\end{itemize}

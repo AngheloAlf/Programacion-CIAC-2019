@@ -1,0 +1,48 @@
+\section{Ruteo}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|l|l|l|l|}
+\hline
+\multicolumn{2}{|c|}{Global} & \multicolumn{6}{c|}{f} \\ \hline
+p1 & p2 & A & B & inter & uni & x & y \\ \hline
+`rexona` &  &  &  &  &  &  &  \\ \hline
+ & `persona` &  &  &  &  &  &  \\ \hline
+ &  & `rexona` & `persona` &  &  &  &  \\ \hline
+ &  &  &  &  &` `  &  &  \\ \hline
+ &  &  &  &  &  & ` ` &  \\ \hline
+ &  &  &  &  &  & `r` &  \\ \hline
+ &  &  &  & `r` &  &  &  \\ \hline
+ &  &  &  &  & `r` &  &  \\ \hline
+ &  &  &  &  &  & `e` &  \\ \hline
+ &  &  &  & `re` &  &  &  \\ \hline
+ &  &  &  &  & `re` &  &  \\ \hline
+ &  &  &  &  &  & `x` &  \\ \hline
+ &  &  &  &  & `rex` &  &  \\ \hline
+ &  &  &  &  &  & `o` &  \\ \hline
+ &  &  &  & `reo` &  &  &  \\ \hline
+ &  &  &  &  & `rexo` &  &  \\ \hline
+ &  &  &  &  &  & `n` &  \\ \hline
+ &  &  &  & `reon` &  &  &  \\ \hline
+ &  &  &  &  & `rexon` &  &  \\ \hline
+ &  &  &  &  &  & `a` &  \\ \hline
+ &  &  &  & `reona` &  &  &  \\ \hline
+ &  &  &  &  & `rexona` &  &  \\ \hline
+ &  &  &  &  &  &  & `p` \\ \hline
+ &  &  &  &  & `rexonap` &  &  \\ \hline
+ &  &  &  &  &  &  & `e` \\ \hline
+ &  &  &  &  &  &  & `r` \\ \hline
+ &  &  &  &  &  &  & `s` \\ \hline
+ &  &  &  &  & `rexonaps` &  &  \\ \hline
+ &  &  &  &  &  &  & `o` \\ \hline
+ &  &  &  &  &  &  & `n` \\ \hline
+ &  &  &  &  &  &  & `a` \\ \hline
+\end{tabular}
+\end{table}
+
+El programa imprime
+\begin{lstlisting}[style=consola]
+('reona', 'rexonaps')
+\end{lstlisting}
+
+La función \texttt{f} entrega una tupla de dos strings, el primero contiene las letras que se repiten en ambas palabras (como una intersección de conjuntos) y el segundo contiene todas las letras presentes en ambas palabras (como una unión de conjuntos).

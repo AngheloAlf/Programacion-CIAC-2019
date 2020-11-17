@@ -1,0 +1,55 @@
+\section{Análisis de Palabras}
+
+Programe las siguientes funciones
+\begin{itemize}
+
+    \item \texttt{contar\_letras(palabra)} que reciba una palabra en string y retorne un diccionario donde las llaves sean letras y los valores la cantidad de veces que está dicha letra en la palabra. Note que no diferencia letras mayúsculas de minúsculas.
+    
+    \begin{lstlisting}[style=consola]
+>>>contar_letras('Ciac')
+{'i': 1, 'a': 1, 'c': 2}
+    \end{lstlisting}
+    
+    \item La función \texttt{son\_anagramas(p1,p2)} que retorne True o False si dos palabras \texttt{p1} y \texttt{p2} son anagramas. Dos palabras son anagramas si tienen las mismas letras pero en otro orden. 
+    
+    \begin{lstlisting}[style=consola]
+>>> son_anagramas('grite','tigre')
+True
+>>> son_anagramas('ciac','progra')
+False
+    \end{lstlisting}
+    
+    \item Escriba la función \texttt{es\_panvocalica(palabra)} que retorne un booleano indicando si la palabra es panvocálico o no. Las palabras panvocálicas son aquellas que tienen las cinco vocales en ella.
+    
+    \begin{lstlisting}[style=consola]
+>>>es_panvocalica('neumatico')
+True
+>>>es_panvocalica('panvocalica')
+False
+    \end{lstlisting}
+    
+    \item \texttt{en\_orden(palabra)} si todas las letras de \texttt{palabra} estan en orden alfabético
+    \begin{lstlisting}[style=consola]
+>>> en_orden('himnos')
+True
+>>> en_orden('zapato')
+False
+    \end{lstlisting}
+    
+    \item \texttt{en\_orden\_segun(palabra,guia)} si todas las letras de \texttt{guia} van apareciendo en el mismo orden en \texttt{palabra}
+    \begin{lstlisting}[style=consola]
+>>> en_orden_segun('intensivo','iso')
+True
+>>> en_orden_segun('limitacion','amc')
+False
+    \end{lstlisting}
+    
+    \item \texttt{palabras\_repetidas(oracion)} que retorne una lista con las palabras que están repetidas en la oración.
+    
+    \begin{lstlisting}[style=consola]
+>>> palabras_repetidas('El sobre esta sobre el escritorio')
+['el', 'sobre']
+>>> palabras_repetidas('este intensivo es entretenido')
+[]
+    \end{lstlisting}
+\end{itemize}

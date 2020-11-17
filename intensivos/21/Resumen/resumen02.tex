@@ -1,0 +1,62 @@
+\section*{Conociendo el mundo de los \texttt{Diccionarios}}
+
+\begin{itemize}
+\item Un diccionario es un tipo de dato desordenado el cual permite asociar pares de valores, uno siendo la ``llave'' y el otro su ``valor''
+
+\item Para crear un diccionario vació puede usar \{ \} o la función \textit{dict()}. Para crear un diccionario con elementos por defecto, debe hacerlo con \{ \} y separando cada llave y su valor asociado con \textit{:}
+\begin{lstlisting}[style=consola]
+>>> a = {}
+>>> b = dict()
+>>> c = {"13345678-3": "Miguel", "14062073-4": "Anghelo"}
+\end{lstlisting}
+
+
+\item Para obtener un valor que esta en la llave \textit{l} de un diccionario \textit{d}, debe usar $d[l]$ :
+\begin{lstlisting}[style=consola]
+>>> print c["13345678-3"]
+'Miguel'
+\end{lstlisting}
+
+\item Para agregar elementos, simplemente se asigna el valor a la llave correspondiente:
+\begin{lstlisting}[style=consola]
+>>> c["17064073-k"] = "Francisco"
+>>> c["14062073-4"] = "Persona"
+\end{lstlisting}
+
+Cabe destacar que si se asigna un valor a una llave que ya tenia un elemento, el elemento viejo se elimina y se guarda el nuevo (No se pueden tener llaves repetidas).
+
+\item Para borrar una llave:
+\begin{lstlisting}[style=consola]
+>>> del c["17064073-k"]
+\end{lstlisting}
+
+\item Se puede usar el ciclo \textit{for}, donde la variable \textit{i} sera las llaves del diccionario:
+\begin{lstlisting}[style=consola]
+>>> for i in c:
+        print i
+14062073-4
+13345678-3
+\end{lstlisting}
+
+\item Para iterar según los valores y no las llaves, se usa \textit{diccionario.values()}
+\begin{lstlisting}[style=consola]
+>>> for i in c.values():
+        print i
+Miguel
+Persona
+\end{lstlisting}
+
+\item Para iterar según las llaves y los valores a la vez, se usa \textit{diccionario.items()}:
+\begin{lstlisting}[style=consola]
+>>> for l, v in c.items():
+        print "El rut de", v, "es: ", l
+El rut de Persona es: 14062073-4
+El rut de Miguel es: 13345678-3
+\end{lstlisting}        
+
+\item El operador \textit{n in d} indica si la variable \textit{n} es una llave del diccionario \textit{d}
+\begin{lstlisting}[style=consola]
+>>> "14062073-4" in c
+True
+\end{lstlisting}
+\end{itemize}

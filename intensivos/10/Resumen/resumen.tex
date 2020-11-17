@@ -1,0 +1,138 @@
+\section*{Resumen, Recetario, Formulario, Paltario, etc}
+
+\subsection*{Tuplas}
+
+\begin{itemize}
+    \item Para inicializar una tupla use:
+\begin{lstlisting}[style=consola]
+tupla=(datos) #o bien
+tupla=tuple(datos)
+\end{lstlisting}
+    \item Las tuplas no se pueden modificar una vez creadas, sólo reemplazándolas en la variable original. No tienen funciones propias (son inmutables).
+    \item Se pueden desempaquetar, o asignar variables a sus elementos, por ejemplo
+\begin{lstlisting}[style=consola]
+>>>(nombre,apellido)=('Miguel','Godoy')
+>>>nombre
+'Miguel'
+>>>apellido
+'Godoy'
+\end{lstlisting}
+    \item Se pueden comparar
+\begin{lstlisting}[style=consola]
+>>>(1,2,3)>(1,2)
+True
+>>>(2,4,5)<(2,5,6)
+True
+>>>(1,2)==(2-1,10\%8)
+True    
+\end{lstlisting}
+    \item Se pueden concatenar
+\begin{lstlisting}[style=consola]
+>>>(1,2,3)+(0,0,1)
+(1,2,3,0,0,1)
+\end{lstlisting}
+\end{itemize}
+
+\subsection*{Listas}
+
+\begin{itemize}
+    \item Se pueden comparar y concatenar de la misma forma que las tuplas
+    \item Para inicializarlas
+\begin{lstlisting}[style=consola]
+lista=[] #o bien
+lista=list()
+\end{lstlisting}
+    \item Para agregar elementos
+\begin{lstlisting}[style=consola]
+lista.append(dato) #o si lista ya esta creada
+lista=lista+[dato]
+\end{lstlisting}
+ 
+    \item Para eliminar un dato de la lista
+\begin{lstlisting}[style=consola]
+lista.remove(elemento) #Conociendo el elemento a eliminar
+del lista[indice] #Conociendo el indice del elemento a eliminar
+\end{lstlisting}
+
+    \item Algunos comandos varios son 
+\begin{lstlisting}[style=consola]
+lista.sort() #Ordena de menor a mayor la lista, RETORNA NONE
+lista.reverse() #Invierte el orden de los elementos RETORNA NONE
+\end{lstlisting}
+
+    \item Tener cuidado con la asignación de una variable para una misma lista
+
+\begin{lstlisting}[style=consola]
+>>> lis_a=[1,3,2]
+>>> lis_b=lis_a
+>>> lis_b.remove(3)
+>>> lis_a
+[1, 2]
+>>> lis_b
+[1, 2]
+\end{lstlisting}
+Lo anterior pasa porque se asignan dos variables al mismo espacio de memoria, para evitar esto se hace
+\begin{lstlisting}[style=consola]
+>>> lis_a=[1,3,2]
+>>> lis_b=list(lis_a) #Se asegura que sea una lista nueva
+>>> lis_b.remove(3)
+>>> lis_a
+[1, 3, 2]
+>>> lis_b
+[1, 2]
+\end{lstlisting}
+
+\end{itemize}
+
+\subsection*{Ciclo for}
+
+Anteriormente para recorrer una estructura de tipo string, nos aprovechábamos de que podemos acceder a cada caracter usando un índice de la forma:
+
+\begin{lstlisting}[style=consola]
+cadena='Programacion'
+contador=0
+while contador<len(cadena):
+    print cadena[contador],
+    contador+=1
+\end{lstlisting}
+
+Que imprime
+\begin{lstlisting}[style=consola]
+P r o g r a m a c i o n
+\end{lstlisting}
+
+Lo anterior se puede seguir usando, pero existe una forma más compacta de recorrer estructuras usando el comando \texttt{for}
+
+\begin{lstlisting}[style=consola]
+cadena='Programacion'
+for caracter in cadena:
+    print caracter,
+\end{lstlisting}
+
+Que imprime lo mismo.
+
+Para recorrer una estructura de listas con tuplas que deben desempaquetarse, como por ejemplo
+\begin{lstlisting}[style=consola]
+capitales=[('Chile','Santiago'),('Argentina','Bs. Aires'),('Alemania','Berlin')]
+\end{lstlisting}
+Se puede
+\begin{itemize}
+    \item[1.] Desempaquetar inmediatamente 
+    \begin{lstlisting}[style=consola]
+for pais,capital in capitales:
+    print 'La capital de',pais,'es',capital
+    \end{lstlisting}
+    
+    \item[2.] Desempaquetar en un paso siguiente
+    \begin{lstlisting}[style=consola]
+for tupla in capitales:
+    pais,capital=tupla
+    print 'La capital de',pais,'es',capital
+    \end{lstlisting}
+    
+    \item[3.] No desempaquetar, y usar índices para referirse a los datos
+    \begin{lstlisting}[style=consola]
+for tupla in capitales:
+    print 'La capital de',tupla[0],'es',tupla[1]
+    \end{lstlisting}
+\end{itemize}

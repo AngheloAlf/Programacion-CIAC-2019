@@ -1,0 +1,41 @@
+\subsection*{validarMovimientoPeon}
+
+Cree la función \textbf{validarMovimientoPeon(tablero,actual,objetivo,pieza)}, que recibe una lista con la misma estructura que la lista de listas de string \textbf{tablero} del ruteo, una tupla de dos enteros \textbf{actual}, una tupla de enteros \textbf{objetivo}, y un string de una sola letra \textbf{pieza}, y retorna \textbf{True} si esta pieza es un peón y puede moverse a la posición indicada, en todo otro caso retorna \textbf{False}.
+
+\begin{lstlisting}[style=consola]
+tablero = [
+    ["t","a"," ","a","t"],
+    ["p"," ","p","p","p"],
+    [" "," "," "," "," "],
+    [" ","p","P","P","P"],
+    ["T","A"," ","A","T"]]
+\end{lstlisting}
+
+
+La función debe cuidar los siguientes aspectos.
+\begin{enumerate}
+    \item El peón puede moverse a la casilla que está adelante de él solo si esta está vacía.
+    \item El peón puede moverse a la casilla que está adelante y en diagonal de él solo si esta contiene una pieza enemiga.
+    \item la dirección de adelante es distinta para el peón del jugador 1 que la del peón del jugador 2
+\end{enumerate}
+
+%\begin{outcode}{CodigosImportados/Ajedrez/validarPeon.txt}{0}{100}
+%\end{outcode}
+
+
+\begin{lstlisting}[style=consola]
+>>> [*print(validarMovimientoPeon(tablero, (1,2), (0,2), 'p'))*]
+False
+>>> [*print(validarMovimientoPeon(tablero, (1,2), (2,2), 'P'))*]
+True
+>>> [*print(validarMovimientoPeon(tablero, (3,2), (2,2), 'P'))*]
+True
+>>> [*print(validarMovimientoPeon(tablero, (3,2), (2,1), 'P'))*]
+False
+>>> [*print(validarMovimientoPeon(tablero, (3,1), (4,0), 'p'))*]
+True
+>>> [*print(validarMovimientoPeon(tablero, (3,1), (4,2), 'p'))*]
+False
+\end{lstlisting}
+
+

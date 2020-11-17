@@ -1,0 +1,48 @@
+\section{Movimientos telúricos}
+
+Como bien todos sabemos, este pais es un pais sismico, lo cual es un peligro para sus habitantes. Dado esto, el  \textit{\textbf{C}entro de \textbf{I}nvestigaciones \textbf{A}mbientales \textbf{C}onsolidados} ha decidido crear un programa intente predecir la posibilidad de un futuro terremoto en alguna ciudad en especifico. Para esto, el Centro posee una base de datos de sismos, la cual es lista de Python, que contiene que se componen de: grados Richter (\texttt{float}), la fecha del sismo (\texttt{tuple}) y ciudad epicentro (\texttt{string}). Aquí se expone un ejemplo de la base de datos:
+
+\begin{lstlisting}[style=consola]
+temblores = [('Valparaiso', (2017, 4, 22), 5.8), 
+('Vina del mar', (2017, 4, 23), 6.1), ('Curanipe', (2010, 2, 27), 8.8), 
+('Iquique', (1994, 9, 15), 3.9), ('Curanipe', (1995, 8, 26), 4.7), 
+('Valparaiso', (2017, 4, 22), 5.8), ('Iquique', (2014, 4, 1), 8.2), 
+# ...
+('Valparaiso', (1999, 4, 29), 4.5)
+]
+\end{lstlisting}
+
+Para que una ciudad tenga peligro de sismo, esta debe no haber sufrido de un sismo de gran intensidad (7.0 o mas en escala de Richter) en los últimos 18250 días (o 50 años). 
+
+Como el centro no tiene muchos conocimientos de Python, decide pedirle ayuda a los estudiantes de los intensivos del CIAC para facilitar la creación de este programa, para esto a usted se le ha pedido crear las siguientes funciones:
+
+\begin{enumerate}
+
+\item \texttt{sismosOrdenados(sismos)}; la cual debe retornar una lista de tuplas que contenga la información de todos los sismos, pero ordenados del mas fuerte al menos fuerte según su escala Richter.
+
+\begin{lstlisting}[style=consola]
+>>> [*ordenados = sismosOrdenados(temblores)*]
+>>> [*print(ordenados)*]
+[('Curanipe', (2010, 2, 27), 8.8), ('Iquique', (2014, 4, 1), 8.2), 
+ ('Vina del mar', (2017, 4, 23), 6.1), ('Valparaiso', (2017, 4, 22), 5.8), 
+  ('Valparaiso', (2017, 4, 22), 5.8), ('Curanipe', (1995, 8, 26), 4.7), 
+  ('Valparaiso', (1999, 4, 29), 4.5), ('Iquique', (1994, 9, 15), 3.9)]
+\end{lstlisting}
+
+\item \texttt{sismosEnCiudad(sismos, ciudad)}; la cual debe retornar una lista de tuplas que contengan la fecha y la intensidad de los sismos ocurridos en la ciudad indicada. Esta lista debe estar ordenada del mas fuerte al menos fuerte. Si la ciudad no se encuentra, la función debe retornar una lista vacía.
+
+\begin{lstlisting}[style=consola]
+>>> [*valpo = sismosEnCiudad(temblores, "Valparaiso")*]
+>>> [*print(valpo)*]
+[((2017, 4, 22), 5.8), ((2017, 4, 22), 5.8), ((1999, 4, 29), 4.5)]
+\end{lstlisting}
+
+\item \texttt{probabilidadDeSismo(sismos, ciudad, fechaActual)}; debe retornar la probabilidad de que la ciudad en cuestión tenga un sismo hoy en día. La probabilidad de sismo es directamente proporcional a la cantidad de años transcurridos entre el ultimo sismo de gran intensidad en los ultimos 18250 dias y hoy. Si hay mas de un sismo de gran intensidad, se calcula usando el sismo mas proximo a la fecha actual. Esta probabilidad no puede superar el 90\%.
+
+\begin{lstlisting}[style=consola]
+>>> [*probabilidad = probabilidadDeSismo(temblores, "Iquique", (2017, 4, 25))*]
+>>> [*print(round(probabilidad, 4))*]
+6.1315
+\end{lstlisting}
+
+\end{enumerate}

@@ -1,0 +1,93 @@
+\section{Regiones}
+
+Desde 2018, geográficamente Chile está dividido en 16 regiones desde Arica hasta la Antártica Chilena. Además de la división geográfica, también existen las regiones naturales (zonas), las cuales son cinco: Norte grande, Norte chico, Zona central, Zona sur, Zona austral.
+
+La tarea que se le encomienda a usted es construir ciertas funciones que ayuden a obtener información con respecto a estas divisiones. 
+
+Para esto, usted cuenta con la información de cada región en la lista de tuplas \texttt{regiones}, donde cada tupla contiene 5 elementos, el número de región (en romano), el nombre, la cantidad de habitantes, la superficie en $km^2$ y la capital. Guiese por este ejemplo:
+
+\begin{lstlisting}[style=consola]
+regiones = [
+# (numero, nombre, poblacion, superficie, capital)
+  ("XV",   "Region de Arica y Parinacota", 226068,  16873.3, "Arica"), 
+  ("I",    "Region de Tarapaca",           581802,  42225.8, "Iquique"), 
+  ("II",   "Region de Antofagasta",        607534, 126049.1, "Antofagasta"),
+  ("III",  "Region de Atacama",            286168,  75176.2, "Copiapo"),
+  ("IV",   "Region de Coquimbo",            757586,  40579.9, "La Serena"),
+  ("V",    "Region de Valparaiso",        1815902,  16396.1, "Valparaiso"),
+  ("RM",   "Region Metropolitana",        7112808,  15403.2, "Santiago"),
+  ("VI",   "Region de O'Higgins",          914555,  16387.0, "Rancagua"),
+  ("VII",  "Region del Maule",            1044950,  30296.1, "Talca"),
+  ("XVI",  "Region de Nuble",              480609,  13178.5, "Chillan"),
+  ("VIII", "Region del Biobio",           1556805,  23890.2, "Concepcion"),
+  ("IX",   "Region de La Araucania",       957224,  31842.3, "Temuco"),
+  ("XIV",  "Region de Los Rios",           384837,  18429.5, "Valdivia"),
+  ("X",    "Region de Los Lagos",          828708,  48583.6, "Puerto Montt"),
+  ("XI",   "Region de Aysen",              103158, 108494.4, "Coyhaique"),
+  ("XII",  "Region de Magallanes",         166533, 132297.2, "Punta Arenas")
+]
+\end{lstlisting}
+
+Además, usted cuenta con la lista de tuplas \texttt{zonas}, donde cada tupla esta compuesta por 2 elementos, el nombre de la zona y una lista que contiene los números de las regiones que corresponden a dicha zona.
+
+\begin{lstlisting}[style=consola]
+zonas = [
+  ("norte grande", ["XV", "I", "II"]),
+  ("norte chico",  ["III", "IV"]), 
+  ("zona central", ["V", "RM", "VI", "VII", "XVI", "VIII"]),
+  ("zona sur",     ["IX", "XIV", "X"]),
+  ("zona austral", ["XI", "XII"])
+]
+\end{lstlisting}
+
+Escriba las siguientes funciones:
+\begin{enumerate}
+    \item \texttt{buscar\_region(regiones, numero)}; la cual recibe la lista de regiones y un string que contiene el numero (en romano) de la región que queremos buscar. Entrega la posición en la que se encuentra dicha región con respecto a la lista \texttt{regiones} y la tupla asociada a dicha región en particular.
+    
+\begin{lstlisting}[style=consola]
+>>> [*print(buscar_region(regiones, "XI"))*]
+(14, ('XI', 'Region de Aysen', 103158, 108494.4, 'Coyhaique'))
+\end{lstlisting}
+
+    \item \texttt{densidad\_por\_zona(regiones, zonas)}; la cual entrega una lista de tuplas, donde el primer elemento de cada tupla es el nombre de la zona y el segundo valor es la densidad poblacional de dicha zona. La densidad poblacional se calcula considerando el total de la población dividido en la totalidad de la superficie.
+    
+\begin{lstlisting}[style=consola]
+>>> [*lista_densidades = densidad_por_zona(regiones, zonas)*]
+>>> [*print(lista_densidades)*]
+[('norte grande', 7.644708401161879), ('norte chico', 9.016837989531437), 
+('zona central', 111.86071789883438), ('zona sur', 21.95903309277996), 
+('zona austral', 1.120018306286432)]
+\end{lstlisting}
+    
+    \item Como bien sabemos, las regiones no se mantienen constantes en el tiempo, puede cambiar su población o, incluso, su superficie, entre otras cosas. 
+    
+    Dado esto, se le pide escribir la función \texttt{cambiar\_region(regiones, numero, datos)}; la cual recibe la lista de regiones, el string \texttt{numero} el cual indica el numero de la región (en romano) y una tupla de 4 datos que contiene el nombre, población, superficie y capital de la región. Esta función modifica a la región en cuestión con los datos nuevos, manteniendo el orden original de la lista.
+    
+\begin{lstlisting}[style=consola]
+>>> [*cambiar_region(regiones, "I", ("Region de ", 750000, 42225.8, "Iquique"))*]
+>>> [*print(regiones[0:3])*]
+[('XV', 'Region de Arica y Parinacota', 226068, 16873.3, 'Arica'), 
+('I', 'Region de Tarapaca', 750000, 42225.8, 'Iquique'), 
+('II', 'Region de Antofagasta', 607534, 126049.1, 'Antofagasta')]
+\end{lstlisting}
+
+    \item Como también sabemos, con el tiempo se van creando nuevas regiones en base a regiones ya existentes, disminuyendo la población y superficie de la región desde la que se esta creando. Sabiendo esto, se le pide la función \texttt{crear\_region(regiones, zonas, nueva\_region, numero\_antigua)} la cual recibe las 2 listas antes descritas, la tupla \texttt{nueva\_region}, la cual es la región nueva que se va a agregar y tiene la misma estructura que una tupla de la lista \texttt{regiones}; y finalmente el string \texttt{numero\_antigua}, el cual indica la región que se esta usando para crear esta nueva región.
+    
+    Esta función debe:
+    \begin{itemize}
+        \item Poner la región nueva justo debajo de la región antigua en la lista \texttt{regiones}.
+        \item Disminuir la población y superficie que tendrá la región nueva desde la región antigua. Por ejemplo, si creamos una nueva región, con 200000 habitantes y superficie 10000 $km^2$, en base a la \textit{Region de los Lagos}, debemos buscar dicha región, disminuir su población y superficie en esas cantidades, y actualizar la información en la lista \texttt{regiones}.
+        \item Agregar la región nuevo a la misma zona donde se encuentra la región antigua.
+    \end{itemize} 
+    
+\begin{lstlisting}[style=consola]
+>>> [*nueva_region = ("XVII", "Republica independiente de Placeres", 2790, 30,
+"USM")*]
+>>> [*crear_region(regiones, zonas, nueva_region, "V")*]
+>>> [*print(regiones[5:8])*]
+[('V', 'Region de Valparaiso', 1813112, 16366.1, 'Valparaiso'), 
+('XVII', 'Republica independiente de Placeres', 2790, 30, 'USM'), 
+('RM', 'Region Metropolitana', 7112808, 15403.2, 'Santiago')]
+\end{lstlisting}
+
+\end{enumerate}

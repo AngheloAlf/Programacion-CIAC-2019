@@ -1,0 +1,24 @@
+\subsection*{validarMovimientoCaballo}
+
+Cree la función \textbf{validarMovimientoCaballo(tablero,actual,objetivo,pieza)}, que recibe una lista con la misma estructura que la lista de listas de string \textbf{tablero} del ruteo, una tupla de dos enteros \textbf{actual}, una tupla de enteros \textbf{objetivo}, y un string de una sola letra \textbf{pieza}. Esta función retorna \textbf{True} si esta pieza es un caballo y puede moverse a la posición indicada, en todo otro caso retorna \textbf{False}. \\
+La función debe cuidar los siguientes aspectos.
+\begin{enumerate}
+    \item El caballo solo puede moverse a una casilla cuya distancia esté a $\sqrt{5}$ espacios.\\
+    La formula para calcular la distancia entre dos casillas es $\sqrt{(x_a-x_b)^2+(y_a-y_b)^2}$.
+    \item El caballo puede saltar sobre otras piezas.
+    \item El caballo puede caer sobre una pieza enemiga.
+    \item El caballo no puede caer sobre una pieza aliada.
+\end{enumerate}
+
+%\begin{outcode}{CodigosImportados/Ajedrez/validarCaballo.txt}{0}{100}
+%\end{outcode}
+
+
+\begin{lstlisting}[style=consola]
+>>> [*print(validarMovimientoCaballo(tablero, (0,2), (2,3), 'c'))*]
+True
+>>> [*print(validarMovimientoCaballo(tablero, (0,2), (2,2), 'c'))*]
+False
+>>> [*print(validarMovimientoCaballo(tablero, (0,2), (1,4), 'c'))*]
+False
+\end{lstlisting}

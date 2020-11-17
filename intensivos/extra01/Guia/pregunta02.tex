@@ -1,0 +1,67 @@
+\section{Llevando las notas de clases}
+
+% Version con listas y tuplas
+
+Un grupo de profesores esta harto de tener que llevar las notas de sus alumnos en el libro de clases. Usted como experto programador, al cual le encanta hacer negocios, ve esta oportunidad y decide intentar tomarla.
+
+Para tomar esta oportunidad, decide crear un pequeño software que pueda encargarse de hacer acciones básicas con las notas para poder mostrárselo a los profesores e intentar convencerlos de pagarle por su trabajo.
+
+Para poder almacenar los datos de todos los estudiantes, usted usara listas que contienen tuplas respetando una estructura. La tupla contendría el nombre del estudiante (\texttt{string}), una lista de notas (\texttt{float}), la cual contiene las notas de las evaluaciones del estudiante, y una lista de asistencia (\texttt{bool}), donde cada \texttt{True} significa que asistió a dicha clase, y \texttt{False} que no). Un ejemplo seria:
+
+\begin{lstlisting}[style=consola]
+estudiantes = [
+('Miguel', [45.0, 83.0, 25.0], [True, False, True, False, True]), 
+('Diego', [54.0, 94.0, 56.0], [True, True, True, True, True]), 
+]
+\end{lstlisting}
+
+Para hacer esto, ha decidido plantearse las siguientes funcionalidades:
+
+\begin{enumerate}
+	\item[1. ] Crear la función \texttt{agregarNota(estudiantes, nombre, nota)}, donde \texttt{estudiantes} es la lista anteriormente descrita, \texttt{nombre} es un \textit{string} y \texttt{nota} es un \textit{float}. 
+
+    Esta función debe poder agregar la nota \texttt{nota} al estudiante \texttt{nombre}. Tenga cuidado de que el estudiante podría no estar existir en la lista, de ser así debe agregarlo respetando la estructura dada. Esta función retorna nada.
+
+\begin{lstlisting}[style=consola]
+>>> [*agregarNota(estudiantes, "Miguel", 70.0)*]
+>>> [*agregarNota(estudiantes, "Anghelo", 57.0)*]
+>>> [*print(estudiantes)*]
+[('Miguel', [45.0, 83.0, 25.0, 70.0], [True, False, True, False, True]),
+('Diego', [54.0, 94.0, 56.0], [True, True, True, True, True]), 
+('Anghelo', [57.0], [])]
+\end{lstlisting}
+
+    \item[b.] Crear la función \texttt{alumnoAsistio(estudiantes, nombre)} y además la función \newline \texttt{alumnoNoAsistio(estudiantes, nombre)}, donde \texttt{estudiantes} es la lista anteriormente descrita y \texttt{nombre} es un \textit{string}.
+
+    La función \texttt{alumnoAsistio} debe agregar una asistencia (agregar \texttt{True} a la lista del \texttt{nombre} correspondiente) y \texttt{alumnoNoAsistio} debe agregar una inasistencia. Tenga cuidado de que el estudiante podría no estar existir en la lista, de ser así debe agregarlo. Estas funciones retornan nada. 
+    
+\begin{lstlisting}[style=consola]
+>>> [*alumnoAsistio(estudiantes, "Diego")*]
+>>> [*alumnoNoAsistio(estudiantes, "Anghelo")*]
+>>> [*print(estudiantes)*]
+[('Miguel', [45.0, 83.0, 25.0, 70.0], [True, False, True, False, True]),
+('Diego', [54.0, 94.0, 56.0], [True, True, True, True, True, True]), 
+('Anghelo', [57.0], [False])]
+\end{lstlisting}
+
+    \item[$\gamma$.] Crear la función \texttt{calcularPromedioNotas(estudiantes, nombre)} y además la función \texttt{calcularPorcentajeAsistencia(estudiantes, nombre)}, donde \texttt{estudiantes} es la lista anteriormente descrita y \texttt{nombre} es un \textit{string}. 
+
+    \texttt{calcularPromedioNotas} debe retornar el promedio del alumno \texttt{nombre}, mientras que la función llamada \texttt{calcularPorcentajeAsistencia} debe retornar el porcentaje de asistencia de ese estudiante (como un numero entre 0 y 100). Si \texttt{nombre} no tiene notas o asistencia aun, estas funciones deben retornar 0.
+
+\begin{lstlisting}[style=consola]
+>>> [*print(calcularPromedioNotas(estudiantes, "Miguel"))*]
+55.75
+>>> [*print(calcularPorcentajeAsistencia(estudiantes, "Diego"))*]
+100.0
+\end{lstlisting}
+
+    \item[$\square$.] Finalmente debe crear la función \texttt{mejorEstudiante(estudiantes)} y ademas la función \newline \texttt{porEstudiante(estudiantes)}. Para determinar lo pedido, hay que calcular el promedio de un estudiante y el promedio de sus asistencias, estos 2 promediarlos. El estudiante que tenga mayor promedio de ambos es el mejor estudiante, y el que tenga peor promedio de ambos es el peor estudiante (duh). Esta función debe retornar el nombre de este estudiante y el promedio descrito anteriormente como una tupla.
+
+\begin{lstlisting}[style=consola]
+>>> [*print(mejorEstudiante(estudiantes))*]
+('Diego', 84.0)
+>>> [*print(peorEstudiante(estudiantes))*]
+Que no se te olvide escribir el ejemplo plox.
+\end{lstlisting}
+
+\end{enumerate}

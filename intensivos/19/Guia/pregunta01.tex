@@ -1,0 +1,59 @@
+\section{Buses Pythonia}
+
+El glorioso \textit{Imperio de Pythonia} quiere instaurar una empresa de buses para mejorar la calidad de vida de sus habitantes.
+
+Para esto, primero debe crear un sistema de ventas de pasajes, el cual se debe implementar en base a los siguientes requerimientos:
+
+\begin{itemize}
+    \item La disponibilidad de asientos sera entregada como una cadena de caracteres (\texttt{string}), el cual contiene las letras \texttt{a} (adulto), \texttt{e} (estudiantes) y \texttt{v} (vacío).
+
+    \item El índice de cada letra de dicha cadena representa cada asiento del bus.
+    
+    \item Por ejemplo, el string \texttt{vaaaev} indica que el asiento 0 y el asiento 5 están vacíos, el asiento 1, 2 y 3 fueron vendidos a adultos, y el asiento 4 fue vendido a un estudiante.
+\end{itemize}
+
+Escriba un programa que permita al usuario ingresar la cadena antes descrita. Luego que pida pasajeros, de los cuales las opciones son tanto \texttt{adulto} como \texttt{estudiante}, y luego el índice del número de asiento a vender. Si el asiento esta ocupado, se debe volver a pedir otro asiento hasta que se ingrese uno desocupado.
+
+El programa debe seguir solicitando datos hasta que se ingrese un ``0'' (cero), o hasta que ya no queden asientos disponibles (asientos vacíos).
+
+Al terminar el programa, este debe mostrar la cantidad total de pasajes comprados, el dinero recaudado y el string actualizado con los datos de los asientos.
+
+Las tarifas son: \$2200 para estudiantes y \$4000 para adultos.
+
+Un detalle importante a considerar es que a la empresa le gusta desarrollar los problemas de forma creativa, por lo que le han prohibido el uso de listas y tuplas.
+
+Por simplicidad, puede considerar que se ingresaran datos validos siempre.
+
+Se adjuntan ejemplos del programa esperado, en los cuales se puede guiar.
+
+\begin{lstlisting}[style=consola]
+Ingrese los asientos actuales: [*vaaaev*]
+
+Ingrese tipo de pasaje: [*adulto*]
+Ingrese el asiento que quiere comprar: [*0*]
+Asignado!
+
+Ingrese tipo de pasaje: [*0*]
+
+Se vendieron 4 pasajes de adulto.
+Se vendieron 1 pasajes de estudiante.
+Se recaudo 18200
+Los asientos finales son: aaaaev
+\end{lstlisting}
+
+
+\begin{lstlisting}[style=consola]
+Ingrese los asientos actuales: [*avaaaaaaaaa*]
+
+Ingrese tipo de pasaje: [*estudiante*]
+Ingrese el asiento que quiere comprar: [*0*]
+Ocupado!
+Ingrese el asiento que quiere comprar: [*1*]
+Asignado!
+Bus lleno.
+
+Se vendieron 10 pasajes de adulto.
+Se vendieron 1 pasajes de estudiante.
+Se recaudo 42220
+Los asientos finales son: aeaaaaaaaaa
+\end{lstlisting}

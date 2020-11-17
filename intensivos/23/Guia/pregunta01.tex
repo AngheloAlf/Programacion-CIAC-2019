@@ -1,0 +1,106 @@
+\section{¡Ruteo!}
+
+Realice el ruteo del siguiente programa e indique qué es lo que imprime. Cada vez que el valor de una variable cambie, escríbalo en una nueva fila de la tabla. Recuerde que si una variable es de tipo string, coloque su valor entre comillas simples ' '.
+
+\begin{tabular}{l c}
+\begin{tabularlstlisting}
+def f1(estrellas, aliens):
+  for polvo in estrellas:
+    if aliens == polvo[0]:
+      polvo[1] += 1
+      return estrellas
+  coso = [aliens, 1]
+  estrellas.append(coso)
+  return estrellas
+
+def f2(cornios):
+  coso = []
+  for uni in cornios:
+    coso = f1(coso, uni)
+  return coso
+
+magia = "alafa"
+print(f2(magia))
+
+\end{tabularlstlisting} & 
+\begin{tabular}{|l|l|l|l|l|l|l|l|}
+    \hline 
+    \multicolumn{1}{|c|}{global} & \multicolumn{4}{|c|}{f1} & \multicolumn{3}{|c|}{f2}
+    \\ 
+    \hline
+    magia & estrellas & aliens & polvo & coso & cornios & coso & uni 
+    \\
+    \hline
+    & & & & & & & \\
+    \hline
+    & & & & & & & \\
+    \hline
+    & & & & & & & \\
+    \hline
+    & & & & & & & \\
+    \hline
+    & & & & & & & \\
+    \hline
+    & & & & & & & \\
+    \hline
+    & & & & & & & \\
+    \hline
+    & & & & & & & \\
+    \hline
+    & & & & & & & \\
+    \hline
+    & & & & & & & \\
+    \hline
+    & & & & & & & \\
+    \hline
+    & & & & & & & \\
+    \hline
+    & & & & & & & \\
+    \hline
+    & & & & & & & \\
+    \hline
+    & & & & & & & \\
+    \hline
+    & & & & & & & \\
+    \hline
+    & & & & & & & \\
+    \hline
+    & & & & & & & \\
+    \hline
+    & & & & & & & \\
+    \hline
+    & & & & & & & \\
+    \hline
+    & & & & & & & \\
+    \hline
+    & & & & & & & \\
+    \hline
+    & & & & & & & \\
+    \hline
+    & & & & & & & \\
+    \hline
+    & & & & & & & \\
+    \hline
+    & & & & & & & \\
+    \hline
+    & & & & & & & \\
+    \hline
+    & & & & & & & \\
+    \hline
+    & & & & & & & \\
+    \hline
+    & & & & & & & \\
+    \hline
+    & & & & & & & \\
+    \hline
+    & & & & & & & \\
+    \hline
+    & & & & & & & \\
+    \hline
+    & & & & & & & \\
+    \hline
+    & & & & & & & \\
+    \hline
+\end{tabular}
+\end{tabular}{}
+

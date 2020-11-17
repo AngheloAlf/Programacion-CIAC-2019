@@ -1,0 +1,62 @@
+\section{Listas bidimensionales: Una sopa de letras}
+
+Si bien, la mayor característica de una lista bidimensional es ser una lista de listas, para este juego reemplazaremos las listas internas por un string.
+
+Una sopa de letras es un cuadrado de letras, en donde se encuentran ocultas varias palabras con un afán en común por ser descubiertas (que forma más mala de esconderse). Considere que para este juego tendremos dos listas de strings como este ejemplo
+\newpage
+\begin{lstlisting}[style=consola]
+sopa=[
+    'ESTADORYPAROG',
+    'BWRMIGUELESGG',
+    'RUGIDOGSUFRUY',
+    'IFHJADUROIIAU',
+    'OAFEFOAFERATA',
+    'TOMATEUNAXELA']
+palabras=['ESTADO','EBRIO','PARO','PERA','DURO','RUDA','RUGIDO',
+          'TOMATE','MIGUEL','GODOY','ARBITRARIO','PROGRAMACION',
+          'SEDIMENTOS','PALEONTOLOGIA','RATA']
+\end{lstlisting}
+
+En este caso \texttt{sopa} contiene las letras donde se encuentran escondidas algunas palabras de \texttt{palabras}. Su misión será crear un programa que encuentre y dibuje las palabras escondidas, para eso apóyese de los archivos presentes en \url{https://bit.ly/2KhiYPV}.
+
+Por simplicidad y en honor al tiempo, considere que las palabras solo estarán en los sentidos y direcciones de izquierda a derecha y de arriba hacia abajo.
+
+Apóyese creando las siguientes funciones
+\begin{itemize}
+    \item \texttt{encontrar\_extremos(linea,palabra)} que reciba dos datos string y retorne una tupla con la posición en el string \texttt{linea} donde comience y termine \texttt{palabra} (Psst: \url{https://bit.ly/2Yaw1ME})
+\begin{lstlisting}[style=consola]
+>>> [*encontrar_extremos('alempateschwager','empate')*]
+(2, 7)
+\end{lstlisting}
+    \item \texttt{encontrar\_palabra(palabra,sopa)} que reciba un string \texttt{palabra} y una lista \texttt{sopa} y retorne una lista de tuplas con las coordenadas en orden de la posición de la palabra (en caso de que se encuentre en la sopa) en la lista \texttt{sopa}. Considere que la tupla tiene la forma (fila,columna). En el caso de que la función no encuentre la palabra ingresada como parámetro, esta retornará \texttt{None}.
+\begin{lstlisting}[style=consola]
+>>> encontrar_palabra('MIGUEL',sopa)
+[(1, 3), (1, 4), (1, 5), (1, 6), (1, 7), (1, 8)]
+\end{lstlisting}
+\end{itemize}
+
+Finalmente cree un script que recorra palabra por palabra y almacene en un diccionario la palabra como llave y su valor la lista de coordenadas (o bien, si no sabe usar diccionarios use una lista de tuplas).
+
+Ahora si quiere ver algo lindo, le recomiendo correr este código al final de su programa.
+
+\begin{lstlisting}[style=consola]
+#En caso de que no haya creado un diccionario, tome su lista_de_tuplas y 
+diccionario=dict(lista_de_tuplas)
+#de nada
+def dibujar(palabra,sopa):
+    blank='-'
+    sopa_vacia=[]
+    for i in range(len(sopa)):
+        linea=''
+        for j in range(len(sopa[0])):
+            if (i,j) in diccionario[palabra]:
+                linea+=palabra[diccionario[palabra].index((i,j))]
+            else:
+                linea+=blank
+        sopa_vacia.append(linea)
+    for i in sopa_vacia:
+        print(i)
+    return None
+\end{lstlisting}
+
+Corra esta última función en el IDLE o algún intérprete, o escriba \texttt{dibujar('RUGIDO',sopa)} al final de su código.

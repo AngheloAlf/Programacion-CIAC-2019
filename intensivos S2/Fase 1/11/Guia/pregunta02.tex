@@ -1,0 +1,99 @@
+\section{¡La gente quiere postear!}
+
+
+
+\begin{enumerate}
+    \item[$\square$.] \texttt{postear(archPosts, archUsers, titulo, url, usuario, etiquetas, fecha)}. Esta función recibe los nombres de los archivos de posts y usuarios, un \texttt{titulo} como \textit{string} para el post, el \texttt{url} que queremos postear (como \textit{string} también), el nombre del \texttt{usuario} que está posteando, una \textit{lista} de \textit{strings} de \texttt{etiquetas} relacionadas, y finalmente una \textit{tupla} de \textit{enteros} la cual indica la fecha en la cual se está posteando el post (esta tupla tiene el formato \texttt{(AÑO, MES, DIA)}).
+
+    Esta función debe agregar al final del archivo de posts el post generado, generando un \textit{id} valido según las reglas especificadas anteriormente, y dejando los valores de \textit{upvotes} y \textit{downvotes} como ceros. Además debe verificar que el usuario entregado exista, y en caso de que no exista, no se debe postear el post.
+
+    Dado que el formato de nuestros archivos usa la coma ('\texttt{,}') como separador, esta función debe reemplazar todas las comas que se encuentren en \texttt{titulo} por punto y comas ('\texttt{;}').
+
+    Esta función retorna \texttt{True} si se pudo postear satisfactoriamente, o \texttt{False} si no se pudo postear (el usuario no existía).
+
+    \begin{lstlisting}[style=consola]
+>>> [*titu = "ski-ba-bop,ba-dop-bop"*]
+>>> [*url = "https://youtu.be/Hy8kmNEo1i8"*]
+>>> [*fecha = (2020, 2, 12)*]
+>>> [*etiquetas = ["musica", "retro"]*]
+>>> [*postear("posts.csv", "usuarios.csv", titu, url, "cool_guy", 
+etiquetas, fecha)*]
+True
+>>> [*url2 = "http://pagina.falsa/robar_datos"*]
+>>> [*postear("posts.csv", "usuarios.csv", "jaja", url2, "hackerman", 
+etiquetas, fecha)*]
+False
+    \end{lstlisting}
+
+\end{enumerate}
+
+\begin{center}
+    \texttt{posts.csv} \\
+	\begin{tabular}{|l|}
+		\hline
+post\_id,titulo,meme\_url,usuario\_id,etiquetas,upvotes,downvotes,fecha\\
+\# lineas omitidas...\\
+45,cocinando como un pro,https://i.redd.it/eo4ic91v3l021.jpg,43,cocina-meme-chistoso,9741,438,2018-11-08\\
+75,ski-ba-bop;ba-dop-bop,https://youtu.be/Hy8kmNEo1i8,42,musica-retro,0,0,2020-2-12\\
+        \hline
+	\end{tabular}
+
+Se omitieron la mayoría de las lineas por comodidad, el archivo real debería tenerlas.
+
+\end{center}
+
+\begin{enumerate}
+
+    \item[$\pi$. ] \texttt{upvotePost(archPost, archUsers, idPost, username)} y \texttt{downvotePost(archPost, archUsers, idPost, username)}. Ambas funciones reciben los archivos de posts y de usuarios, un \textit{string} con el \textit{id} de un post y el \texttt{username} de un usuario.
+    
+    Estas funciones se encargan de aumentar en 1 la cantidad de \textit{upvotes} y \textit{downvotes} (respectivamente) de un post (Algo así como que este usuario esta votando).
+
+    Se debe verificar que tanto el usuario y el \textit{id} del post existan antes de realizar la operación. Si alguno no existe, la operación se entiende como fallida y no se realizan cambios en los archivos.
+
+    Retornan \texttt{True} si se realizó la operación correctamente, o \texttt{False} en caso contrario.
+
+    \begin{lstlisting}[style=consola]
+>>> [*print(downvotePost("posts.csv", "usuarios.csv", "75", "usuario_falso"))*]
+False
+>>> [*print(upvotePost("posts.csv", "usuarios.csv", "75", "jaja xd"))*]
+True
+    \end{lstlisting}
+
+    \item[$\beta$. ] \texttt{actualizarCantidadPosts(archUsers, archPosts)}. Esta función recibe los archivos de usuarios y de posts. Debe contar todos los posts que ha realizado un usuario y actualizar la cantidad de posts que ha realizado ese usuario. Esto para todos los usuarios.
+
+    Esta función retorna la cantidad total de posts que se han realizado.
+    \begin{lstlisting}[style=consola]
+>>> [*print(actualizarCantidadPosts("usuarios.csv", "posts.csv"))*]
+12
+    \end{lstlisting}
+
+\end{enumerate}
+
+\begin{center}
+    \texttt{usuarios.csv} \\
+	\begin{tabular}{|l|}
+		\hline
+user\_id,nombre,fecha\_creacion,puntaje,cantidad\_posts\\
+43,ultimate\_chef,2008-04-13,0,1\\
+3,animal\_lover,2007-09-23,0,3\\
+42,cool\_guy,2012-02-14,0,5\\
+666,jesucritos,0020-07-25,0,2\\
+24,jaja xd,2017-11-11,0,1\\
+667,full detonao,2020-2-12,0,0\\
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{enumerate}
+    \item[-0.] \texttt{mostrarPost(archPost, idPost)}. Recibe el nombre del archivo de posts y el \textit{id} de un post. Retorna un diccionario cuyas llaves son las columnas del archivo de posts, y los valores son los valores correspondientes del post asociado a \texttt{idPost}. 
+    
+    Estos valores deben ser convertidos a los tipos de datos apropiados (los números deben ser \textit{int}s, \texttt{etiquetas} debe ser una \textit{lista} y \texttt{fecha} debe ser una \textit{tupla}).
+
+    \begin{lstlisting}[style=consola]
+>>> [*print(mostrarPost("posts.csv", "74"))*]
+{'post_id': 74,  'usuario_id': 3, 'upvotes': 6123, 'downvotes': 248,
+'etiquetas': ['mascotas', 'chistoso', 'wholesome'], 'fecha': (2017, 8, 26),
+'meme_url': 'https://v.redd.it/zy00ryora2b21/DASH_600_K', 'titulo': 'seal'}
+    \end{lstlisting}
+
+\end{enumerate}

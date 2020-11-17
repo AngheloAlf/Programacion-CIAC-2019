@@ -1,0 +1,10 @@
+Boleta de Miguel:
+	Producto	Cantidad	P. unitario	Total
+	jugo		6		$200		$1200
+	cereal		1		$1890		$1890
+	yogur		4		$250		$1000
+	pan		1		$600		$600
+	limon		2		$700		$1400
+	cafe		2		$2490		$4980
+
+El total de su compra es: $11070

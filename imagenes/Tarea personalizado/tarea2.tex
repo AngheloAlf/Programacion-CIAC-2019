@@ -1,0 +1,136 @@
+\documentclass[spanish, fleqn]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage[paper=a4paper, top=2cm, left=2cm, right=2cm]{geometry}
+\usepackage{tikz}
+\usepackage{CIACcustom}
+\usepackage{fourier}
+\usepackage{amsmath, amsthm}
+\usepackage{listings}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\usepackage[urlcolor=blue, colorlinks]{hyperref}
+\usepackage{booktabs,tabularx}
+\usepackage{float}
+
+\newcolumntype{L}[1]{>{\hsize=#1\hsize\raggedright\arraybackslash}X}%
+\newcolumntype{R}[1]{>{\hsize=#1\hsize\raggedleft\arraybackslash}X}%
+\newcolumntype{C}[2]{>{\hsize=#1\hsize\columncolor{#2}\centering\arraybackslash}X}%
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\pgfimage[width=2.5cm]{imagenes/logo-ciac.png}}
+\chead{
+  Apoyos Personalizados Tarea N° 2\\
+  IWI-131 Semestre I-2019 \\
+  CIAC Casa Central
+}
+\lhead{\pgfimage[width=2.5cm]{imagenes/logo-usm.jpg}}
+\rfoot{\LaTeXe / CIAC 2019}
+\lfoot{Página \thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+
+\renewcommand{\ttdefault}{pcr}
+
+%%% listings settings:
+\definecolor{bggray}{rgb}{0.95,0.95,0.95}
+\lstdefinestyle{consola}{
+  backgroundcolor=\color{bggray},
+  basicstyle=\small\ttfamily,
+  frame=single,
+  moredelim=[is][\bfseries]{[*}{*]},
+  xrightmargin=5pt
+}
+
+\lstdefinestyle{mypy}{
+  language=python,
+  backgroundcolor=\color{bggray},
+  basicstyle=\ttfamily\small\color{orange!70!black},
+  frame=L,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{red},
+  numbers=left,
+  showstringspaces=false,
+  xrightmargin=5pt,
+  xleftmargin=10pt
+}
+
+\newtheorem{CIACdef}{Definición}
+
+\begin{document}
+\vspace*{.3cm}
+
+\section{Algo así como para calentar}
+
+Indique lo que imprimen los siguientes programas
+\begin{lstlisting}[style=consola]
+lis=[1,2,[3,5,(2,3),'miguel'],'se','co',[12,'ri']]
+
+print(lis[2][3][2]*2)
+print(lis[2][3],lis[3][::-1],lis[-1][-1]+lis[-2])
+print(len(lis))
+\end{lstlisting}
+\vspace{3cm}
+\begin{lstlisting}[style=consola]
+A=(1,3,5)
+B=(2,4,5)
+print(A+B)
+\end{lstlisting}
+\vspace{3cm}
+\begin{lstlisting}[style=consola]
+A=[('Tomate',200),('Pepino',150),('Lentejas',550),('Cerveza',800)]
+b=[]
+for alimento,calorias in A:
+    b.append((calorias,alimento))
+C=b.sort()
+C=b.reverse()
+print(C)
+new=[]
+for c,a in b:
+    new.append(a)
+L=[[1],[1,1]]
+n=10
+for i in range(n):
+    listita=list(L[-1])
+    agregar=listita[-1]+listita[-2]
+    L.append(listita+[agregar])        
+print(L)
+\end{lstlisting}
+\\ \\ \\ \\
+\newpage
+\section{Uno de recorrer varias listas}
+
+Los personajes de una famosa serie ahora van a clases de programación con usted e incluso estuvieron presente en un paro por salud mental. La coordinación de este ramo, en una descoordinación de los entes mayores, hicieron dos certámenes 2, uno dentro del paro y otro fuera, donde el primero fue de caracter voluntario.
+
+En un acto de simpatía extrema, se les dará la oportunidad a quienes quieran mejorar su nota de certamen en paro sin ningún compromiso, y se permitirá a los alumnos rendir un nuevo certamen en donde se guardará la mejor nota en la planilla final.
+
+Para ello se dispone de dos listas \texttt{c2\_paro} que contiene tuplas de la forma \texttt{nombre, nota} y \texttt{c2\_normal} que tiene lo mismo pero con los datos de todos los estudiantes.
+
+\begin{lstlisting}[style=consola]
+nombres=['Eren','Armin','Mikasa','Sasha','Reiner','Bertholdt','Christa',
+         'Connie','Jean']
+
+c2_paro=[('Armin',90), ('Mikasa',73), ('Eren',43), ('Sasha',62)]
+
+c2_normal=[('Eren', 90), ('Armin', 53), ('Mikasa', 54), ('Sasha', 6), 
+('Reiner', 66), ('Bertholdt', 60), ('Christa', 23), ('Connie', 4), ('Jean', 12)]
+\end{lstlisting}
+
+Se le pide a usted lo siguiente
+\begin{itemize}
+	\item Cree una función \texttt{planilla(c2\_paro,c2\_normal)} que retorne una lista de tuplas de la forma (nombre, nota), donde nota sea la mayor calificación del alumno (en caso de haber dado sos evaluaciones). En caso contrario, considere sólo la del certamen fuera del paro
+	\item Cree una función \texttt{promedio(planilla)} que reciba como parámetro la lista generada con la función anterior y retorne un promedio de notas (como entero).
+	\item Cree la función \texttt{desviacion\_estandar(planilla)} que reciba como parámetro la lista generada anteriormente y retorne el valor de la desviación estándar $\sigma$ que se calcula de la siguiente manera
+\begin{equation}
+\sigma=\sqrt{\frac{1}{N}\sum_{i=1}^N \left( x_i - \bar{x} \right)^2}
+\end{equation}
+
+Donde $N$ es el número total de alumnos, $\bar{x}$ el promedio de notas y $x_i$ la nota de cada alumno.
+
+\item Finalmente imprima por pantalla en orden descendente según la nota, los alumnos que obtuvieron calificaciones por encima del promedio.
+\end{itemize}
+
+\end{document}

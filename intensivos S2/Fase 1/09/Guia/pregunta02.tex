@@ -1,0 +1,149 @@
+\section{El Juego de la Vida de Conway}
+
+El juego de la vida de Conway se trata de un juego de cero jugadores donde se tiene una matriz de células cuyo estado puede ser viva o muerta. El juego inicia con una matriz de células ya creadas, cada célula decide si morirá o vivirá dependiendo del total de células vivas que tiene en su vecindad. A continuación se detallan algunas reglas y definiciones:
+
+\begin{itemize}
+    \item La vecindad de una célula $c$ es el conjunto de células vecinas conformado por la célula que esta arriba, abajo, a la izquierda, la derecha y las esquinas de la célula $x$. Es decir si $c_{i,j}$ representa una célula en la posición $(i,j)$, sus vecinos son $V(i,j)=\{c_{i-1,j-1}, c_{i,j-1}, c_{i+1,j-1}, c_{i-1,j}, c_{i+1,j}, c_{i-1,j+1}, c_{i,j+1}, c_{i+1,j+1}\}$
+    
+    \item La supervivencia de cada célula se determina con las siguientes reglas:
+    \begin{enumerate}
+        \item Si la célula esta viva, continuara viva si tiene 2 o 3 vecinos vivos, de lo contrario muere.
+        \item Si la célula esta muerta, estará viva si tiene 3 vecinos, de lo contrario continuará muerta.
+    \end{enumerate}
+    
+    La forma en que se representará la matriz de células es mediante un archivo de texto llamado \texttt{m1.txt} y \texttt{m2.txt}. La idea es leer estos archivos y guardar la matriz inicial de células como una lista bidimensional donde cada elemento de la lista es una columna y cada columna tiene un 0 si la célula esta muerta o un 1 si la célula esta viva. La estructura de cada archivo se detalla a continuación.
+    
+\end{itemize}
+\begin{itemize}
+    \item \texttt{m1.txt} es simplemente una matriz de unos y ceros, donde cada linea del archivo representa una fila de la matriz de células.
+    
+    \begin{center}
+        \texttt{m1.txt} \\
+    	\begin{tabular}{|l|}
+    		\hline
+            0,0,0,1,...,0,0\\
+            0,0,0,1,...,0,0\\
+            0,0,0,1,...,0,0\\
+            1,1,1,0,...,0,0\\
+            .\\
+            .\\
+            .\\
+            0,0,0,0,...,0,0\\
+    		\hline
+    	\end{tabular}
+    \end{center}
+    
+    \item \texttt{m2.txt} es un archivo con una serie de instrucciones para construir la matriz de células.
+    
+    \begin{center}
+        \texttt{m2.txt} \\
+    	\begin{tabular}{|l|}
+    		\hline
+            50 50\\
+            glider 1,1\\
+            t 30 30\\
+            r-pentomino 4, 40\\
+    		\hline
+    	\end{tabular}
+    \end{center}
+    
+    La primera linea de \texttt{m2.txt} detalla las dimensiones separados por un espacio.
+    Las demás lineas detalla el nombre de la figura y su posición en la matriz de células.
+    Considere que las figuras detalladas en el archivo pueden ser obtenidas mediante el archivo \texttt{patrones.py} incluido.
+\end{itemize}
+
+Ahora para poder jugar este juego se pide que haga las siguientes funciones:
+
+\begin{itemize}
+\item[a.] Desarrollar la función \texttt{mundo\_muerto(ancho, largo)} que reciba como parámetro el ancho de la matriz de células y el largo de esta. entendiendo como el ancho la cantidad de filas que tiene la matriz y el largo la cantidad de columnas que tiene esta matriz. Como retorno se espera obtener una matriz de células muertas con las dimensiones especificadas.
+
+\begin{lstlisting}[style=consola]
+>>> [*mundo_muerto(2, 3)*]
+[[0,0],[0,0],[0,0]]
+\end{lstlisting}
+
+\item[b.] Desarrollar la función \texttt{vecinos\_vivos(mundo, x, y)} que reciba como parámetro la matriz de células, y la posición $x$, $y$ de la célula que se quiere analizar sus vecinos. Como resultado se debe retornar el numero total de vecinos vecinos vivos.
+\begin{lstlisting}[style=consola]
+>>> mundo = [[1,0,0],[1,1,1],[0,0,0]]
+>>> [*vecinos_vivos(mundo, 1, 1)*]
+3
+>>> [*vecinos_vivos(mundo, 0, 0)*]
+2
+\end{lstlisting}
+
+\item[c.] Programar la función \texttt{sig\_estado(mundo)} que reciba como parámetro la matriz de células, y retorne una nueva matriz de células producto de la aplicación de las reglas de supervivencia.
+\begin{lstlisting}[style=consola]
+>>> mundo = [[0,0,0],[1,1,1],[0,0,0]]
+>>> [*sig_estado(mundo)*]
+[[0,1,0],[0,1,0],[0,1,0]
+\end{lstlisting}
+
+\item[d.] Crear la función \texttt{leer\_mundo\_por\_comando(nombre\_mundo)} que reciba como parámetro un string con el nombre del archivo a abrir y que sea la estructura del archivo \texttt{m2.txt} y retorne una lista bidimensional con cada elemento de la lista como una columna de la matriz de células construida por las instrucciones.
+
+\begin{lstlisting}[style=consola]
+>>> [*leer_mundo_por_comando(nombre_mundo)*]
+[[0,1,...,0],[0,1,...,0],...,[0,0,...,0]
+\end{lstlisting}
+
+\item[e.] Crear la función \texttt{leer\_mundo(nombre\_mundo)} que reciba como parámetro un string con el nombre del archivo a abrir y que sea la estructura del archivo \texttt{m1.txt} y retorne una lista bidimensional con cada elemento de la lista como una columna de la matriz de células.
+
+\begin{lstlisting}[style=consola]
+>>> [*leer_mundo_por_comando(nombre_mundo)*]
+[[0,1,...,0],[0,1,...,0],...,[0,0,...,0]
+\end{lstlisting}
+
+\item[f.] Crear la función \texttt{dibujar(arch, mundo)} que reciba como parámetro el archivo de texto abierto y la matriz de células como mundo a dibujar en el archivo
+
+\begin{lstlisting}[style=consola]
+>>> arch = open("test.txt", "w", encoding="utf8")
+>>> mundo = [[0,1,0],[0,1,0],[0,1,0]
+>>> [*dibujar(arch, mundo)*]
+>>> arch.close()
+\end{lstlisting}
+
+El archivo de texto resultante es:
+
+\begin{center}
+    \texttt{test.txt} \\
+	\begin{tabular}{|l|}
+		\hline
+        $\blacksquare \blacksquare \blacksquare$\\
+        $\square \square \square$\\
+        $\blacksquare \blacksquare \blacksquare$\\
+		\hline
+	\end{tabular}
+\end{center}
+
+\item[g.] Crear la función \texttt{simular(max\_generacion, lectura, nombre\_mundo)} que reciba como parámetro un entero indicando la cantidad de generaciones a simular, el modo de lectura del archivo, y nombre del archivo a leer. Como resultado la función debe crear un archivo txt con el nombre del archivo de lectura concatenado con "simulacion\_CGol.txt", con los dibujos de cada generación y con un numero que indique la cantidad de células vivas en la generación.
+
+\begin{lstlisting}[style=consola]
+>>> [*simular(3, "comando", "mtest.txt")*]
+\end{lstlisting}
+\end{itemize}
+
+\begin{center}
+\begin{tabular}{c c}
+    \texttt{mtest.txt} & \texttt{mtest\_simulacion\_CGol.txt} \\
+	\begin{tabular}{|l|}
+		\hline
+        3 3\\
+        blinker 1,0\\
+		\hline
+	\end{tabular} & \begin{tabular}{|l|}
+	    \hline
+        GENERACION:0   POBLACION:3\\
+        $\blacksquare \blacksquare \blacksquare$\\
+        $\square \square \square$\\
+        $\blacksquare \blacksquare \blacksquare$\\
+        GENERACION:1   POBLACION:3\\
+        $\blacksquare \square \blacksquare$\\
+        $\blacksquare \square \blacksquare$\\
+        $\blacksquare \square \blacksquare$\\
+        GENERACION:2   POBLACION:3\\
+        $\blacksquare \blacksquare \blacksquare$\\
+        $\square \square \square$\\
+        $\blacksquare \blacksquare \blacksquare$\\
+	    \hline
+    \end{tabular}
+\end{tabular}
+\end{center}

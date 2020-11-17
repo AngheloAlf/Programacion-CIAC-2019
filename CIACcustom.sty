@@ -1,0 +1,52 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{CIACcustom}[2015/04/28 Programacion CIAC Formato]
+
+\RequirePackage{marvosym}
+
+% Custom definitions:
+\parindent = 0mm
+
+% variables configuración:
+\newcommand{\CIACAutor}[2]
+{
+  % #1: nombre autor
+  % #2: referencia
+ #2 \hspace*{1pt} #1
+}
+
+\newcommand{\CIACTitulo}[1]
+{
+  % #1 Numero guia.
+  \rule{\textwidth}{2pt} \\
+  \rule{\textwidth}{1pt} 
+  
+  \vspace*{.5\baselineskip}
+  
+  \begin{center}
+    \begin{sffamily}
+      \begin{Large}
+        Centro Integrado de Aprendizaje en Ciencias Básicas \\
+        Programación de Computadores Guía #16
+      \end{Large}
+    \end{sffamily}
+  \end{center}
+  
+  \vspace*{.1\baselineskip}
+  
+  \begin{center}
+    \CIACAutor{Pablo Inzunza}{\textsection}
+    \hspace*{4cm}
+    \CIACAutor{Francisco Gallegos}{\textsection}
+    
+    \vspace*{\baselineskip}
+    
+    \pgfimage[width=2cm]{imagenes/logo-ciac.png}
+    
+  \end{center}
+  
+  \rule{\textwidth}{1pt} \\
+  \rule{\textwidth}{2pt} 
+  
+}
+
+\endinput

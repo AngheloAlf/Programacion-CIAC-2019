@@ -1,0 +1,38 @@
+\section{Juegos}
+
+Un grupo de estudiantes está inventando un sistema de juegos en nube para computadora llamado ``Origen del Vapor``, los estudiantes aún no tienen los conocimientos necesarios para programar una base de datos ni archivos de texto, por lo que guardan todos los datos de los juegos en un diccionario gigante.
+\\
+El diccionario \texttt{juegos} tiene como llave el nombre de un juego, y como valor una tupla de la forma \texttt{(empresa, categorias, jugadores)}, donde \texttt{empresa} es un string con el nombre de la empresa desarrolladora del juego, \texttt{categorias} es una lista de strings con las distintas categorías o géneros del juego respectivo y \texttt{jugadores} es una lista de enteros, donde cada entero es el número de identificación de un jugador.
+
+\begin{lstlisting}[style=consola]
+juegos={'Left 4 Dead 2':('valve',['terror','cooperativo','shooter'],[112,314]),
+        'Counter Strike':('valve',['shooter','cooperativo'],[112,414,908]),
+        'League of Legends':('riot',['moba','cooperativo'],[112,314,908]),
+        'Red Alert 2':('CAC',['RTS'],[112,314]),
+        'Age of Empires':('Microsoft',['RTS'],[408,509])
+        #...
+        }
+\end{lstlisting}
+
+Considere que existen muchos más juegos que los que se muestran en el ejemplo, y que su código debe funcionar para todos los elementos de esta estructura.
+\\
+Se le pide a usted programar la función \texttt{crear\_diccionario(juegos)} que recibe el diccionario \texttt{juegos} y genera un nuevo diccionario que contenga como llave el número de identificación del jugador, y como valor una tupla de la forma \texttt{(preferencia, conocidos, cantidad)}, donde 
+\begin{itemize}
+    \item \texttt{preferencia} es un string con la categoría preferida del jugador, entiéndase como la categoría favorita aquella que más se repite en los distintos juegos que tiene \texttt{jugador}
+    \item \texttt{conocidos} es un conjunto con los jugadores conocidos de \texttt{jugador}. Entiéndase como jugador conocido aquel que posee el mismo juego que \texttt{jugador}
+    \item \texttt{cantidad} es un número entero de la cantidad de juegos que posee \texttt{jugador}
+\end{itemize}
+
+Puede usar las funciones auxiliares que estime conveniente. Se le recomienda comentar brevemente lo que hacen y retornan.
+\\
+El diccionario nuevo tiene una estructura como la siguiente
+
+\begin{lstlisting}[style=consola]
+>>> [*crear_diccionario(juegos)*]
+{908: ('cooperativo', [112, 414, 314], 2), 
+112: ('cooperativo', [908, 414, 314], 4), 
+408: ('RTS', [509], 1), 
+314: ('cooperativo', [112, 908], 3), 
+509: ('RTS', [408], 1), 
+414: ('shooter', [112, 908], 1)}
+\end{lstlisting}

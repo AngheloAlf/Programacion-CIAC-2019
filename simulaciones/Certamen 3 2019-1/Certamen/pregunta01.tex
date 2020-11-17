@@ -1,0 +1,44 @@
+\paragraph{1.} 
+[20\%] Una prestigiosa empresa de seguridad computacional, programa algunas funciones para encontrar palabras
+dentro de archivos de texto. Lamentablemente, creen que programar borracho es entretenido y eficaz,
+por lo que todas sus líneas de código, en un acto de estupidez, fueron mezcladas.
+
+Se tienen las siguientes dos estructuras, \texttt{archivos} una lista que contiene los nombres de los archivos de texto a analizar, y \texttt{malignos} una lista que contiene los strings considerados como palabras que son virus.
+\begin{lstlisting}[style=consola]
+archivos=['lagrimas','millones','poema 20','poetas']
+malignos=['malicia','troyano','mentiroso','dolor']
+\end{lstlisting}
+Ayude a estos personajes a ordenar su código para que funcione.
+\begin{itemize}
+    \item La función \texttt{esta\_palabra(archivo,palabra)} que reciba un string palabra y retorne True o False dependiendo si la palabra está o no en archivo.
+    
+    \begin{lstlisting}[style=consola]
+if palabra in linea:
+def esta_palabra(archivo,palabra):
+for linea in arch:
+arch=open(archivo)
+return False
+arch.close()
+return True
+arch.close()
+    \end{lstlisting}
+    
+    \item La función \texttt{encontrar\_virus(archivos,malignos)} que reciba una lista de nombres de archivo (sin la extensión .txt) y una lista de strings malignos que contiene palabras consideradas como virus. Esta función retorna una lista con los nombres de los archivos que contienen virus.
+    
+\begin{lstlisting}[style=consola]
+for linea in arch:
+arch=open(archivo+'.txt')
+arch.close()
+def encontrar_virus(archivos,malignos):
+return infectados
+for palabra in malignos:
+infectados.append(archivo+'.txt')
+if palabra in linea:
+infectados=[]
+for archivo in archivos:
+if archivo+'.txt' not in infectados:
+\end{lstlisting}
+\end{itemize}
+
+
+

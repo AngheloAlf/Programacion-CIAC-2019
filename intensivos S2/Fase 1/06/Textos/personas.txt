@@ -1,0 +1,8 @@
+Erick Lopez;12.9887,1.5567;B
+Diego;-2.9001,-13.2353;M
+Cesar Moltedo;12.1986,2.5321;M
+Miguel;13.1301,2.5463;B
+Andrew Ng;-2.9001,7.6453;B
+Gabriel;9.6201,-4.6673;M
+Anghelo;12.2316,15.0089;M
+El Barto;28.1326,57.1231;M

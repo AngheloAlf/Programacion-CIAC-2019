@@ -1,0 +1,5 @@
+tigre:3000
+condor:10000
+canguro:150
+elefante asiatico:450
+elefante afrucabo:100

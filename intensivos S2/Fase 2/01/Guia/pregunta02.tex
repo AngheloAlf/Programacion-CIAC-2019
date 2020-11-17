@@ -1,0 +1,43 @@
+\section{Virus Informático}
+Durante los primeros meses del 2020, una nueva cepa del virus COVYD-91 se introdujo en la bases de datos de nuestro país, alterando los registros de las personas residentes en él. La base de datos originalmente se ve como:
+\begin{lstlisting}[style=consola]
+personas=[
+["Miguel","Godoy",60,"20444444-7",12345],
+["Diego","Altamirano",20,"04040404-K",2222],
+["Anghelo","Carvajal",30,"1111111-1",12345]]
+    :
+    :
+]
+\end{lstlisting}
+De formato \texttt{[Nombre,Apellido,Edad,Rut,ID]}. Considere la siguientes características;
+\begin{itemize}
+    \item [-] Los \texttt{ID}'s son válidos solamente si la suma de sus dígitos corresponde a un número específico, llamado \textit{semilla}, esta semilla será sólo un dígito, por lo que si la suma de los dígitos del ID da un número con más dígitos, debe continuar sumando iterativamente hasta que esta suma de un sólo dígito
+    \begin{itemize}
+        \item \textit{Ej:} Un ID $12345$ es válido con una semilla $6$, porque $1+2+3+4+5=15$ y $1+5=6$
+    \end{itemize}
+\end{itemize}
+Ante esto, una organización de desarrollo de software solicitó ayuda a los alumnos de IWI-131 para solucionar este problema utilizando numerosos algoritmos.\\\\
+La organización le solicita implementar las siguientes funciones:
+\begin{itemize}
+    \item \texttt{comprobar\_id(id, semilla)}, la cual recibe un número (presunto ID) y una semilla, la función retorna \texttt{True} si el ID es válido, y \texttt{False} en caso contrario (Asuma que \texttt{semilla} siempre será de un dígito)
+\begin{lstlisting}[style=consola]
+>>> [*comprobar_id(12345, 6)*]
+True
+>>> [*comprobar_id(2222, 4)*]
+False
+\end{lstlisting}
+    \item \texttt{buscar\_repeticiones(personas)}, la cual recibe la lista \texttt{personas}, y retorna una lista, la cual contiene: \begin{itemize}
+        \item El \texttt{ID} que más se repitió en \texttt{personas}
+        \item La cantidad de veces que se repitió el \texttt{ID} más repetido
+        \item Una lista con todos los nombres que tenían el \texttt{ID} con más repeticiones
+    \end{itemize}
+\begin{lstlisting}[style=consola]
+>>> [*buscar_repeticiones(personas)*]
+[12345,2,["Miguel","Anghelo"]]
+\end{lstlisting}
+    \item \texttt{indicar\_id\_invalidos(personas,semilla)}, la cual recibe la lista \texttt{personas} y una semilla, la función retorna una tupla con todos los nombres de personas que tienen su \texttt{ID} inválido según la semilla entregada
+\begin{lstlisting}[style=consola]
+>>> [*indicar_id_invalidos(personas,6)*]
+("Diego")
+\end{lstlisting}
+\end{itemize}

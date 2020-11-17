@@ -1,0 +1,34 @@
+\section{X-men}
+
+El instituto Xavier para jóvenes mutantes, ubicado en la mansión X, le ha entregado una beca a un estudiante ejemplar llamado (escriba su nombre)\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_, más conocido como (escriba su apodo) \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ por sus excelentes y llamativas habilidades para (ingrese su superpoder, si tiene miedo de que lo lea alguien más porque lo mantiene en secreto, escriba programar clink clink) \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_.
+
+Este instituto quiere crear una lista de clases (omita la coincidencia de nombres de estructuras Python con nuestro propósito) con la información de todos sus alumnos. Para ello, guarda en tres estructuras de tipo lista, los \texttt{nombres}, \texttt{alias} y \texttt{poderes} de sus alumnos, note que no están ordenadas en orden alfabético, pero los datos están ordenados por posición, es decir, la primera posición de cada lista guarda información de la misma persona, lo mismo con la segunda, lo mismo con la tercera....
+
+\begin{lstlisting}[style=consola]
+nombres=['Jean Gray','Erik Eisenhardt','Scott Summers','Kurt Wagner',
+         'James Hudson','Charles Xavier','Miguel Godoy']
+alias=['-','Magneto','Ciclope','Nocturno','Guepardo','Profesor X','Mickey Miguel']
+poderes=['Telequinesis y telepatia','Control de los metales',
+         'Rasho laser por los ojos','Teletransportacion',
+         'Regeneracion y garras', 'Telepatia', 'Programar y tener buena suerte'
+\end{lstlisting}
+
+Para este ejercicio, tenga en cuenta que existe un algoritmo de ordenamiento burbuja (bubble sort algorithm), que se muestra a continuación.
+
+\lstinputlisting[
+    style  = mypy,
+    caption= \texttt{Bubble sort.py}]{Code/bubble.py}
+
+Teniendo en cuenta este algoritmo, programe las funciones que estime conveniente y haga un programa que imprima por pantalla una lista como lo muestra el ejemplo, en donde indique el nombre del mutante, su alias si es que posee uno y sus poderes. Note que su programa debe discriminar la existencia de alias y también imprimir una frase coherente si tiene uno o más poderes.
+
+\begin{lstlisting}[style=consola]
+Charles Xavier, a.k.a. Profesor X, su habilidad es Telepatia
+Erik Eisenhardt, a.k.a. Magneto, su habilidad es Control de los metales
+James Hudson, a.k.a. Guepardo, sus habilidades son Regeneracion y garras
+Jean Gray, sus habilidades son Telequinesis y telepatia
+Kurt Wagner, a.k.a. Nocturno, su habilidad es Teletransportacion
+Miguel Godoy, a.k.a. Mickey Miguel, sus habilidades son Programar y tener buena suerte
+Scott Summers, a.k.a. Ciclope, su habilidad es Rasho laser por los ojos
+\end{lstlisting}
+
+Para hacer más entretenida su programación, descargue el archivo del siguiente link \texttt{https://bit.ly/2GqDI5Q} y agregue su nombre, alias y habilidad para imprimirlo por pantalla.

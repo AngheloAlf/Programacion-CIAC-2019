@@ -1,0 +1,72 @@
+\section{Numerología}
+
+La numerología es una práctica que utiliza los números. Es un conjunto de creencias o tradiciones que pretende establecer una relación mística entre los números, los seres vivos y las fuerzas físicas o espirituales (sacado textual de wikipedia).
+
+Existe una práctica que permite conocer el secreto de cada persona por su nombre, para averiguarlo, debemos usar su nombre y apellido (también es posible conocerlo mediante un apodo!). Para esto, consideremos una matriz de valores asociados a las letras.
+
+\begin{table}[h]
+\centering
+\caption{Correspondencia de valores para cada letra}
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|}
+\hline
+\textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} & \textbf{6} & \textbf{7} & \textbf{8} & \textbf{9} \\ \hline
+A          & B          & C          & D          & E          & F          & G          & H          & I          \\ \hline
+J          & K          & L          & M          & N          & O          & P          & Q          & R          \\ \hline
+S          & T          & U          & V          & W          & X          & Y          & Z          &            \\ \hline
+\end{tabular}
+\end{table}
+
+Por ejemplo, el valor del nombre de su tutor de programación favorito es
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|}
+\hline
+\textbf{M} & \textbf{I} & \textbf{G} & \textbf{U} & \textbf{E} & \textbf{L} & \textbf{G} & \textbf{O} & \textbf{D} & \textbf{O} & \textbf{Y} \\ \hline
+4          & 9          & 7          & 3          & 5          & 3          & 7          & 6          & 4          & 6          & 7          \\ \hline
+\end{tabular}
+\end{table}
+Note que la suma de los números es 61, debe obtener un sólo dígito, por lo tanto sigue sumando hasta encontrarlo, en este caso $6+1=7$
+
+El significado de cada número es
+\begin{enumerate}
+    \item \textbf{Líder} Representa a personas con gran fuerza y ambición, con gran habilidad para ocupar puestos de mandos. Son entusiastas, creativas, originales y accionan para que sus ideas sean productivas. Sus dotes de mandos, capacidad de organización y cualidades directivas hacen que se encuentren entre los ejecutivos de cualquier empresa.
+    \item \textbf{Amigo} Son personas que demuestran gran interés y consideración por los demás; eso los hace muy buenos amigos. Su arma esencial es la cooperación; por eso son catalogados como los empleados ideales; son grandes organizadores y saben cumplir a la perfección las pautas trazadas por otras personas.
+    \item \textbf{Comunicador} Resuelven sus problemas a través de la palabra, la expresión de si mismo es la verdadera felicidad, pues la vida y las interacciones están inspiradas por su ser interior. Son mentalmente autónomos y están libres de las construcciones mentales que los definen, su personalidad sociable los lleva a desarrollar actividades artísticas.
+    \item \textbf{Constructor} aquellos que construyen, crean en todos los ámbitos de la vida, en lo profesional, en la vida familiar y las relaciones social. Respetan el orden y las leyes establecidas; sus lemas son la sinceridad y la verdad; y jugar limpio los representa.
+    \item \textbf{Espíritu Libre} simbolizan la libertad; se siente suelto, libre para experimentar y curiosear libremente. Sus cualidades mas destacaras son su capacidad receptiva para disfrutar de la belleza, apreciar el arte y su talento perceptivo.
+    \item \textbf{Responsable} simbolizan el idealismo, la responsabilidad, la justicia y la verdad; su instinto maternal/ paternal los guía como jefes de familia que cuidan de los suyos, característica que desarrollan plenamente como jefes en su trabajo o con responsabilidades dentro de su comunidad.
+    \item \textbf{Perfeccionista} aquellos que tienen el don para la investigación, la observación y el análisis agudo; poseen rapidez mental para analizar las situaciones, exigiéndose la perfección hasta el máximo de su rendimiento. Su fuerza se refleja en su capacidad para captar conocimientos, representan a los investigadores, estudiantes o científicos que no aceptan nada como valido, hasta que han desmenuzado el tema en su totalidad y llegado a sus propias conclusiones.
+    \item \textbf{Exitoso}  tienen la ambición para lograr objetivos, sus dotes organizativas, su tenacidad e independencia son las apropiadas para conducir, dirigir y gobernar planes de largo alcance hasta su éxito.
+    \item \textbf{Filósofo}  tienen grandes cualidades para lo místico, las ciencias ocultas o el ocultismo; poseen una sensibilidad muy fina que les permite percibir los estados de ánimos de los otros; gozan con la música, los colores y las cosas bellas.
+\end{enumerate}
+
+Considerando la información anterior (\url{https://numerologia.euroresidentes.es/nombre}), se le pide a usted programar un script (archivo de órdenes, un programa simple con extensión .py) y las siguientes funciones:
+\begin{enumerate}
+    \item[a.] \texttt{valor\_letra(letra)} que reciba un string con una letra, EN LO POSIBLE MAYUSCULA, y retorne un entero con el valor correspondiente del Cuadro 1. \textbf{Hint:} Puede hacer muchas condiciones, o bien, intentar ocupar la función \texttt{ord(n)} que recibe un string y retorna un valor numérico asociado, considere restar 65 (ord de A) y controlar que no exceda el número 9.
+\begin{lstlisting}[style=consola]
+>>> [*valor_letra('C')*]
+3
+\end{lstlisting}
+    \item[b.] \texttt{suma\_numeros(n)} que reciba un número \texttt{n}, y retorne un string con un único dígito que represente el número final que indica la personalidad \sout{de la persona (que te quedes callado para escuchar como se escucha)} del nombre.
+    \begin{lstlisting}[style=consola]
+>>> [*suma_numeros(459)*]
+'9'
+    \end{lstlisting}
+    \item[c.] \texttt{retroalimentacion(numero)} que reciba un numero como string y retorne un string con la personalidad asociada.
+\begin{lstlisting}[style=consola]
+>>> [*retroalimentacion('8')*]
+'Exitoso'
+\end{lstlisting}
+\end{enumerate}
+
+Finalmente, escriba un programa que use las funciones anteriores y entregue la personalidad de cada nombre ingresado. El programa termina al ingresar nada (un string vacio, presionar enter para salir).
+
+\begin{lstlisting}[style=consola]
+Ingrese nombre: [*MIGUEL GODOY*]
+MIGUEL GODOY es Perfeccionista
+Ingrese nombre: [*ANGHELO CARVAJAL*]
+ANGHELO CARVAJAL es Constructor
+Ingrese nombre: [*DIEGO ALTAMIRANO*]
+DIEGO ALTAMIRANO es Filosofo
+\end{lstlisting}

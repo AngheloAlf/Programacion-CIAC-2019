@@ -1,0 +1,117 @@
+\section{Examen Seleccionador Universal}
+
+Has sido contratado para trabajar en la fabulosa empresa \textit{Universal}. ¡Felicitaciones! Esta empresa se encarga de llevar a cabo la más codiciada evaluación anual del país, el \textit{Examen Seleccionador Universal} (también conocido como \textit{ESU}). La \texttt{ESU} es utilizada para todo en este país, desde admisión a institutos educativos, hasta tramites gubernamentales. Es el pilar básico de nuestra sociedad.
+
+Le han pedido actualizar el  sistema de acceso a los puntajes de el examen \textit{ESU}. En este sistema, los puntajes e información de las personas esta almacenado en archivos \textit{.csv} (archivos con valores separados por comas). La estructura de cada línea de los archivos que almacenan los puntajes (y otros datos relacionados) es la siguiente: \texttt{uiu,nombre,edad,lugar,mat-leng-ciencias,notaPresentacion}.
+
+\texttt{uiu} corresponde al \textit{Único Identificador Universal} de esta persona. \texttt{nombre} es el nombre de la persona a quien pertenecen estos datos, \texttt{edad} es la edad de dicha persona, \texttt{lugar} es el lugar de rendición, \texttt{mat-leng-ciencias} son los puntajes de dichas pruebas separadas por un guión, y \texttt{notaPresentacion} es la nota con la que se presento a rendir este examen dicha persona. Los puntajes tienen valores entre los 100 puntos y los 700 puntos, mientras que la nota de presentación tiene una escala de 0 a 100.
+
+A continuación se presenta un extracto del archivo de puntajes de este año:
+\begin{center}
+\texttt{puntajes.csv}\\
+	\begin{tabular}{|l|}
+		\hline
+67,juan,17,colegio f42,391-589-244,68\\
+108,carlos,17,colegio f42,283-230-291,59\\
+150,bodoque,17,colegio f42,381-382-403,83\\
+7,el chavo,74,barril,362-614-561,39\\
+45,jotaro,22,colegio f42,649-573-571,89\\
+437,maria jose antonienta,18,mall araucano marino,236-470-389,28\\
+837,tony stark,13,en su casa,700-685-697,100\\
+783,tulio,22,colegio f42,101-163-613,54\\
+		\hline
+	\end{tabular}
+\end{center}
+
+Se suele usar el termino \textbf{Puntaje final} para referirse a un ponderado de los puntajes y las notas de una persona. Para calcularlo, primero se calcula un puntaje ponderado de los 3 exámenes principales (con porcentajes que dependen de cada institución), y luego se promedia este puntaje ponderado con la nota de presentación.
+
+Además, le han exigido que trabaje con el formato especial de diccionarios que esta empresa ha creado: $\textit{NELPN}^\text{\texttrademark}$. Este formato especifica que los diccionarios tienen las llaves: ``\texttt{nombre}'', ``\texttt{edad}'', ``\texttt{lugar}'', ``\texttt{nota}'' y ``\texttt{puntajes}''. El valor de \texttt{nombre} es un string con el nombre de esa persona, \texttt{edad} es su edad como entero, \texttt{lugar} es un string, \texttt{nota} es un entero y \texttt{puntajes} es un diccionario. El diccionario \texttt{puntajes} sigue el formato $\textit{MLC}^\text{\texttrademark}$, donde las llaves son ``\texttt{mat}'', ``\texttt{leng}'' y ``\texttt{ciencias}'' y sus valores son los puntajes respectivos.
+
+Teniendo en consideración toda esta información, se ha planteado implementar las siguientes funciones:
+\begin{enumerate}
+    \item[a)] \texttt{ponderarPuntaje(puntajes, ponderaciones)}. Donde \texttt{puntajes} es un diccionario con el formato $\textit{MLC}^\text{\texttrademark}$. \texttt{ponderaciones} es otro diccionario, el cual tiene las mismas llaves, pero los valores son los respectivos porcentajes de cada puntaje. Esta función debe calcular y retornar el puntaje ponderado (no el Puntaje final).
+
+\begin{lstlisting}[style=consola]
+>>> [*puntos = {"mat": 362, "leng": 641, "ciencias": 561}*]
+>>> [*porcentajes = {"mat": 40, "leng": 25, "ciencias": 35}*]
+>>> [*print(ponderarPuntaje(puntos, porcentajes))*]
+501.4
+\end{lstlisting}
+
+    \item[1.] \texttt{obtenerPuntajes(archPuntajes)}. Donde \texttt{archPuntajes} es el nombre de un archivo, el cual tiene la estructura antes descrita. Esta función retorna un diccionario, donde cada llave es un \textit{UIU}, y su respectivo valor es otro diccionario, el cual respeta la estructura $\textit{NELPN}^\text{\texttrademark}$.
+    
+\begin{lstlisting}[style=consola]
+>>> [*print(obtenerPuntajes("puntajes.csv"))*]
+{
+67: {'nombre': 'juan', 'edad': 17, 'lugar': 'colegio f42', 'nota': 68, 
+'puntajes': {'mat': 391, 'leng': 589, 'ciencias': 244}}, 
+108: {'nombre': 'carlos', 'edad': 17, 'lugar': 'colegio f42', 'nota': 59, 
+'puntajes': {'mat': 283, 'leng': 230, 'ciencias': 291}}, 
+# ... Ejemplo cortado por motivos de espacio
+}
+\end{lstlisting}
+
+    
+    \item[A.-] \texttt{alcanzaCorte(nelpn, ponderacion, corte)}. Donde \texttt{nelpn} es un diccionario que sigue el formato $\textit{NELPN}^\text{\texttrademark}$, \texttt{ponderacion} es un diccionario que tiene las llaves de $\textit{MLC}^\text{\texttrademark}$, pero los valores son el porcentaje de cada puntaje, y \texttt{corte} es un entero que indica el puntaje de corte.
+    
+    Esta función retorna una tupla de dos elementos, el primero es \texttt{True} si el Puntaje final de la persona supera (mayor estricto) el puntaje de corte, o \texttt{False} si no es así, y el segundo es el \textit{Puntaje final} calculado.
+    
+
+\begin{lstlisting}[style=consola]
+>>> [*datos_de_una_persona = {'nombre': 'jotaro', 'edad': 22, 
+'lugar': 'colegio f42', 'nota': 89, 'puntajes': {'mat': 649, 'leng': 573,
+'ciencias': 571}}*]
+>>> [*print(alcanzaCorte(datos_de_una_persona, porcentajes, 320))*]
+(True, 345.85)
+\end{lstlisting}
+
+
+    \item[I)] \texttt{mayoresQueElCorte(ponderacion, corte, archivoPuntajes)}. Donde \texttt{ponderacion} y \texttt{corte} representan lo mismo que en la función anterior, y \texttt{archivoPuntajes} es el nombre de un archivo que contiene los datos de los rendidores del examen.
+    
+    Esta función debe retornar una lista de tuplas de los rendidores que superaron el \texttt{corte} especificado. Cada tupla de esta lista debe tener 2 valores, el \textit{UIU} y el \textit{Puntaje final} de una persona. Además, esta lista debe estar ordenada, de mayor a menor, según los \textit{Puntajes finales} de cada persona.
+    
+\begin{lstlisting}[style=consola]
+>>> [*print(mayoresQueElCorte(porcentajes, 250, "puntajes.csv"))*]
+[(837, 397.6), (45, 345.85), (7, 266.825)]
+\end{lstlisting}
+
+\end{enumerate}
+
+Durante la última rendición de la \texttt{ESU} han ocurrido inesperadas irregularidades en algunos lugares de rendición, de modo que no se puede garantizar que los puntajes asignados a las personas afectadas sea representativo. Considerando esto, \textit{Universal} ha decidido asignar un bonus en su puntaje a estos afectados, por lo cual se le pide que implemente la siguiente función:
+\begin{enumerate}
+    \item[UNO.] \texttt{asignarBonus(archPuntajes, lugar, bonus)}. El parámetro \texttt{archPuntajes} es el nombre del archivo a modificar, \texttt{lugar} es el nombre del lugar de los afectados, y \texttt{bonus} es el bonus de puntaje que se añadirá.
+    
+    Esta función actualiza los contenidos de \texttt{archPuntajes} (respetando la estructura del archivo) sumando el valor de \texttt{bonus} al puntaje de todas las personas que rindieron el examen en \texttt{lugar}. Ojo, esto no afecta a la nota de presentación. Recuerde que los puntajes tienen rangos máximos y mínimos.
+    
+    Esta función retorna nada (\texttt{None}).
+
+\begin{lstlisting}[style=consola]
+>>> [*asignarBonus("puntajes.csv", "colegio f42", 150)*]
+>>> 
+\end{lstlisting}
+
+Al ejecutar la linea anterior, el archivo quedaría así:
+
+\begin{center}
+\texttt{puntajes.csv}\\
+	\begin{tabular}{|l|}
+		\hline
+67,juan,17,colegio f42,541-700-394,68\\
+108,carlos,17,colegio f42,433-380-441,59\\
+150,bodoque,17,colegio f42,531-532-553,83\\
+7,el chavo,74,barril,362-614-561,39\\
+45,jotaro,22,colegio f42,700-700-700,89\\
+437,maria jose antonienta,18,mall araucano marino,236-470-389,28\\
+837,tony stark,13,en su casa,700-685-697,100\\
+783,tulio,22,colegio f42,251-313-700,54\\
+		\hline
+	\end{tabular}
+\end{center}
+
+
+\end{enumerate}
+
+
+\begin{flushright}
+$._\text{\textit{Cualquier parecido con la realidad es mera coincidencia.}}$
+\end{flushright}

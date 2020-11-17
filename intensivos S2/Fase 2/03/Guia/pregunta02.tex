@@ -1,0 +1,85 @@
+\section{PyMaps}
+
+La aplicación \textit{PyMaps} permite al usuario buscar restaurantes, pubs, cafes o cualquier otro local en una ciudad. La aplicación almacena en el archivo \texttt{locales.txt} todos los lugares disponibles, siguiendo el siguiente formato.
+
+\begin{center}
+    \texttt{categoria->nombreLocal:valoraciónGeneral:coordenadaX,coordenadaY}
+\end{center}
+
+Asuma que no existen dos locales con el mismo nombre.\par
+Por cada local se tiene también un archivo cuyo nombre es el mismo nombre del local (terminado en .txt obviamente). Este archivo almacena una breve reseña del local en sus cuatro primeras líneas y a partir de la quinta aparecen los comentarios de los usuarios. Cada comentario utiliza solo una linea y sigue el formato que se presenta a continuación.
+
+\begin{center}
+    \texttt{nombreUsuario:valoración:comentario}
+\end{center}
+
+\texttt{valoración} corresponde a una nota que entrega el usuario, esta puede ser 0, 1, 2, 3, 4 o 5.
+
+\vspace{0.4 cm}
+\begin{minipage}[H]{0.5\textwidth}
+    \fbox{
+    \lstset{ breaklines=true, basicstyle=\footnotesize }
+    \lstinputlisting{Code/uno.txt}
+    }
+    \captionof{table}{locales.txt}
+    \label{locales init}
+\end{minipage}
+\begin{minipage}[H]{0.5\textwidth}
+    \fbox{
+    \lstset{ breaklines=true, basicstyle=\footnotesize }
+    \lstinputlisting{Code/dos.txt}
+    }
+    \captionof{table}{Casa Lila.txt}
+    \label{lila init}
+\end{minipage}
+
+
+\subsection{AgregarComentario(usuario, nota, blablabla, nombreLocal)}
+
+Cree una función que agregue el comentario de un usuario al archivo propio de un local. La función debe editar el archivo correspondiente y respetar el formato de los comentarios. Asuma que ningún comentario tendrá mas de una línea.
+
+El parámetro \texttt{usuario} es el nombre del usuario que realiza el comentario, \texttt{nota} corresponde a un entero de 0 a 5, \texttt{blablabla} es un string de una sola linea con el comentario del cliente y \texttt{nombreLocal} es solo el nombre del lugar, no el nombre de su archivo relacionado. 
+
+\begin{lstlisting}[style = consola]
+>>> [*AgregarComentario('VaneDM', 4, 'Muy bueno pero algo caro', 'Casa Lila')*]
+
+\end{lstlisting}
+
+%\vspace{0.4 cm}
+\begin{center}
+    \fbox{
+    \lstset{ breaklines=true, basicstyle=\footnotesize }
+    \lstinputlisting{Code/tres.txt}
+    }
+    \captionof{table}{Casa Lila.txt}
+    \label{lila post}
+\end{center}
+
+%\newpage
+
+\subsection{ActualizarNota(archivo, local)}
+
+Cree un archivo que reciba como parámetro el nombre del archivo general y el nombre de un local. Esta función debe actualizar la \texttt{valoraciónGeneral} de un local en el archivo \texttt{locales.txt}, calculando el promedio de las valoraciones de los usuarios.
+
+\textbf{bonus:} La valoración debe incluir solo dos decimales, usar el criterio de aproximación científico (de $0$ a $4.\bar{9}$ aproximar hacia abajo, de $5$ a $9.\bar{9}$ hacia arriba).
+
+\begin{lstlisting}[style = consola]
+>>> [*ActualizarNota('locales.txt', 'Casa Lila')*]
+\end{lstlisting}
+
+% \vspace{0.4 cm}
+\begin{center}
+    \fbox{
+    \lstset{ breaklines=true, basicstyle=\footnotesize }
+    \lstinputlisting{Code/cuatro.txt}
+    }
+    \captionof{table}{locales.txt}
+    \label{locales post}
+\end{center}
+
+En el ejemplo, la nota de 'Casa Lila' era de 5 (ver el Cuadro \ref{locales init}), que es el promedio de las notas que había en el archivo \textit{Casa Lila.txt}, $\frac{5+5}{2} = 5$. (ver Cuadro \ref{lila init}), 
+
+Después de \textbf{AgregarComentario('VaneDM', 4, 'Muy bueno pero algo caro', 'Casa Lila')}, las notas en \textit{Casa Lila.txt} son $5,5,4$, como muestra el Cuadro \ref{lila post}, y el promedio de ellas es $\frac{5+5+4}{3}=4.67$.
+
+Al ejecutar \textbf{ActualizarNota('locales.txt', 'Casa Lila')}, la primera linea de este archivo cambia la nota por $4.67$.
+

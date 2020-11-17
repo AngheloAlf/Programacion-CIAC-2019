@@ -1,0 +1,106 @@
+\section{Copa americana}
+
+Por fin ha llegado el evento deportivo mas esperado por los chilenos, la \textit{Copa americana}.
+
+Como usted no es un gran hincha de la selección, pero quiere celebrar con sus amigos, ha decidido crear un programa que lo ayude a comprender que esta pasando con la \textit{copa}.
+
+En base a sus investigaciones, la copa funciona en base a 3 grupos de 4 equipos (donde invitan a 2 países extranjeros).
+
+Cada país tiene los siguientes datos: cantidad de partidos jugados, ganados, empatados, perdidos, goles a favor, goles en contra, diferencia de goles, puntos. Donde cantidad de partidos jugados, ganados, empatados, perdidos es lo que su nombre indica. La cantidad de goles a favor y goles en contra indica la cantidad total de goles que este país ha echo y le han echo durante la copa. La diferencia de goles es la resta de estos últimos 2 valores. Finalmente los puntos es la cantidad de puntos que los países obtienen por cada partido. Ganar un partido da 3 puntos, empatarlo da 1, y perderlo da 0 puntos.
+
+Para ayudarse en esto, se ha planteado las siguientes estructuras:
+
+\begin{lstlisting}[style=consola]
+grupos = [
+    # (letraGrupo, listaEquipos)
+    ("A", ["Brasil", "Peru", "Venezuela", "Bolivia"]),
+    ("B", ["Colombia", "Paraguay", "Catar", "Argentina"]),
+    ("C", ["Chile", "Uruguay", "Ecuador", "Japon"]) ]
+\end{lstlisting}
+
+\begin{lstlisting}[style=consola]
+detalles_puntaje = [
+    # (Pais, partidosjugados, ganados, empatados, perdidos, goles a favor, 
+    #  goles en contra, diferenciagoles, puntos)
+    ("Argentina", 0, 0, 0, 0, 0, 0, 0, 0),
+    ("Brasil", 0, 0, 0, 0, 0, 0, 0, 0),
+    ("Bolivia", 0, 0, 0, 0, 0, 0, 0, 0),
+    ("Catar", 0, 0, 0, 0, 0, 0, 0, 0),
+    ("Chile", 0, 0, 0, 0, 0, 0, 0, 0),
+    ("Colombia", 0, 0, 0, 0, 0, 0, 0, 0),
+    ("Ecuador", 0, 0, 0, 0, 0, 0, 0, 0),
+    ("Japon", 0, 0, 0, 0, 0, 0, 0, 0),
+    ("Paraguay", 0, 0, 0, 0, 0, 0, 0, 0),
+    ("Peru", 0, 0, 0, 0, 0, 0, 0, 0),
+    ("Uruguay", 0, 0, 0, 0, 0, 0, 0, 0),
+    ("Venezuela", 0, 0, 0, 0, 0, 0, 0, 0) ]
+\end{lstlisting}
+
+Finalmente, se ha planteado realizar las siguientes funciones:
+
+\begin{enumerate}
+    \item[$\star$] \texttt{mismo\_grupo(grupos, pais1, pais2)}, la cual recibe la lista de grupos antes descrita, y 2 strings con nombres de 2 países. Esta función retorna \texttt{True} si \texttt{pais1} y \texttt{pais2} están en el mismo grupo, y \texttt{False} en caso contrario.
+
+\begin{lstlisting}[style=consola]
+>>> [*print(mismo_grupo(grupos, "Chile", "Japon"))*]
+True
+>>> [*print(mismo_grupo(grupos, "Brasil", "Argentina"))*]
+False
+\end{lstlisting}
+
+    
+    \item[$\Omega$] \texttt{jugar\_partido(grupos, puntaje, pais1, pais2, goles1, goles2)}. Esta función recibe ambas listas antes descritas, el nombre de 2 países (\texttt{pais1} y  \texttt{pais2}) y un par de enteros, cada uno indicando cuantos goles hizo cada país (\texttt{goles1} corresponde a los goles que hizo \texttt{pais1}).
+    
+    Esta función debe actualizar los datos de ambos países de forma apropiada. Ojo que si los 2 países ingresados no están en el mismo equipo, es imposible jugar el partido, por lo que la función no debe modificar ningún dato.
+    
+    La función retorna \texttt{None} (osea, no retorna ningun valor).
+    
+
+\begin{lstlisting}[style=consola]
+>>> [*jugar_partido(grupos, detalles_puntaje, "Brasil", "Bolivia", 3, 0)*]
+>>> [*jugar_partido(grupos, detalles_puntaje, "Venezuela", "Peru", 0, 0)*]
+>>> [*jugar_partido(grupos, detalles_puntaje, "Argentina", "Colombia", 0, 2)*]
+>>> [*jugar_partido(grupos, detalles_puntaje, "Paraguay", "Catar", 2, 2)*]
+>>> [*jugar_partido(grupos, detalles_puntaje, "Uruguay", "Ecuador", 4, 0)*]
+>>> [*jugar_partido(grupos, detalles_puntaje, "Japon", "Chile", 0, 4)*]
+>>> [*print(detalles_puntaje)*]
+[('Brasil', 1, 1, 0, 0, 3, 0, 3, 3), ('Bolivia', 1, 0, 0, 1, 0, 3, -3, 0),
+('Venezuela', 1, 0, 1, 0, 0, 0, 0, 1), ('Peru', 1, 0, 1, 0, 0, 0, 0, 1),
+('Argentina', 1, 0, 0, 1, 0, 2, -2, 0), ('Colombia', 1, 1, 0, 0, 2, 0, 2, 3), 
+('Paraguay', 1, 0, 1, 0, 2, 2, 0, 1), ('Catar', 1, 0, 1, 0, 2, 2, 0, 1),
+('Uruguay', 1, 1, 0, 0, 4, 0, 4, 3), ('Ecuador', 1, 0, 0, 1, 0, 4, -4, 0),
+('Japon', 1, 0, 0, 1, 0, 4, -4, 0), ('Chile', 1, 1, 0, 0, 4, 0, 4, 3)]
+\end{lstlisting}
+    
+    \item[$\alpha$] \texttt{datos\_grupo(grupos, puntaje, letra\_grupo)}. Esta funcion recibe las listas anteriormente descritas y un string que contiene la letra del grupo.
+    
+    Esta función retorna una tupla con los datos de los países correspondientes al grupo \texttt{letra\_grupo}, pero ordenados de mayor a menor según la cantidad de puntos que tenga cada país. Si la cantidad de puntos es igual, se debe ordenar por la diferencia de goles, de mayor a menor. Si esta también es igual, puede usar el criterio que encuentre conveniente para ordenarlos.
+    
+\begin{lstlisting}[style=consola]
+>>> [*print(datos_grupo(grupos, detalles_puntaje, "C"))*]
+(('Uruguay', 1, 1, 0, 0, 4, 0, 4, 3), ('Chile', 1, 1, 0, 0, 4, 0, 4, 3),
+('Japon', 1, 0, 0, 1, 0, 4, -4, 0), ('Ecuador', 1, 0, 0, 1, 0, 4, -4, 0))
+\end{lstlisting}
+
+
+    \item[$\&$] \texttt{cuartos\_de\_final(grupos, puntaje)}, la cual recibe ambas listas antes descritas. Esta función retorna una lista de 4 tuplas, donde cada tupla contiene 2 strings, los cuales son los nombres de los paises a enfrentarse en cuartos de final.
+    
+    El orden de los partidos es:
+    \begin{itemize}
+        \item Primer partido: Primer lugar del grupo A contra el mejor tercer lugar de los otros grupos.
+        \item Segundo partido: Segundo lugar del grupo A contra segundo lugar del grupo C.
+        \item Tercer partido: Primer lugar del grupo B contra el mejor segundo-tercer lugar de los otros grupos.
+        \item Cuarto partido: Primer lugar del grupo C contra segundo lugar del grupo A.
+    \end{itemize}
+    
+    Puede usar su método preferido para definir a los mejores terceros lugares.
+
+\begin{lstlisting}[style=consola]
+>>> [*print(cuartos_de_final(grupos, detalles_puntaje))*]
+[('Brasil', 'Peru'), ('Venezuela', 'Chile'), ('Colombia', 'Catar'),
+('Uruguay', 'Paraguay')]
+\end{lstlisting}
+
+\end{enumerate}
+
+$._\text{\sout{¡\textit{Somos el mejor país de Chile}!}}$

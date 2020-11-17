@@ -1,0 +1,72 @@
+\section{Pukeman}
+
+El profesor Pine es un reconocido científico del mundo Pukeman y tiene en su haber una cantidad considerable de Pukemanes. Como buen científico, el profesor Pine es muy ordenado y tiene a los Pukemanes almacenados en archivos, con sus respectivas características y nombres. Los siguientes son extractos de los archivos reales:
+
+\begin{center}
+	\begin{tabular}{c c}
+        \texttt{pukemones.txt} & \texttt{nombres.txt} \\
+    	\begin{tabular}{|l|}
+    		\hline
+            1;45,49,49,65,65,45;Grass\\
+            4;45,52,43,60,50,65;Fire\\
+            25;35,55,40,50,50,90;Electric\\
+            39;115,45,20,45,25,20;Normal\\
+    		\hline
+    	\end{tabular} & \begin{tabular}{|l|}
+		    \hline
+            1;Bulbasaur\\
+            4;Charmander\\
+            25;Pikachu\\
+            39;Jigglypuff\\
+		    \hline
+	    \end{tabular}
+	\end{tabular}
+\end{center}
+
+Cada linea de estos archivos sigue una estructura predefinida. Cada linea del archivo \texttt{pukemones.txt} sigue la estructura \texttt{id;salud,ataque,defensa,at. esp.,def. esp.,velocidad;tipo}.
+
+Mientras tanto, el archivo \texttt{nombres.txt} sigue la estructura \texttt{id;nombre}. Donde \texttt{id} es es el mismo que en \texttt{pukemones.txt}.
+
+El profesor Pine recibe la visita de 3 amigos: Nash, Fisty y Block. El profesor les da a elegir un Pukeman a cada uno. Dado que cada uno tiene una estrategia distinta para elegir, y que la cantidad de Pukemanes es muy grande, usted tiene que ayudarles escribiendo una función que retorne al (los) Pukeman(es) de acuerdo a sus demandas.
+
+\begin{enumerate}
+	\item Nash prefiere a los Pukemanes equilibrados, por lo que debe escribir una función que retorne al Pukeman cuya varianza de las caracteríısticas numéricas sea la menor. La varianza la puede calcular de la siguiente manera: $var(x) = \frac{1}{n}\sum{(x_{i} - \overbar{x})^2}$. Donde $\overbar{x}$ es el promedio.
+
+	\begin{lstlisting}[style=consola]
+>>> [*mejor_Nash('pukemones.txt', 'nombres.txt')*]
+'Charmander'
+	\end{lstlisting}
+
+	\item Fisty tiene una predileccion por los Pukemanes de Césped (tipo \texttt{Grass}) y por los que la suma de su ataque especial y defensa especial sea la mayor.
+
+	\begin{lstlisting}[style=consola]
+>>> [*mejor_Fisty('pukemones.txt', 'nombres.txt')*]
+'Bulbasaur'
+	\end{lstlisting}
+
+	\item Block es mas difícil de satisfacer. El no cree mucho en las estadísticas por lo que prefiera elegir a su Pukeman de acuerdo a sus instintos. Pero claro, como todos, tiene sus preferencias. El prefiere a los Pukemanes de tipo \texttt{Normal} y \texttt{Electric}, y ademas que sus puntos de salud sea mayor o igual a cierto valor (valor dado como parametro). Ayúdele a Block filtrando a los Pukemanes, generando un diccionario donde los Pukemanes agregados cumplan con esas características.
+
+	\begin{lstlisting}[style=consola]
+>>> [*filtro_Block('pukemones.txt', 'nombres.txt', 35)*]
+{'Pikachu': ((35, 55, 40, 50, 50, 90), 'Electric'),
+'Jiglypuff': ((115, 45, 20, 45, 25, 20), 'Normal')}
+	\end{lstlisting}
+
+	\item Finalmente, como se han decidido por llevarse un Pukeman, debe quitarlo de su archivo, por lo cual debe crear una funcion que reciba el nombre del Pukeman a quitar y lo quite de su archivo de \texttt{pukemones}, pero no del archivo de \texttt{nombres}. Esta función retorna nada.
+
+	\begin{lstlisting}[style=consola]
+>>> [*quitar_pukeman('pukemones.txt', 'nombres.txt', 'Charmander')*]
+	\end{lstlisting}
+
+\end{enumerate}
+
+\begin{center}
+    \texttt{pukemones.txt} \\
+	\begin{tabular}{|l|}
+		\hline
+            1;45,49,49,65,65,45;Grass\\
+            25;35,55,40,50,50,90;Electric\\
+            39;115,45,20,45,25,20;Normal\\
+		\hline
+	\end{tabular}
+\end{center}

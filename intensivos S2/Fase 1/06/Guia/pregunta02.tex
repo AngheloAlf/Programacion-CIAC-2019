@@ -1,0 +1,90 @@
+\section{La napydad}
+
+Santa Claus ha comprado un sistema hecho en Python para administrar la Navidad de este año.
+
+Básicamente, el sistema maneja un archivo, el cual primero tiene una linea que dice "\textit{Lista de buenos y malos 20XX:}", luego una linea en blanco y luego muchas lineas con el formato \texttt{nombre;x,y;tipo}, donde \texttt{x} e \texttt{y} son las coordenadas en el mapa de la ubicación de la persona y \texttt{tipo} indica como se ha portado la persona ('\texttt{B}': Bueno; '\texttt{M}': Malo).
+
+Ver ejemplo:
+\begin{center}
+\texttt{personas.txt}\\
+	\begin{tabular}{|l|}
+		\hline
+Erick Lopez;12.9887,1.5567;B\\
+Diego;-2.9001,-13.2353;M\\
+Cesar Moltedo;12.1986,2.5321;M\\
+Miguel;13.1301,2.5463;B\\
+Andrew Ng;-2.9001,7.6453;B\\
+Gabriel;9.6201,-4.6673;M\\
+Anghelo;12.2316,15.0089;M\\
+El Barto;28.1326,57.1231;M\\
+		\hline
+	\end{tabular}
+\end{center}
+
+Tenga en consideración que esto es un ejemplo, el archivo real sera mas grande. Además las personas aparecen una única vez.
+
+Ahora usted debe:
+\begin{enumerate}
+
+\item Desarrollar la función \texttt{persona\_mas\_cerca(personas, posicion)} que recibe un diccionario de personas y la posición actual de Santa Claus. La función debe retornar el nombre de la persona que sea buena mas cercana a la posición de Santa Claus. 
+
+El diccionario \texttt{personas} tiene como llave el nombre de un persona, y como valor otro diccionario, el cual tiene como datos el par \texttt{'ubicacion': (x, y)}, que indica la ubicación de la persona y además del par \texttt{'tipo': 'B'}, el cual indica si es malo o bueno.
+    
+Para calcular esta distancia puede usar la formula $\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 }$.
+    
+\begin{lstlisting}[style=consola]
+>>> [*personas = {"Erick Lopez": {"ubicacion":(12.9887,1.5567), "tipo": "B"}, 
+"Andrew Ng": {"ubicacion": (-2.9001,7.6453), "tipo": "M"}}*]
+>>> [*print(persona_mas_cerca(personas, (12.9676, 1.4991)))*]
+'Erick Lopez'
+\end{lstlisting}
+
+\item Santa Claus ha determinado que la mejor ruta para repartir todos los regalos es ir siempre a la persona mas cercana (con cuidado de no repetirlas) desde la posición en la que se encuentra. Usted debe crear la función \texttt{mejor\_ruta(archivo, posicion)} que reciba el nombre del archivo y la posición inicial de Santa Claus, y retorne una lista con la ruta a seguir identificada por el nombre
+de las personas buenas.
+
+% HINT: Se recomienda usar la funcion anterior.
+
+\begin{lstlisting}[style=consola]
+>>> [*print(mejor_ruta("personas.txt", (0.0, 0.0)))*]
+['Andrew Ng', 'Miguel', 'Erick Lopez']
+\end{lstlisting}
+
+\item A pocos días de la Navidad, Santa Claus se ha dado cuenta que la lista con personas posee
+errores. Santa ha concluido que el Grinch había hackeado el sistema alterando el campo \texttt{tipo} de
+algunas personas, es decir, una persona buena fue cambiada a mala o vise-versa. Por suerte Santa
+tiene un respaldo, una lista con tuplas con el nombre y el tipo de cada persona. 
+
+Ver ejemplo:
+
+\begin{lstlisting}[style=consola]
+respaldo = [('Erick Lopez', 'B'), ('Erick Lopez', 'B'), ('Diego', 'B'), 
+('Cesar Moltedo', 'M'), ('Miguel', 'B'), ('Andrew Ng', 'M'), 
+('Gabriel', 'B'), ('Anghelo', 'M'),('El Barto', 'M')]
+\end{lstlisting}
+
+Ahora usted debe implementar la función \texttt{restaurar(archivo, respaldo)} que reciba
+como parámetro los archivos de personas y respaldo. La función debe restaurar el archivo de las personas,
+es decir, volver el tipo de cada persona (según respaldo). La función retorna \texttt{None}.
+
+\begin{lstlisting}[style=consola]
+>>> [*restaurar("personas.txt", respaldo)*]
+>>> 
+\end{lstlisting}
+
+\begin{center}
+\texttt{personas.txt}\\
+	\begin{tabular}{|l|}
+		\hline
+Erick Lopez;12.9887,1.5567;B\\
+Diego;-2.9001,-13.2353;B\\
+Cesar Moltedo;12.1986,2.5321;M\\
+Miguel;13.1301,2.5463;B\\
+Andrew Ng;-2.9001,7.6453;M\\
+Gabriel;9.6201,-4.6673;B\\
+Anghelo;12.2316,15.0089;M\\
+El Barto;28.1326,57.1231;M\\
+		\hline
+	\end{tabular}
+\end{center}
+
+\end{enumerate}

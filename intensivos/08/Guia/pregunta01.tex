@@ -1,0 +1,60 @@
+%%%Pregunta 1
+\section{Rectas}
+
+En el plano, una recta esta descrita por la ecuación:
+\begin{center}
+	$y = mx + n$
+\end{center}
+
+Teniendo esto en consideración, se puede almacenar esta ecuación en python como una lista \texttt{[m, n]}.
+
+Sabiendo esto, cree las siguientes funciones:
+
+\begin{enumerate}
+\item \texttt{puntoEnRecta(punto, recta)}; la cual retorna \textbf{True} si el punto, en formato de lista \texttt{[x, y]}, se encuentra contenido en la recta, y \textbf{False} en caso contrario. Tener en consideración que para que un punto esté en una recta, se debe evaluar el \texttt{x} del punto en la recta y si el resultado es igual al \texttt{y} del punto, este punto se encuentra en la recta.
+
+\begin{lstlisting}[style=consola]
+>>> [*recta = [2, 5]*]
+>>> [*puntoEnRecta([-1, 3], recta)*]
+True
+>>> [*puntoEnRecta([0, 1], recta)*]
+False
+\end{lstlisting}
+
+\item \texttt{sonParalelas(recta1, recta2)}; la cual retorna \textbf{True} si las rectas son paralelas entre si, \textbf{False} en caso contrario.
+
+\begin{lstlisting}[style=consola]
+>>> [*sonParalelas([-1, 3], [5,9])*]
+False
+>>> [*sonParalelas([2, 8], [2, -3])*]
+True
+\end{lstlisting}
+
+\item \texttt{sonPerpendiculares(recta1, recta2)}; la cual retorna \textbf{True} si las rectas son perpendiculares entre si, \textbf{False} en caso contrario. Un par de rectas son perpendiculares entre si, si la multiplicación de sus pendientes es $-1$.
+
+\item \texttt{rectaQuePasaPor(punto1, punto2)}; la cual rectorna una tupla \texttt{(m, n)}, lo cual es la recta que pasa por ambos puntos. 
+Tener en consideración que la ecuación de la recta puede representarse de la siguiente forma:
+\begin{align*}
+	y - y_{0} &= \frac{y_{1} - y_{0}}{x_{1} - x_{0}}(x - x_{0}) 
+\end{align*} 
+
+\begin{lstlisting}[style=consola]
+>>> [*rectaQuePasaPor((2, 3), (3, 2))*]
+(-1.0, 5.0)
+>>> [*rectaQuePasaPor((9, 6), (-3, 9))*]
+(-0.25, 8.25)
+\end{lstlisting}
+
+\item \texttt{puntoInterseccion(recta1, recta2)}; la cual retorna una tupla \texttt{(x, y)}, el cual es el punto de intersección entre las rectas, o \textbf{None} y las rectas son paralelas.
+
+\begin{lstlisting}[style=consola]
+>>> [*puntoInterseccion((-2, 12), (1, 3))*]
+(3.0, 6.0)
+>>> [*puntoInterseccion((3, 5), (3, -8))*]
+None
+\end{lstlisting}
+
+
+\end{enumerate}
+
+Nota: Recuerde que puede ocupar funciones ya realizadas al hacer una nueva función.

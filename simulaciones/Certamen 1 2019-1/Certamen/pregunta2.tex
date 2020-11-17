@@ -1,0 +1,34 @@
+\paragraph{2.}
+
+[\%40] El servicio de bibliotecas de la universidad Santa Sofía, tiene un revolucionario sistema de multas para los objetos que son devueltos con atraso. Este sistema no cobra multas por días de atraso, lo hace por minutos!! (siempre dentro de un mismo día). 
+
+La forma de calcular la multa se hace en base al objeto que es prestado y a la demanda asociada a su naturaleza (alta demanda o baja demanda). El valor de la multa por minuto se calcula de la siguiente forma para cada producto:
+\begin{itemize}
+    \item \textbf{Libros:} Si son alta demanda, su multa vale 30 \textit{simoleones} por minuto, en caso de ser de baja demanda, el castigo equivale a 10 \textit{simoleones} por minuto.
+    \item \textbf{Calculadoras:} No están en una categoría de alta y baja demanda, por esto el sistema no lo pregunta al ser ingresado al programa. Su multa vale 50 \textit{simoleones} por minuto.
+    \item Para cualquier otro producto, si es alta demanda su multa equivale a 5 \textit{simoleones} por minuto. Si es baja demanda su castigo es de 1 \textit{simoleon} por minuto.
+\end{itemize}
+Se le pide a usted 
+\begin{itemize}
+    \item Programe una función \texttt{valor(inicio,final,objeto,demanda)}, que reciba dos enteros \texttt{inicio} y \texttt{final} de cuatro dígitos de la forma HHMM o HMM con la hora del plazo de devolución y la hora de la devolución real. Dos strings \texttt{objeto} y \texttt{demanda} que indiquen el tipo de producto y si su demanda es alta o baja. Esta función debe retornar el valor en \textit{simoleones} de la multa cursada siguiendo las instrucciones previamente señaladas. Note que si un objeto es devuelto antes de su hora límite de plazo, la multa es de 0.
+\begin{lstlisting}[style=consola]
+>>> [*valor(1200,1220,'libro','alta')*]
+600
+\end{lstlisting}
+    \item Haga un código en Python 3 que consulte en primera instancia cuantos elementos cobrará como multa, y luego pida los datos necesarios para las especificaciones de cada valor. Al final del ingreso de datos, el programa debe imprimir el valor total de la suma de todas las multas.
+\begin{lstlisting}[style=consola]
+Ingrese numero de elementos a cobrar: [*3*]
+Ingrese objeto 1: [*libro*]
+Ingrese demanda [alta/baja]: [*alta*]
+A que hora debia devolverlo? [HHMM]: [*2230*]
+A que hora lo devolvio? [HHMM]: [*2315*]
+Ingrese objeto 2: [*calculadora*]
+A que hora debia devolverlo? [HHMM]: [*1230*]
+A que hora lo devolvio? [HHMM]: [*1755*]
+Ingrese objeto 3: [*guitarra*]
+Ingrese demanda [alta/baja]: [*alta*]
+A que hora debia devolverlo? [HHMM]: [*1430*]
+A que hora lo devolvio? [HHMM]: [*1100*]
+El total de multas fue de 17600
+\end{lstlisting}
+\end{itemize}

@@ -1,0 +1,90 @@
+\section{¡Ruteo!}
+
+Blah blah blah
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|l|l|}
+    \hline 
+    \multicolumn{1}{|c|}{global} & \multicolumn{4}{|c|}{f1} & \multicolumn{3}{|c|}{f2}
+    \\ 
+    \hline
+    magia & estrellas & aliens & polvo & coso & cornios & coso & uni 
+    \\
+    \hline
+    'alafa' & & & & & & & \\
+    \hline
+    & & & & & 'alafa' & & \\
+    \hline
+    & & & & & & [] & \\
+    \hline
+    & & & & & & & 'a' \\
+    \hline
+    & [] & 'a' & & & & & \\
+    \hline
+    & & & & ['a', 1] & & & \\
+    \hline
+    & & & & & & [['a', 1]] & \\
+    \hline
+    & & & & & & & 'l' \\
+    \hline
+    & [['a', 1]] & 'l' & & & & & \\
+    \hline
+    & & & ['a',1] & & & & \\
+    \hline
+    & & & & ['l',1] & & & \\
+    \hline
+    & [['a', 1], ['l',1]] & & & & & & \\
+    \hline
+    & & & & & & [['a', 1], ['l',1]] & \\
+    \hline
+    & & & & & & & 'a' \\
+    \hline
+    & [['a', 1], ['l',1]] & 'a' & & & & & \\
+    \hline
+    & & & ['a', 1] & & & & \\
+    \hline
+    & & & ['a', 2] & & & & \\
+    \hline
+    & & & & & & [['a', 2], ['l',1]] & \\
+    \hline
+    & & & & & & & 'f' \\
+    \hline
+    & [['a', 2], ['l',1]] & 'f' & & & & & \\
+    \hline
+    & & & ['a', 2] & & & & \\
+    \hline
+    & & & ['l', 1] & & & & \\
+    \hline
+    & & & & ['f', 1] & & & \\
+    \hline
+    & [['a', 2], ['l',1], ['f', 1] & & & & & & \\
+    \hline
+    & & & & & & [['a', 2], ['l',1], ['f', 1] & \\
+    \hline
+    & & & & & & & 'a' \\
+    \hline
+    & [['a', 2], ['l',1], ['f', 1] & 'a' & & & & & \\
+    \hline
+    & & & ['a', 2] & & & & \\
+    \hline
+    & & & ['a', 3] & & & & \\
+    \hline
+    & & & & & & [['a', 3], ['l',1], ['f', 1] & \\
+    \hline
+    & & & & & & & \\
+    \hline
+    & & & & & & & \\
+    \hline
+    & & & & & & & \\
+    \hline
+    & & & & & & & \\
+    \hline
+    & & & & & & & \\
+    \hline
+\end{tabular}
+\end{center}
+
+El código imprime
+\begin{lstlisting}[style=consola]
+[['a', 3], ['l', 1], ['f', 1]]
+\end{lstlisting}

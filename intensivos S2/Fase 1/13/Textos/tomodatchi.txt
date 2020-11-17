@@ -1,0 +1,5 @@
+pedrotchi;5;5
+javiertchi;0;3
+nicolatchi;3;0
+cristophertchi;4;4
+viktortchi;2;1

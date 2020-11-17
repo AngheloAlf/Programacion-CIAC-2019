@@ -1,0 +1,163 @@
+\section{¡Tenemos que ponerle mas cosas!}
+
+Hemos mostrado nuestro avance del prototipo del nuevo servidor de \textbf{NOMBRE}, y les ha encantado a los dueños, por lo que le han pedido que siga agregando funcionalidades.
+
+Le han entregado un extracto del archivo que contiene los comentarios de la página:
+\begin{center}
+    \texttt{comentarios.csv} \\
+	\begin{tabular}{|l|}
+		\hline
+comentario\_id,post\_id,usuario\_id,contenido,upvotes,downvotes,fecha\\
+1,39,43,jajajajajajaja,83,9,2013-06-14\\
+17,42,3,pucha; le crei,483,13,2008-07-24\\
+37,42,43,Gracias a este video pude sacar mi titulo <3,483,13,2012-12-01\\
+5,39,3,oh que penita :(,115,7,2013-07-11\\
+29,34,24,Esta cancion me ayuda caleta para estudiar progra,25,1,2019-04-17\\
+24,42,666,100\% real no fake,7483,347,2009-10-25\\
+3,53,666,que adorable,425,24,2019-05-15\\
+47,47,24,esto es la motivacion de mi vida,987,4,2020-01-04\\
+		\hline
+	\end{tabular}
+\end{center}
+
+Nuevamente, la primera linea indica los nombres de las columnas.
+
+\begin{itemize}
+\itemsep0em 
+    \item \texttt{comentario\_id} es el identificador único de dicho comentario, es un valor numérico.
+    \item \texttt{post\_id} es el identificador único del post al cual corresponde este comentario, es un valor numérico. Ojo que un post puede tener múltiples comentarios.
+    \item \texttt{usuario\_id} es el identificador único de usuario que ha escrito este comentario, es un valor numérico.
+    \item \texttt{contenido} es el comentario.
+    \item \texttt{upvotes} representa la cantidad de votos positivos que ha recibido este comentario.
+    \item \texttt{downvotes} representa la cantidad de votos negativos que ha recibido este comentario.
+    \item \texttt{fecha} es la fecha en que se realizó este comentario. Tiene el formato \texttt{AÑO-MES-DIA}.
+\end{itemize}
+
+Considerando este nuevo archivo, se ha planteado crear las siguientes funcionalidades:
+\begin{enumerate}
+
+    \item[$\frac{d}{dx}$. ] \texttt{comentar(archComs, archPosts, archUsers, idPost, username, com, fecha)}. Esta función recibe los 3 archivos antes descritos, el \textit{id} (como \textit{string}) de un post a comentar, el nombre de usuario de quien está comentando (\texttt{username}), el comentario (\texttt{com}) que va a comentar, y una \textit{tupla} de 3 \textit{enteros} indicando la \texttt{fecha}.
+
+    Se debe agregar el comentario al final del archivo de comentarios, generando un \textit{id} valido y cambiando todas las comas ('\texttt{,}') por punto y comas ('\texttt{;}'). Además, se debe verificar que el usuario y el post existan, si no existen, el comentario no debe ser añadido.
+
+    Esta función retorna \texttt{True} si se pudo comentar, o \texttt{False} si no existía el post o el usuario.
+
+    \begin{lstlisting}[style=consola]
+>>> [*com = "que adorable!"*]
+>>> [*fecha = (2020, 2, 12)*]
+>>> [*comentar("comentarios.csv", "posts.csv", "usuarios.csv", "1",
+"ultimate_chef", com, fecha)*]
+True
+    \end{lstlisting}
+
+\end{enumerate}
+
+\begin{center}
+    \texttt{comentarios.csv} \\
+	\begin{tabular}{|l|}
+		\hline
+comentario\_id,post\_id,usuario\_id,contenido,upvotes,downvotes,fecha\\
+\# lineas omitidas... \\
+47,28,24,esto es la motivacion de mi vida,987,4,2020-01-04\\
+48,1,43,que adorable!,0,0,2020-2-12\\
+		\hline
+	\end{tabular}
+
+Se omitieron la mayoría de las lineas por comodidad, el archivo real debería tenerlas.
+\end{center}
+
+\begin{enumerate}
+
+    \item[$\sum$. ] \texttt{comentariosDePost(archComs, archPosts, idPost)}. Recibe el nombre del archivo de comentarios, el archivo de posts, y el \textit{id} de un post. 
+
+    Retorna un diccionario, donde las llaves son el \textit{id} del comentario, y los valores son diccionarios. Cada uno de estos sub-diccionarios tienen como llaves las columnas de el archivo de comentarios, y como valores tiene los respectivos valores de cada fila que corresponden a los comentarios del post pedido. Estos valores deben ser convertidos a los tipos de datos correspondientes (\textit{int}s, \textit{listas}, etc).
+
+    El diccionario que retorna esta función debe contener solo los comentarios asociados al \texttt{idPost}.
+
+    Si el post no tiene comentarios, esta función retorna un diccionario vacío.
+    
+    Si no existe un post con el \textit{id} \texttt{idPost}, esta función retorna \texttt{None}.
+
+    \begin{lstlisting}[style=consola]
+>>> [*print(comentariosDePost("comentarios.csv", "posts.csv", "39"))*]
+{1: {'comentario_id': 1, 'post_id': 39, 'upvotes': 83, 'downvotes': 9, 
+'contenido': 'jajajajajajaja', 'fecha': (2013, 6, 14), 'usuario_id': 43}, 
+5: {'comentario_id': 5, 'post_id': 39, 'upvotes': 115, 'downvotes': 7, 
+'contenido': 'oh que penita :(', 'fecha': (2013, 7, 11), 'usuario_id': 3}}
+>>> [*print(comentariosDePost("comentarios.csv", "posts.csv", "45"))*]
+{}
+>>> [*print(comentariosDePost("comentarios.csv", "posts.csv", "800"))*]
+None
+    \end{lstlisting}
+
+    \item [$\int$. ] \texttt{borrarComentariosFechaErronea(archComs, archPosts, archUsers)}. Recibe el nombre de los archivos antes explicados. Debe buscar y eliminar los comentarios que tengan una fecha errónea.
+    
+    Los comentarios con fechas erróneas son aquellos comentarios que tienen una fecha anterior a la fecha del post, o que su fecha es anterior a la fecha de creación del usuario que comentó.
+
+    Retorna una lista con los \textit{id}s de los comentarios eliminados.
+
+    \begin{lstlisting}[style=consola]
+>>> [*print(borrarComentariosFechaErronea("comentarios.csv", "posts.csv", "usuarios.csv"))*]
+['1', '17']
+    \end{lstlisting}
+
+\end{enumerate}
+
+\begin{center}
+    \texttt{comentarios.csv} \\
+	\begin{tabular}{|l|}
+		\hline
+comentario\_id,post\_id,usuario\_id,contenido,upvotes,downvotes,fecha\\
+37,42,43,Gracias a este video pude sacar mi titulo <3,483,13,2012-12-01\\
+5,39,3,oh que penita :(,115,7,2013-07-11\\
+29,34,24,Esta cancion me ayuda caleta para estudiar progra,25,1,2019-04-17\\
+24,42,666,100\% real no fake,7483,347,2009-10-25\\
+3,53,666,que adorable,425,24,2019-05-15\\
+47,47,24,esto es la motivacion de mi vida,987,4,2020-01-04\\
+48,1,43,que adorable!,0,0,2020-2-12\\
+		\hline
+	\end{tabular}
+
+\end{center}
+
+\begin{enumerate}
+
+    \item[$\star$. ] \texttt{eliminarPost(archPosts, archComs, idPost)}. Esta función recibe el nombre del archivo de posts ( \texttt{archPosts}), el nombre del archivo de comentarios (\texttt{archComentarios}) y el \textit{id} de un post a eliminar (\texttt{idPost}).
+    
+    Esta función debe eliminar el post asociado a \texttt{idPost}, y eliminar los comentarios asociados a dicho post.
+
+    Está función retorna la cantidad de comentarios eliminados.
+,  
+    \begin{lstlisting}[style=consola]
+>>> [*print(eliminarPost("posts.csv", "comentarios.csv", "42"))*]
+2
+    \end{lstlisting}
+    
+
+    \item[$\heartsuit$.] \texttt{actualizarPuntajeUsers(archUsers, archPosts, archComs)}. Esta función recibe el nombre de los 3 archivos anteriormente descritos. 
+
+    Esta función debe buscar todos los posts y comentarios que ha realizado un usuario en especifico, sumar sus \texttt{upvotes} y restar sus \texttt{downvotes}, y este resultado debe ser actualizado en la columna \texttt{puntaje} del archivo de usuarios en el usuario correspondiente.
+
+    Esta función retorna 2 valores, la suma de todos los \texttt{upvotes} y la suma de todos los \texttt{downvotes}.
+
+    \begin{lstlisting}[style=consola]
+>>> [*print(actualizarPuntajeUsers("usuarios.csv", "posts.csv", "comentarios.csv"))*]
+(83341, 2628)
+    \end{lstlisting}
+
+\end{enumerate}
+
+\begin{center}
+    \texttt{usuarios.csv} \\
+	\begin{tabular}{|l|}
+		\hline
+user\_id,nombre,fecha\_creacion,puntaje,cantidad\_posts\\
+3,animal\_lover,2007-09-23,6109,3\\
+24,jaja xd,2017-11-11,11114,1\\
+42,cool\_guy,2012-02-14,54158,5\\
+43,ultimate\_chef,2008-04-13,9303,1\\
+666,jesucritos,0020-07-25,29,2\\
+667,full detonao,2020-2-12,0,0\\
+		\hline
+	\end{tabular}
+\end{center}

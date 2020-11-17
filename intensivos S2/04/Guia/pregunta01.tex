@@ -1,0 +1,81 @@
+\section{¡Funciones!}
+
+Una función es un conjunto de instrucciones, las cuales tienen con objetivo ser re-utizadas de forma fácil y bonita.
+
+Las funciones suelen trabajar con datos de entrada entregados por el usuario, hace cálculos mágicos y místicos, y entrega un valor de salida.
+
+Por ejemplo, piensa en la función \texttt{sqrt(x)}. Esta función recibe un número positivo como parámetro, y \textit{retorna} la raíz cuadrada de dicho número.
+
+Las funciones no tienen porque recibir un único parámetro, estas pueden ser la cantidad que sea, por ejemplo  la función \texttt{max(x, y)} recibe 2 parámetros, y \textit{retorna} el mayor entre esos dos.
+
+¡Mas adelante también veremos funciones que retornan nada y otras muchas características entretenidas de las funciones!
+
+Dicho todo esto, y a modo de introducción para que empiecen a \textit{soltar la mano} con las funciones, deberán implementar las siguientes funciones:
+
+\begin{enumerate}
+    \item La ecuación matemática $f(x) = -x^{2} - 3x + 12$.
+    \begin{lstlisting}[style=consola]
+>>> [*f(5)*]
+-28
+>>> [*f(0)*]
+12
+    \end{lstlisting}
+    
+    \item Entretenido, ¿no? Generalicemos la recta anterior para valores cualquiera, implementando la función $f\_gen(x, a, b, c) = a*x^2 + b*x + c$.
+    \begin{lstlisting}[style=consola]
+>>> [*f_gen(5, 2, 4, 0.5)*]
+70.5
+>>> [*f_gen(0, -1, -3, 12)*]
+12
+    \end{lstlisting}
+
+    \item ¿Muy fácil para ti? Creo que te he sub-estimado. Enfréntate a la siguiente sumatoria:
+    \begin{equation*}
+        \text{sumator(n, a, b, c)} = \frac{1}{n}\sum_{i=0}^{n}{f\_gen(i, a, b, c)}
+    \end{equation*}
+    \begin{lstlisting}[style=consola]
+>>> [*sumator(7, 2, -3, 12)*]
+29.0
+>>> [*sumator(5, 0, 9, -3)*]
+15.0
+    \end{lstlisting}
+    
+    \item ¿Has derrotado a ese esbirro? Veamos que haces contra \textit{Heaviside} $._{Muajajajaja}$:
+    \begin{equation*}
+        \text{heav(n)} = \frac{1}{n}\sum_{i=0}^{n}\frac{f(i)*i^2}{n}*H\left(\frac{(-1)^i * f(i)*i^2}{n}, i\right)
+    \end{equation*}
+    
+    Donde la función $H(x, n)$ esta definida como:
+    \begin{equation*}
+        H(x, n) = 
+        \begin{cases}
+        1 & \quad\text{si } x \geq n \\
+        0 & \quad\text{si } x < n \\
+     \end{cases}
+    \end{equation*}
+
+    \begin{lstlisting}[style=consola]
+>>> [*heav(7)*]
+-16
+>>> [*heav(13)*]
+-170
+    \end{lstlisting}
+    
+        \begin{comment}
+    
+    \item Wow, pudiste con eso. Bueno, a que no te esperas esto: 
+    
+    Implementa una función \texttt{palabra\_de\_numeros(pal)}, la cual recibe un \texttt{string} que contiene únicamente números. El valor retornado por esta función es la suma de todos esos números, exceptuando el numero mayor y el numero menor. Considere que la palabra entregada tiene al menos 2 digitos.
+    
+    \begin{lstlisting}[style=consola]
+>>> [*palabra_de_numeros("123456")*]
+14
+>>> [*palabra_de_numeros("987654")*]
+26
+    \end{lstlisting}
+    
+        \end{comment}
+\end{enumerate}
+
+Veo que has logrado derrotarme, me retirare por ahora...
+

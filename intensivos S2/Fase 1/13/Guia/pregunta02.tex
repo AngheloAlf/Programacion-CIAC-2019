@@ -1,0 +1,87 @@
+\section{Tomodatchi}
+
+Los \textit{tomodatchi} son mascotas virtuales que deben ser alimentadas constantemente, o podrían morir. Como ejemplo, suponga que tiene la siguiente colección de \textit{tomodatchis} almacenados en un archivo llamado \texttt{tomodatchi.txt}, y la siguiente colección de alimentos que pueden comer en el archivo \texttt{comidas.txt}:
+
+\begin{center}
+	\begin{tabular}{c c c}
+    	\begin{tabular}{|l|}
+\multicolumn{1}{c}{\texttt{tomodatchi.txt}}\\
+    		\hline
+pedrotchi;5;5\\
+javiertchi;0;3\\
+nicolatchi;3;0\\
+cristophertchi;4;4\\
+viktortchi;2;1\\
+    		\hline
+    	\end{tabular} & \phantom{------------------------------} & \begin{tabular}{|l|}
+\multicolumn{1}{c}{\texttt{comidas.txt}}\\
+    		\hline
+sopaipa;1;2\\
+tocomple;2;1\\
+susushi;1;1\\
+supapajohns;3;3\\
+sumaruchan;1;0\\
+            \hline
+    	\end{tabular}
+	\end{tabular}
+\end{center}
+
+Notar que los dos números contiguos a un \textit{tomodatchi} o alimento corresponden a la felicidad y satisfacción respectivamente.
+
+
+\begin{enumerate}
+    \item[a)] Desarrolle la función \texttt{alimento(ali, arch)}, donde \texttt{ali} es un string con el nombre del alimento y \texttt{arch} un string con el nombre del archivo de alimentos. La función retorna un diccionario con la felicidad y satisfacción que tiene dicho alimento. Si no lo encuentra retorna \texttt{False}.
+
+    \begin{lstlisting}[style=consola]
+>>> [*print(alimento('tocomple','comidas.txt'))*]
+{'feliz': 2, 'satisfecho': 1}
+>>> [*print(alimento('salchipapa','comidas.txt'))*]
+False
+    \end{lstlisting}
+
+    \item[b)] Desarrolle la función \texttt{status(tomo, arch)}, donde \texttt{tomo} es un string con el nombre del \textit{tomodatchi} y \texttt{arch} un string con el nombre del archivo de \textit{tomodatchis}. La función retorna un diccionario con la felicidad y satisfacción de dicho \textit{tomodatchi}. Si la felicidad o la satisfacción es cero, entonces retorna \texttt{False} (\textit{tomodatchi} muerto), y ese \textit{tomodatchi} se debe retirar del archivo. Si el \textit{tomodatchi} no se encuentra en el archivo, retorna \texttt{None}.
+
+    \begin{lstlisting}[style=consola]
+>>> [*print(status('pedrotchi','tomodatchi.txt'))*]
+{'feliz': 5, 'satisfecho': 5}
+>>> [*print(status('javiertchi','tomodatchi.txt'))*]
+False
+>>> [*print(status("migueltchi", "tomodatchi.txt"))*]
+None
+    \end{lstlisting}
+    
+    \item[c)] Desarrolle la función \texttt{alimentar(tomo, ali, arch1, arch2)}, donde \texttt{tomo} es el nombre del \textit{tomodatchi}, \texttt{ali} es el nombre del alimento, \texttt{arch1} es el nombre del archivo con los \textit{tomodatchis} y \texttt{arch2} el nombre del archivo con los alimentos. 
+    
+    En el caso de que el \textit{tomodatchi} esté vivo y que el alimento exista, la función retorna un diccionario con los datos actualizados (sumándole la cantidad de satisfacción y felicidad correspondiente al alimento), y además actualiza estos datos en el archivo, sin la necesidad de mantener el orden de las lineas. 
+    
+    Si el \textit{tomodatchi} está muerto, la función retorna el string '\texttt{X.X}', exista o no el alimento, y debe retirar al \textit{tomodatchi} del archivo. 
+    
+    Si el \textit{tomodatchi} no está en el archivo, la función retorna el string '\texttt{hizo la muricion}'. 
+    
+    Finalmente, si el \textit{tomodatchi} está vivo y el alimento no existe, la función retorna el string '\texttt{no existe alimento}'.
+
+    \begin{lstlisting}[style=consola]
+>>> [*tomo_arch = 'tomodatchi.txt'*]
+>>> [*com_arch = 'comidas.txt'*]
+>>> [*print(alimentar('pedrotchi','tocomple', tomo_arch, com_arch))*]
+{'feliz': 7, 'satisfecho': 6}
+>>> [*print(alimentar('javiertchi','tocomple', tomo_arch, com_arch))*]
+hizo la muricion
+>>> [*print(alimentar('viktortchi','salchipapa', tomo_arch, com_arch))*]
+no existe alimento
+    \end{lstlisting}
+\end{enumerate}
+
+
+\begin{center}
+	\begin{tabular}{|l|}
+\multicolumn{1}{c}{\texttt{tomodatchi.txt}}\\
+		\hline
+nicolatchi;3;0\\
+cristophertchi;4;4\\
+viktortchi;2;1\\
+pedrotchi;7;6\\
+		\hline
+	\end{tabular}
+\end{center}
+

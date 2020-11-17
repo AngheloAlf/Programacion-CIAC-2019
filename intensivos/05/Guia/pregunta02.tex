@@ -1,0 +1,27 @@
+\section{Primos, compuestos y proyecto Euler}
+
+Un número \textbf{compuesto} es aquel que posee divisores distintos a 1 y si mismo. En cambio, un número primo es aquel que no posee divisores, salvo 1 y si mismo. Sabiendo esto, programe lo siguiente
+\begin{enumerate}
+    \item[a.] La función \texttt{cant\_divisores(numero)} que reciba como parámetro un entero mayor a 1, y retorne un entero con la cantidad de divisores que posea.
+\begin{lstlisting}[style=consola]
+>>> cant_divisores(5)
+2
+>>> cant_divisores(50)
+6
+\end{lstlisting}
+    \item[b.] La función \texttt{es\_primo(numero)} que reciba un entero mayor a 1, y retorne un valor booleano (True o False) si es que el número ingresado es o no primo. Si le gustan los desafíos, pruebe a programar una función usando la programada en la pregunta a, si le gustan aún más, pruebe a hacerlo ahora sin usar la función anterior.
+\begin{lstlisting}[style=consola]
+>>> es_primo(7)
+True
+>>> es_primo(4)
+False
+\end{lstlisting}
+    \item[c.] Un programa (usando las funciones anteriores por favor, que de otra manera no tiene gracia) que pida al usuario un número, para luego indicar la cantidad de números primos existentes partiendo por 2 hasta este número, al igual que la suma total de todos estos primos.
+\begin{lstlisting}[style=consola]
+Ingrese numero maximo: [*10500*]
+Hasta el numero 10500 existen 1284 primos
+La suma de estos es 6300085
+\end{lstlisting}
+\end{enumerate}
+
+\textbf{Fuente:} Project Euler, problema 10 \url{https://projecteuler.net/problem=10} \textit{Esta es una página que contiene problemas de distintas dificultades, cuya solución está diseñada para ser resuelta en un programa computacional en menos de un minuto (mientras corre el programa, la codificación puede durar días si no revisa google)}.

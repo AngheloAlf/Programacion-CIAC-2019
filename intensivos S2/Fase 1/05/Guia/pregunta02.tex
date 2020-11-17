@@ -1,0 +1,33 @@
+\section{Gualkin Ded (C2 2014-2 CCyCSSJ)}
+
+El mundo esta sumido en el caos. Se desató una epidemia, la cual ha arrasado con la mayor parte de la población. Los humanos infectados vuelven a la vida como “walkers”, muertos vivientes hambrientos de carne humana. Sin embargo, estos walkers no son el único peligro, sino que muchas veces los humanos deben matar a otros para sobrevivir. En este mundo post apocalíptico es su misión desarrollar una aplicación en Python para clasificar a los miembros de su grupo de sobrevivientes. Suponga que las estadísticas de grupo se encuentran en el siguiente
+diccionario, cuya clave es el nombre del miembro del grupo y valor una tupla con la cantidad de walkers y la cantidad de humanos eliminados (ej: rick ha matado 172 walkers y 10 humanos):
+
+\begin{lstlisting}[style=consola]
+grupo = {
+    'rick':(172,10), 'daryl':(136,11), 'michonne':(80,6),
+    'glenn':(73,0), 'maggie':(55,4), 'carl':(62,1),
+    'tyreese':(35,0), 'carol':(17,3) }
+\end{lstlisting}
+
+Obviamente este diccionario es solo un ejemplo, ya que probablemente mas de algún miembro morirá mientras usted desarrolla esta aplicación. 
+
+\begin{itemize}
+    \item[a)] Desarrolle la función \texttt{total(grupo)} que recibe como parámetro un diccionario con las estadísticas del grupo, retornando como una tupla el total de walkers y el total de humanos eliminados.
+    \begin{lstlisting}[style=consola]
+>>> [*total(grupo)*]
+(630.0, 35.0)
+    \end{lstlisting}
+    \item[b)] Desarrolle la función \texttt{puntaje(grupo)} que recibe como parámetro un diccionario con las estadísticas del grupo, y retorna un diccionario cuya clave es el nombre del miembro del grupo y valor el puntaje asociado. Este puntaje se calcula como: (walkers/total walkers) + 2 ∗ (humanos/total humanos), en donde walkers representa a los walkers eliminados por el miembro del grupo, y el total walkers representa al total de walkers eliminado por todo el grupo. humanos y total humanos sigue la misma lógica. Redondee a la centésima.
+    \begin{lstlisting}[style=consola]
+>>> [*puntaje(grupo)*]
+{'maggie': 0.32, 'glenn': 0.12, 'michonne': 0.47, 'rick': 0.84, 'carl': 0.16, 
+'carol': 0.2, 'daryl': 0.84, 'tyreese': 0.06}
+    \end{lstlisting}
+    \item[c)]Desarrolle la función \texttt{ranking(grupo)} que recibe como parámetro un diccionario con las estadísticas del grupo, y retorna una lista con los nombres de los miembros del grupo ordenados de \textbt{mayor a menor} (según el puntaje definido en la parte b).
+    \begin{lstlisting}[style=consola]
+>>> [*ranking(grupo)*]
+['rick','daryl', 'michonne','maggie', 
+'carol', 'carl', 'glenn', 'tyreese']
+    \end{lstlisting}
+\end{itemize}

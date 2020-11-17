@@ -1,0 +1,51 @@
+\section{Abogados}
+
+Pearson Hardman, una firma muy prestigiosa de abogados, requiere ayuda con el manejo de datos de sus empleados. Teniendo el diccionario \texttt{abogados} cuyas llaves son nombres y sus valores otros diccionarios. Estos diccionarios asociados a cada abogado contienen datos de:
+\begin{itemize}
+    \item Los juicios realizados por mes, bajo la llave \texttt{'juicios'} que asocia una lista de tuplas con la forma \texttt{(mes,cantidad)}
+    \item El sueldo que gana por hora el abogado, bajo la llave \texttt{'sueldo'} que asocia un entero
+    \item Las empresas que ha defendido el abogado bajo la llave \texttt{'empresas'} que asocia una lista de strings
+\end{itemize}
+
+\begin{lstlisting}[style=consola]
+abogados={
+    'mike':{'juicios':[('julio',3),('agosto',1),('octubre',4)],
+            'sueldo':100,
+            'empresas':['google','samsung','ciac'] },
+    'rachel':{'juicios':[('enero',3),('marzo',4),('julio',8)],
+              'sueldo':70,
+              'empresas':['google','codelco']},
+    'harvey':{'juicios':[('enero',5),('febrero',12),('julio',24)],
+              'sueldo':1000,
+              'empresas':['mesa verde','samsung']}
+    }
+\end{lstlisting}
+
+Se le pide a usted crear las siguientes funciones
+\begin{itemize}
+    \item[a.] \texttt{juicios\_por\_mes(abogados)} que reciba el diccionario \texttt{abogados} y retorne un diccionario que asocie el mes con la cantidad total de juicios realizados.
+    \begin{lstlisting}[style=consola]
+>>> [*juicios_por_mes(abogados)*]
+{'julio': 35, 'marzo': 4, 'agosto': 1, 'enero': 8, 'febrero': 12, 
+'octubre': 4}
+    \end{lstlisting}
+    
+    \item[b.] \texttt{total\_juicios(abogado)} que reciba el nombre de un abogado y retorne un entero con la cantidad total de juicios en los que ha estado. Asuma que el diccionario \texttt{abogados} es una variable global del programa.
+    \begin{lstlisting}[style=consola]
+>>> [*total_juicios('harvey')*]
+41
+    \end{lstlisting}
+    
+    \item[c.] \texttt{quien\_trabajo(empresa)} que reciba un string con una empresa y retorne una lista con todos los nombres de los abogados que trabajaron en dicha empresa.
+    \begin{lstlisting}[style=consola]
+[*>>> quien_trabajo('google')*]
+['mike', 'rachel']
+    \end{lstlisting}
+    \item[d.] \texttt{se\_conocen(abogado\_1,abogado\_2)} que retorne un valor booleano si es que ambos abogados se conocen. Considere que se conocen si es que han trabajado en la misma empresa.
+    \begin{lstlisting}[style=consola]
+>>> [*se_conocen('mike','rachel')*]
+True
+>>> [*se_conocen('rachel','harvey')*]
+False
+    \end{lstlisting}
+\end{itemize}

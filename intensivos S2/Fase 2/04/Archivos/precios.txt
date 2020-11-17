@@ -1,0 +1,14 @@
+arroz:$790
+cereales:$1890
+jugo:$200
+yogur:$250
+pan:$600
+alc.gel:$25990
+limon:$700
+viagra:$1500
+fideos:$890
+azucar:$1000
+atun:$890
+jalea:$200
+cafe:$2490
+confort:$250

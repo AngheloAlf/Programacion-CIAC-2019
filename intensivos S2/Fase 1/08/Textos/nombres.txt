@@ -1,0 +1,4 @@
+1;Bulbasaur
+4;Charmander
+25;Pikachu
+39;Jigglypuff

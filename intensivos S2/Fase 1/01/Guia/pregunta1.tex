@@ -1,0 +1,46 @@
+\section{La montaña más alta del mundo.}
+
+Michael God y Angel Car, famosos escaladores, programadores y jóvenes empresarios internacionales, sedientos de nuevas aventuras, deciden hacer trabajar a los estudiantes de programación que van a los intensivos del CIAC para saber cual es la montaña más alta que han escalado.
+
+
+La información de sus aventuras la guardan en una lista de tuplas con el nombre \texttt{montanas} que tiene el formato \texttt{nombre,altura,hora\_inicio,hora\_fin}, donde \texttt{nombre} es un string, \texttt{altura} es un entero en metros y los datos restantes son tuplas de la forma \texttt{(horas,minutos)}.
+
+
+\begin{lstlisting}[style=consola]
+montanas=[
+    ('Nielol',335,(14,00),(17,35)),
+    ('La Campana',1880,(8,4),(17,34)),
+    ('Churen Himal',7385,(5,34),(23,14)),
+    ('Everest',8848,(8,23),(10,43)), #fue en helicoptero
+    ('Mont Blanc',4810,(4,12),(21,45)),
+    #...
+    ('Kilimanjaro',5895,(12,15),(19,31))
+    ]
+
+\end{lstlisting}
+
+Ellos quieren que los estudiantes programen las siguientes funciones
+
+\begin{itemize}
+    \item \texttt{filtro\_altura\_nombre(montanas)} que reciba la lista \texttt{montanas} y retorne una lista de tuplas con la altura y el nombre ordenadas de menor a mayor.
+    \\
+    \begin{lstlisting}[style=consola]
+>>> filtro_altura_nombre(montanas)
+[(335, 'Nielol'), (1880, 'La Campana'), (4810, 'Mont Blanc'), 
+(5895, 'Kilimanjaro'), (7385, 'Churen Himal'), (8848, 'Everest')]
+    \end{lstlisting}
+
+    \item \texttt{duracion(inicio,fin)} que reciba dos tuplas con la hora de inicio y fin y retorne una tupla de la forma \texttt{hora,minutos} con la duración de la escalada
+
+    \begin{lstlisting}[style=consola]
+>>> duracion((14,0),(17,35))
+(3, 35)
+    \end{lstlisting}
+    \item Finalmente escriba un programa que indique cual fue la montaña más alta que escalaron, la altura en metros que tenía y el tiempo empleado. La información que se muestra por pantalla debe tener la siguiente forma
+    \begin{lstlisting}[style=consola]
+La montana mas alta que escalaron fue Everest.
+Esta tenia una altura de 8848 metros.
+Se demoraron 2 horas y 20 minutos.
+    \end{lstlisting}
+    
+\end{itemize}

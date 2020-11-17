@@ -1,0 +1,73 @@
+\documentclass[spanish]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage[paper=a4paper, top=2cm, left=2cm, right=2cm]{geometry}
+\usepackage{tikz}
+\usepackage{CIACcustom}
+\usepackage{fourier}
+\usepackage{amsmath, amsthm}
+\usepackage{listings}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\usepackage[urlcolor=blue, colorlinks]{hyperref}
+\usepackage{booktabs,tabularx}
+\usepackage{float}
+\usepackage[normalem]{ulem} %Para tachar palabras y hacer chistes ...
+
+\newcolumntype{L}[1]{>{\hsize=#1\hsize\raggedright\arraybackslash}X}%
+\newcolumntype{R}[1]{>{\hsize=#1\hsize\raggedleft\arraybackslash}X}%
+\newcolumntype{C}[2]{>{\hsize=#1\hsize\columncolor{#2}\centering\arraybackslash}X}%
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\pgfimage[width=2.5cm]{imagenes/logo-ciac.png}}
+\chead{
+  Apoyos Intensivos Guía N° 6\\
+  IWI-131 Semestre I-2019 \\
+  CIAC Casa Central
+}
+\lhead{\pgfimage[width=2.5cm]{imagenes/logo-usm.jpg}}
+\rfoot{\LaTeXe / CIAC 2019}
+\lfoot{Página \thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+
+\renewcommand{\ttdefault}{pcr}
+
+%%% listings settings:
+\definecolor{bggray}{rgb}{0.95,0.95,0.95}
+\lstdefinestyle{consola}{
+  backgroundcolor=\color{bggray},
+  basicstyle=\small\ttfamily,
+  frame=single,
+  moredelim=[is][\bfseries]{[*}{*]},
+  xrightmargin=5pt
+}
+
+\lstdefinestyle{mypy}{
+  language=python,
+  backgroundcolor=\color{bggray},
+  basicstyle=\ttfamily\small\color{orange!70!black},
+  frame=L,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{red},
+  numbers=left,
+  showstringspaces=false,
+  xrightmargin=5pt,
+  xleftmargin=10pt
+}
+
+\newtheorem{CIACdef}{Definición}
+
+\begin{document}
+\vspace*{-.3cm}
+
+% \input{Guia/resumen.tex}
+\input{Guia/pregunta01.tex}
+\input{Guia/pregunta02.tex}
+\input{Guia/pregunta03.tex}
+\input{Guia/pregunta04.tex}
+
+\end{document}

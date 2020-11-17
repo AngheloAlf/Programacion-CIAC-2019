@@ -1,0 +1,37 @@
+%\vspace{1 cm}
+\section*{\textbf{Pregunta 3:} Te-Py-tón}
+Se acerca la fecha para el evento caritativo mas grande del año, donde los ciudadanos podrán mostrar su generosidad \sout{y las grandes empresas podrán ahorrar impuestos}.\par
+Dado lo complejo que es planificar y llevar el control de un evento tan grande, los caritativos le piden a los estudiantes de \textbf{IWI-131} que hagan un programa en computador que lleve las cuentas y estadísticas del evento total y por día.\par 
+Se pide que genere un programa que pida al usuario (Don Panchito) que ingrese la cantidad de dias que durará el evento y la meta en CLP (pesos chilenos) a alcanzar, para luego desplegar un menú de opciones que contemple los siguientes puntos.\par
+
+\begin{itemize}
+    \item \textbf{Día n}\\
+    Donde n es el día actual.
+    \item \textbf{1. Ingresar monto}\\
+    Esta opción debe pedir que se ingrese el RUT del donante (sin puntos, guión ni dígito verificador) y luego el dígito verificador. Luego de validar el RUT se ingresa el monto de la donación.
+    En caso de que el RUT sea inválido, solo se debe imprimir una advertencia en pantalla.
+    \item \textbf{2. Estado de cuenta}\\
+    Esta opción debe mostrar en pantalla cuánto dinero falta para alcanzar la meta. En caso de que esta haya sido alcanzada debe mostrar una felicitación acorde a la euforia del momento.
+    \item \textbf{3. Mayor donador}\\
+    Esta opción debe mostrar en pantalla el RUT de quién ha realizado la mayor donación al evento tanto en el día actual como en el evento total. Se pide que estos sean desplegados en un solo mensaje de felicitación para ambas partes. En caso de que sea una sola persona la que ostente ambos logros, el mensaje debe mostrar el RUT una sola vez, y si aún no hay registradas donaciones para ese día, la felicitación debe ir dirigida solo para el mayor donador del evento y se debe destacar si no ha habido donaciones en el día actual
+    \item \textbf{4. Avanzar día}\\
+    Esta opción debe avanzar al día siguiente en el evento. En caso de que se haya completado el último día, el evento debe terminar, mostrando en pantalla un bello mensaje de despedida.
+\end{itemize}
+
+\begin{lstlisting}[style=consola]
+Cual sera la meta de esta TePyTon?: [*10000000*]
+Ingrese la cantidad de dias de la TePyTon: [*2*]
+Opcion 1. Ingresar nueva donacion
+Opcion 2. Estado de cuentas
+Opcion 3. Mayor donacion
+Opcion 4. Avanzar al siguiente dia
+DIA 1
+Meta: 10000000
+Llevamos: 0
+Ingrese operacion: 1
+Ingrese rut (sin digito verificador): [*60419*]
+Ingrese digito verificador: [*4*]
+Ingrese donacion: $[*580000*]
+Ingrese operacion: [*2*]
+Faltan $9420000 Vamos chilenos!!
+\end{lstlisting}

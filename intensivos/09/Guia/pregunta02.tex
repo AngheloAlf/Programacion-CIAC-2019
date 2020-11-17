@@ -1,0 +1,27 @@
+\section{Pyber Eatspacial}
+
+Años después de creados los computadores, la humanidad pudo hacer viajes interestelares y compartir toda clase de información por distintos planetas. Curiosamente, entre las cosas que aún no cambian en esta nueva era son: las personas siguen pidiendo comida preparada por delivery, y el lenguaje de programación predilecto es Python.
+
+Suponga que tiene dos estructuras de tipo lista de tuplas con la información de los \texttt{pedidos} y los \texttt{repartidores}
+\begin{lstlisting}[style=consola]
+pedidos=[('Yodog Leugim','Mars Donald',(-500,356.2,1001.8)),
+         ('Miguel Godoy','Pluto, Jupiter y Venus',(621,318,-458)),
+         #....
+         ('Anghelo Carvajal','',(0.65,821.4,-5000))]
+
+repartidores=[(1654823,(100,250,-300),'libre'),
+              (15485,(5,400,-6),'camino a local'),
+              (12,(1,2,3),'SOS')]
+\end{lstlisting}
+
+Observe que la lista \texttt{pedidos} guarda información del: nombre del hambriento, el local donde hizo el pedido, y su posición en tres dimensiones. En tanto, la lista repartidores, guarda información de: el código del repartidor, su posición en tres dimensiones y su estado (libre, camino a local, camino a destino, SOS).
+
+Se le pide a usted, el mejor programador del universo, hacer las siguientes funciones para una aplicación móvil:
+
+\begin{itemize}
+    \item[a.] \texttt{distancia(punto1,punto2)} que reciba dos tuplas de 3 elementos numéricos y retorne la distancia entre estos dos puntos usando la función
+    $$ dist=\sqrt{(x_1 - x_2)^2 + (y_1 - y_2 )^2 + (z_1 - z_2)^2}$$
+    \item[b.] \texttt{agregar\_pedido(nombre,local,posicion,pedidos)} que reciba un strings de nombre, local de comida, una tupla con una posición y una lista de pedidos. Esta función debe agregar una tupla en la lista \texttt{pedidos} y retornar nada
+    \item[c.] \texttt{pedido\_listo(nombre,codigo,pedidos,repartidores)} esta función recibe el nombre del hambriento, el código de un repartidor y las listas \texttt{pedidos} y \texttt{repartidores}. Esta función elimina la tupla correspondiente al hambriento y para la tupla correspondiente al repartidor, cambia su valor de estado a libre.
+    \item[d.] \texttt{encontrar\_repartidor(repartidores, posicion)} esta función recibe una lista de repartidores y una posición de un pedido, para retornar el repartidor disponible más cercano al lugar del pedido. \textbf{Hint:} Cree un algoritmo que minimice la función distancia.
+\end{itemize}

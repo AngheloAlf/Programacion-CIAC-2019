@@ -1,0 +1,72 @@
+\section*{Algoritmos útiles e interesantes (y divertidos también)}
+
+Varios algoritmos recurrentes que se encuentran en este ramo se pueden programar de distintas formas y son útiles para la vida ingenieril y cotidiana. \textbf{NO ES UN EJERCICIO, son varias formas de resolver problemas recurrentes, lea, entienda y pruebe en su computador si es necesario.}
+
+\subsection*{Cálculo de promedio}
+
+Este algoritmo consta de dos contadores, \texttt{suma} y \texttt{cont}, que almacenan el numerador y denominador de la fórmula del promedio.
+
+$$ \frac{1}{n}\sum_{i=1}^{n} x_{i} $$
+
+Donde $x_i$ es la cantidad ingresada de uno de los $n$ datos con que se calculará el promedio. En Python, un programa y su ejemplo sería
+
+
+    \lstinputlisting[
+    style  = mypy,
+    caption= \texttt{promedio.py}]{Code/promedio.py}
+    
+Al correr el programa se tiene
+
+\begin{lstlisting}[style=consola]
+Ingrese dato: [*7*]
+Ingrese dato (-1 para salir): [*5*]
+Ingrese dato (-1 para salir): [*12*]
+Ingrese dato (-1 para salir): [*-1*]
+El promedio de los datos es 8.0
+\end{lstlisting}
+
+\subsection*{Encontrar un máximo o mínimo}
+
+Consta de una variable \texttt{maximo} que guarda el dato numérico más alto que ingresa el usuario (o se lee de alguna estructura como verá más adelante en el ramo). Opcionalmente se puede guardar una variable que asocie el número más alto con un nombre. 
+
+Tome un ejemplo de donaciones realizadas por importantes filántropos, cuyo código es
+
+    \lstinputlisting[
+    style  = mypy,
+    caption= \texttt{maximizacion.py}]{Code/maximizacion.py}
+
+\begin{lstlisting}[style=consola]
+Ingrese nombre del donador: [*Pedro*]
+Ingrese donacion: [*12000*]
+Ingrese nombre del donador (enter para salir): [*Anghelo*]
+Ingrese donacion: [*15000*]
+Ingrese nombre del donador (enter para salir): [*Miguel*]
+Ingrese donacion: [*25000*]
+Ingrese nombre del donador (enter para salir): [*Sandro*]
+Ingrese donacion: [*600*]
+Ingrese nombre del donador (enter para salir): 
+La donacion mas alta fue de 25000 realizada por Miguel
+\end{lstlisting}
+
+Note que para encontrar el mínimo de los datos basta con modificar la inicialización de la variable \texttt{maximo} por \texttt{minimo=float('inf')} en la línea 1, y \texttt{monto<minimo} en la línea 5.
+
+\subsection*{Uso y asignación de funciones}
+Las funciones en Python son usadas como subrutinas de un algoritmo, generalmente para hacer algo complejo o repetitivo dentro del programa. Deja este ordenado para el lector y facilita la escritura para los buenos programadores.
+
+En el siguiente ejemplo, se escribirá un código que pregunte por la edad de una persona para dejar entrarlo a una disco, si es menor de edad se prohibirá su acceso, si tiene menos de 80 se le dejará entrar, y si tiene más se le recomendará otro lugar de recreo. Note que se creará una función que retorne una frase a imprimir como mensaje en el programa.
+
+\lstinputlisting[style=mypy,
+caption=\texttt{disco.py}]{Code/disco.py}
+
+La ejecución del programa muestra lo siguiente
+\begin{lstlisting}[style=consola]
+Ingrese edad (0 para salir): [*21*]
+Adelante y paselo bien
+Ingrese edad (0 para salir): [*15*]
+Eres muy chico para entrar
+Ingrese edad (0 para salir): [*1313*]
+Estos lugares le hacen mal a su salud, vaya al parque mejor
+Ingrese edad (0 para salir): [*0*]
+Adios
+\end{lstlisting}
+

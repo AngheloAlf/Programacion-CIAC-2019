@@ -1,0 +1,53 @@
+\section*{Cálculo de $\pi$}
+
+Los patrones comunes son una forma de nombrar programas en que algo se repite muchas veces en un ciclo, por ejemplo en el de una sumatoria, calcularemos una aproximación del número $\pi$ siguiendo varios pasos
+
+\subsection*{Suma de los números del 1 al 10}
+
+Para hacer un patrón común de suma, se necesita de dos variables
+\begin{itemize}
+    \item \texttt{suma} cuya finalidad será guardar parcialmente la suma en cada iteración que realice el ciclo
+    \item \texttt{i} que será el valor del iterador, que cambiará con cada ciclo
+\end{itemize}
+
+Matemáticamente y no tan matemáticamente la forma de ver esta suma es 
+$$ suma= 1+2+3+4+\ldots +8+9+10 = \sum_{i=1}^{10} i$$
+
+Un programa para resolver esto sería
+
+ \lstinputlisting[
+    style = mypy,
+    caption = \texttt{ejemplo1.py}]{Code/ejemplo.py}
+
+\subsection*{Ahora un poco más complicado}
+
+La parte dentro de la sumatoria se entiende como la función en valores de $i$ que se va agregando a la variavle \texttt{suma}, esto nos permite sumar cosas espantosas sin que el computador se queje (a lo más se demorará un buen tiempo).
+
+Cree un programa que imprima la siguiente expresión
+
+$$\psi = \sum_{i=0}^{155} i^4 \cdot 3i $$
+
+Note que el exponente en python se anota usando dos signos de multiplicación \texttt{i**4}. El valor de $\psi$ es 7068543147900
+
+\subsection*{Ahora si que si}
+
+Desarrolle un programa que le permita calcular una aproximación de $\pi$ usando la siguiente suma infinita
+
+\begin{equation}
+    \pi=4\cdot \left( 1-\frac{1}{3}+\frac{1}{5}-\frac{1}{7} + \ldots \right)
+\end{equation}
+
+El funcionamiento debe ser como lo muestran los siguientes ejemplos
+
+\begin{lstlisting}[style=consola]
+n: 3
+3.466666666666667
+\end{lstlisting}
+
+\begin{lstlisting}[style=consola]
+n: 1000
+3.140592653839794
+\end{lstlisting}
+
+\paragraph{Pssst:} Otra forma de escribir lo de arriba es
+$$ \pi = 4 \cdot \sum_{i=0}^n \frac{(-1)^i}{2i+1} $$

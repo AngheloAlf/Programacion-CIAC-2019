@@ -1,0 +1,38 @@
+\section{Rutina de ejercitación}
+
+\begin{itemize}
+
+\item Información:
+
+La información disponible que tenemos son los ejercicios del señor Estrella, los cuales se componen de un nombre, una duración en horas y un aporte al entrenamiento del señor estrella.
+
+Además sabemos que cada rutina diaria de ejercicios no debe superar las 8 horas.
+
+Finalmente, también sabemos que se busca que la rutina aporte lo mas posible al entrenamiento de nuestro héroe.
+
+\item Desarrolla un plan:
+
+Primero que nada, debemos almacenar los ejercicios del señor Estrella en Python, por lo cual usaremos listas de tuplas, donde cada tupla contiene el nombre, duración y aporte de dicho entrenamiento.
+
+Para poder realizar nuestro programa, debemos desarrollar una heurística que pueda decidir cuales son los mejores ejercicios para la rutina. Existen muchas alternativas para esto, pero la que usaremos nosotros sera: 
+	\begin{itemize}
+	\item Ordenar los ejercicios según su aporte dividido por la cantidad de horas que requiere, de mayor a menor.
+	\item Recorrer esta lista nueva de ejercicios, seleccionando todos los con mayor aporte, hasta que alcancemos las 8 horas.
+	\item Entregar la lista en cuestión.
+	\end{itemize}
+
+Para esto crearemos una función que se llamara \texttt{rutina(ejercicios, limite)}, donde \texttt{ejercicios} es la lista de tuplas de ejercicios, y \texttt{limite} sera la cantidad de horas limite para la rutina. Normalmente \texttt{limite} sera 8.
+
+\item Ejecuta el plan:
+
+El plan anterior, implementado en Python, seria:
+
+\lstinputlisting[
+    style  = mypy,
+    caption= \texttt{rutina.py}]{Code/p2.py}
+
+\item Aprendido:
+
+En este espacio debes poner lo que aprendiste joven saltamontes.
+
+\end{itemize}

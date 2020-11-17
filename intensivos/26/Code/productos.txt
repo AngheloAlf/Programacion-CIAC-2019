@@ -1,0 +1,9 @@
+hyundai,accent,7390000
+hyundai,tucson,11690000
+hyundai,santafe,15790000
+suzuki,nomade,9990000
+suzuki,vitara,9490000
+suzuki,swift,7190000
+toyota,yaris,7890000
+toyota,corolla,9390000
+toyota,rav4,12090000

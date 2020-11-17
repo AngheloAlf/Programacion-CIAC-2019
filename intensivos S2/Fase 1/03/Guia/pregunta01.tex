@@ -1,0 +1,61 @@
+\section{Signos zodiacales}
+Se tiene un diccionario \texttt{fechas} cuya llave es el nombre de un ser viviente y su valor es una tupla de la forma \texttt{anio,mes,dia} que indica la fecha de nacimiento del personaje.
+
+\begin{lstlisting}[style=consola]
+fechas={
+    'Mike':(1994,7,19),
+    'Gary':(1989,5,22),
+    'Brad':(1975,5,22),
+    'Angie':(1984,5,22),
+    'Peter':(1967,12,4),
+    'Larry':(2001,3,14),
+    'Moe':(2000,12,4) }
+\end{lstlisting}
+
+También se tiene una estructura de signos zodiacales
+
+\begin{lstlisting}[style=consola]
+signos = {
+   'aries':       (( 3, 21), ( 4, 20)),   'tauro':       (( 4, 21), ( 5, 21)),
+   'geminis':     (( 5, 22), ( 6, 21)),   'cancer':      (( 6, 22), ( 7, 23)),
+   'leo':         (( 7, 24), ( 8, 23)),   'virgo':       (( 8, 24), ( 9, 23)),
+   'libra':       (( 9, 24), (10, 23)),   'escorpio':    ((10, 24), (11, 22)),
+   'sagitario':   ((11, 23), (12, 21)),   'capricornio': ((12, 22), ( 1, 20)),
+   'acuario':     (( 1, 21), ( 2, 19)),   'piscis':      (( 2, 20), ( 3, 20))}
+\end{lstlisting}
+Y una estructura con los elementos de los distintos signos del zodiaco.
+\begin{lstlisting}[style=consola]
+elementos={
+    'tierra':['tauro','virgo','capricornio'],
+    'fuego':['aries','leo','sagitario'],
+    'aire':['geminis','libra','acuario'],
+    'agua':['cancer','escorpion','piscis']    }
+\end{lstlisting}
+Se le pide a usted programar las funciones
+\begin{itemize}
+    \item \texttt{determinar\_signo(fecha)} que recibiendo una tupla con la fecha de forma \texttt{anio,mes,dia} retorne un string con el signo zodiacal correspondiente.
+\begin{lstlisting}[style=consola]
+>>> [*determinar_signo((1994,7,19))*]
+'cancer'
+>>> [*determinar_signo((1996,12,27))*]
+'capricornio'
+\end{lstlisting}
+    \item \texttt{dic\_nombre\_signo(fechas)} que reciba el diccionario de \texttt{fechas} y retorne un diccionario que asocie el nombre de una persona con su signo zodiacal respectivo
+\begin{lstlisting}[style=consola]
+>>> [*dic_nombre_signo(fechas)*]
+{'Mike': 'cancer', 'Angie': 'geminis', 'Gary': 'geminis', 'Larry': 'piscis', 
+'Brad': 'geminis', 'Peter': 'sagitario', 'Moe': 'sagitario'}
+\end{lstlisting}
+    \item \texttt{elemento(signo)} que reciba un string de un signo zodiacal y retorne el elemento correspondiente (tierra, fuego, aire o agua).
+\begin{lstlisting}[style=consola]
+>>> [*elemento('sagitario')*]
+'fuego'
+\end{lstlisting}
+    \item \texttt{compatibilidad(fechas)} que reciba el diccionario \texttt{fechas} y retorne un diccionario donde la llave sea un elemento zodiacal y los valores listas que asocien todos los nombres que pertenezcan al elemento correspondiente
+\begin{lstlisting}[style=consola]
+>>> [*compatibilidad(fechas)*]
+{'aire': ['Angie', 'Gary', 'Brad'], 'agua': ['Mike', 'Larry'],
+'fuego': ['Peter', 'Moe']}
+\end{lstlisting}
+
+\end{itemize}

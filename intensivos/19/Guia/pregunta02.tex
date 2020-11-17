@@ -1,0 +1,42 @@
+\section{Metro Valparadise}
+
+La empresa metro Valparadise requiere un programa computacional que actualice el saldo de la tarjeta de los usuarios después de cada viaje realizado. El valor de cada viaje se debe calcular considerando los tramos a los cuales pertenecen las estaciones de origen y destino, y el horario del viaje.
+
+Usted debe utilizar las estructuras \texttt{tramos} y \texttt{tarifas} para calcular el costo del viaje. La estructura \texttt{tramos} está compuesta de 4 tuplas, el primer elemento de cada tupla corresponde al tramo y el resto de los elementos a los nombres de las estaciones pertenecientes a aquel tramo.
+
+\begin{lstlisting}[style=consola]
+tramos=[('T1','Puerto','Bellavista','Francia','Baron','Portales'),
+('T2','Recreo','Miramar','Vina de Mar','Chorrillos'),
+('T3','El Salto','Quilpue','El Sol','El Belloto'),
+('T4','Las Americas','Villa Alemana','Sargento Aldea',
+'Penablanca')]
+\end{lstlisting}
+Los elementos de la estructura de datos \texttt{tarifas} corresponden a listas que en sus dos primeros elementos contienen los pares de estaciones origen-destino. Es importante notar que dado que el valor de un viaje entre dos tramos es independiente de cual sea el origen o destino, en esta estructura solo está disponible uno de esos pares de tramos. Los tres elementos restantes de la lista corresponden al precio del viaje entre ese par de tramos en tarifas baja, media y alta demanda respectivamente.
+
+\begin{lstlisting}[style=consola]
+tarifas=(['T1','T1',129,137,157], ['T2','T2',125,132,145],
+['T3','T3',119,127,150], ['T4','T4',115,120,129],
+['T1','T2',169,177,187], ['T1','T3',239,252,266],
+['T1','T4',259,274,288], ['T2','T3',241,254,265],
+['T2','T4',241,254,265], ['T3','T4',123,129,134])
+\end{lstlisting}
+
+En la estructura \texttt{tarjetas} se guarda la información de cada tarjeta y el saldo actual correspondiente
+
+\begin{lstlisting}[style=consola]
+tarjetas=[['A1e236',8830],['A0h536',1132],['Ch1t64',30]] #Considere mas datos
+\end{lstlisting}
+
+Se le solicita crear la función \texttt{actualizar\_saldo(estacion\_origen, estacion\_destino, \\
+codigo\_tarjeta, tipo\_tarifa)} la cual debe calcular el nuevo saldo de la tarjeta del usuario, imprimir por pantalla el costo del viaje y el nuevo saldo con el mensaje \textit{Muchas gracias} y retornar la estructura \texttt{tarjetas} actualizada. En caso de no contar con el saldo suficiente para el viaje, debe mostrar por pantalla el mensaje \textit{Saldo insuficiente}. A continuación se muestran 2 ejemplos.
+
+\begin{lstlisting}[style=consola]
+>>> [*actualizar_saldo('Bellavista','Villa Alemana','A0h536','media')*]
+Costo del viaje: 274
+Nuevo saldo: 858
+Muchas gracias
+
+>>> [*actualizar_saldo('Portales','Miramar','Ch1t64','media')*]
+Costo del viaje: 177
+Saldo insuficiente
+\end{lstlisting}

@@ -1,0 +1,72 @@
+\section{Resumen de aprobados}
+
+A la universidad Santa María, líder en ingeniería, magia y hechicería, llegan alumnos de intercambio provenientes de Hogwarts para tomar el curso de defensa contra las artes oscuras. Los profesores (magos) son nulos en el manejo de datos y le piden a los buenos estudiantes de IWI-131 (muggles) que van a los intensivos de CIAC ayuda con el filtro de alumnos aprobados y reprobados. Las reglas para aprobar son:
+\begin{itemize}
+    \item Que el promedio de sus notas sea mayor o igual a 55.
+    \item Que el porcentaje de asistencia sea mayor al 75\%
+\end{itemize}
+
+De cumplirse ambas condiciones, el estudiante aprueba, de cumplirse sólo una, el estudiante debe dar un examen global y de no cumplirse ninguna el estudiante reprueba.
+
+Se tienen los archivos: \texttt{notas.txt} y \texttt{asistencia.txt}:
+
+\begin{center}
+	\begin{tabular}{c c}
+        \texttt{notas.txt} & \texttt{asistencia.txt}\\
+    	\begin{tabular}{|l|}
+    		\hline
+Harry\#80:50:71:100\\
+Neville\#30:25:60:100\\
+Hermione\#100:100:99:100\\
+Ronald\#55:50:45:100\\
+Tom\#0:10:0:15\\
+    		\hline
+    	\end{tabular} & \begin{tabular}{|l|}
+    		\hline
+Hermione\#1:1:1:1:1:1:1\\
+Ronald\#0:0:1:1:1:1:1\\
+Tom\#0:0:0:1:0:1:1\\
+Neville\#1:1:1:1:1:1:0\\
+Harry\#1:1:1:1:0:1:1\\
+    		\hline
+    	\end{tabular}
+	\end{tabular}
+\end{center}
+
+El archivo \texttt{notas.txt} tiene la estructura \texttt{nombre\_alumno\#nota1: ... :nota4}, mientras que el archivo \texttt{asistencia.txt} tiene la estructura \texttt{nombre\_alumno\#asis1: ... :asis7}. A usted se le pide:
+
+\begin{itemize}
+    \item[a.] Desarrollar la función \texttt{listado\_alumnos(nombre\_archivo)} que reciba como parámetro el nombre de uno de los dos archivos y retorne una lista con todos los alumnos.
+    \begin{lstlisting}[style=consola]
+>>> [*listado_alumnos('notas.txt')*]
+['Harry', 'Neville', 'Hermione', 'Ronald', 'Tom']
+    \end{lstlisting}
+
+    \item[b.] Desarrollar la función \texttt{aprueba\_por\_notas(nombre\_archivo)} que reciba como parámetro el nombre del archivo con las notas y retorne un diccionario que asocie el nombre del alumno con un booleano según haya o no cumplido con el requisito número 1.
+    \begin{lstlisting}[style=consola]
+>>> [*aprueba_por_notas('notas.txt')*]
+{'Harry':True, 'Neville':False, 'Hermione':True, 'Ronald':True, 'Tom':False}
+    \end{lstlisting}
+
+    \item[c.] Programar la función \texttt{aprueba\_por\_asistencia(nombre\_archivo)} que reciba como parámetro el nombre del archivo con las asistencias y retorne un diccionario que asocie el nombre del alumno con un booleano según haya o no cumplido con el requisito número 2.
+    \begin{lstlisting}[style=consola]
+>>> [*aprueba_por_asistencia('asistencia.txt')*]
+{'Hermione':True, 'Ronald':False, 'Tom':False, 'Neville':True, 'Harry':True}
+    \end{lstlisting}
+
+    \item[d.] Crear la función \texttt{resumen(archivo\_notas, archivo\_asistencia)} que reciba los nombres de ambos archivos, y cree el archivo \texttt{Final.txt} con la estructura \texttt{nombre\#estado}, donde estado puede ser (APROBADO, EXAMEN GLOBAL, REPROBADO) de cada alumno. La función retorna None.
+
+\end{itemize}
+
+\begin{center}
+    \texttt{final.txt} \\
+	\begin{tabular}{|l|}
+		\hline
+Harry\#APROBADO\\
+Neville\#EXAMEN GLOBAL\\
+Hermione\#APROBADO\\
+Ronald\#EXAMEN GLOBAL\\
+Tom\#REPROBADO\\
+		\hline
+	\end{tabular}
+\end{center}

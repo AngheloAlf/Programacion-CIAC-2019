@@ -1,0 +1,69 @@
+\section{El pozo}
+
+  La compañía Posos Ltda.
+  Se dedica a la excavación y utilización de napas subterráneas de agua.
+  Como últimamente han tenido un aumento considerable
+  en la demanda de personas que quieren excavar posos en sus propiedades,
+  la empresa ha decidido automatizar el cálculo del costo
+  de los posos con el fin de hacer del trámite de cotización
+  más expedito.
+  Para facilitar el trabajo de los administradores de sistemas
+  de la empresa,
+  se le pide que programe el software por partes
+  utilizando funciones sencillas.
+  A continuación programe las funciones que se le soliciten:
+  
+  \begin{enumerate}
+  \item
+    Programe la función \texttt{areaPozo(diametro, profundidad)}
+    que reciba el diámetro y profundidad esperados del pozo a construir,
+    y retorne el área correspondiente a las paredes del pozo
+    (el cilindro sin ambas tapas).
+    Por simplicidad considere \( \pi = 3.14\).
+    
+    \begin{lstlisting}[style=consola]
+>>> [*areaPozo(2,3)*]
+18.84
+    \end{lstlisting}
+  \item
+    Programe la función \texttt{volumenPozo(diametro, profundidad, nivel)}
+    que reciba los mismos parámetros anteriores más el nivel de agua y retorne
+    el volumen de agua en el pozo.
+    El parámetro \texttt{nivel} indica a cuántos metros está el agua de la superficie,
+    por lo que el volumen de agua se calcula utilizando como altura del cilindro
+    \texttt{profundidad - nivel}.
+    
+    \begin{lstlisting}[style=consola]
+>>> [*volumenPozo(2,3,1)*]
+6.28
+    \end{lstlisting}
+  \item
+    Escriba un programa que calcule el costo de excavar el pozo utilizando las funciones
+    anteriormente programadas.
+    El programa debe pedir por pantalla los datos del pozo
+    es decir diámetro requerido, profundidad deseada y nivel de agua esperado.
+    Luego debe calcular el costo considerando como costos los siguientes datos:
+    
+    \vspace*{\baselineskip}
+    
+    \begin{tabular}{c|c}
+      \toprule
+      Costo excavación & \$ 1000 por metro de profundidad \\
+      \midrule
+      Pared del pozo   & \$ 100 por metro cuadrado de pared \\
+      \midrule
+      inscripción      & \$ 50 por metro cúbico de agua en el pozo \\
+    \bottomrule
+    \end{tabular}
+
+    \vspace*{\baselineskip}
+    
+    \begin{lstlisting}[style=consola]    
+Posos Ltda
+Bienvenido al calculador de costo
+Ingrese el diametro del poso a construir: [*2*]
+Ingrese la profundidad de la excavacion : [*3*]
+Ingrese el nivel de profundidad de agua : [*1*]
+El costo de excavacion corresponde a: $ 5198.0
+    \end{lstlisting}
+  \end{enumerate}

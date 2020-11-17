@@ -1,0 +1,86 @@
+\section{Impuestos huyentes}
+
+En el glorioso reino de \textit{Pythonia} las empresas se categorizan según el nivel de utilidades que tengan. Si sus utilidades son menores a \$50 millones se consideran una empresa pequeña, mediana si recauda entre \$50 y \$80 millones, y grande si recauda mas de \$80 millones.
+
+Nuestro glorioso reino tiene como ley que las grandes empresas deben pagar un 40\% de sus utilidades como impuestos, un 30\% si son medianas empresas y un 25\% las empresas pequeñas. A pesar de esto, se ha detectado que algunas empresas evaden el pago de impuestos gracias a vacíos legales. Después de varios estudios se ha determinado que:
+
+\begin{itemize}
+    \item Todas las empresas grandes que pagan mas de \$64 millones en impuestos se van al extranjero y no pagan impuestos a Pythonia. En caso contrario, si paga mas de \$36 millones esta se divide entre 2 empresas, cada una repartiéndose las utilidades por igual y pagando los impuestos como corresponde. En cualquier otro caso se pagan los impuestos debidos.
+    \item Las empresas medianas que ganan sobre \$70 millones contratan un buen contador que les hace pagar un 30\% menos de impuestos de lo que corresponde. Si ganan sobre \$60 millones, contratan a un contador de bajo presupuesto que les hace pagar un 10\% menos. El resto paga la cantidad real.
+    \item Las pequeñas empresas siempre pagan lo que les corresponde. Pero las que ganan menos de \$20 millones no tienen recursos para contratar un contador, por lo que siempre se equivocan y terminan pagando un 20\% extra de impuestos por multa.
+\end{itemize}
+
+En base a lo anterior, se le pide lo siguiente:
+
+\begin{enumerate}
+    \item[$\alpha$] Escriba la función \texttt{impuestos\_por\_ley(utilidad)}; la cual recibe un número que indica la utilidad de la empresa, y retorna lo que dicha empresa debería pagar según la ley.
+    
+    \begin{lstlisting}[style=consola]    
+>>> [*print(impuestos_por_ley(140))*]
+56.0
+>>> [*print(impuestos_por_ley(68))*]
+20.4
+>>> [*print(impuestos_por_ley(12))*]
+3.0
+    \end{lstlisting}
+    
+    \item[$\beta$] Cree la función \texttt{empresa\_grande(utilidad)}, la cual recibe un numero indicando la utilidad que recibe una empresa grande y retorna lo que pagaría al intentar evadir impuestos.
+    
+    \begin{lstlisting}[style=consola]
+>>> [*print(empresa_grande(140))*]
+42.0
+>>> [*print(empresa_grande(95))*]
+23.5
+    \end{lstlisting}
+    
+    \item[$\gamma$] Programe la función \texttt{empresa\_mediana(utilidad)}, la cual recibe un numero indicando la utilidad que recibe una empresa mediana y retorna lo que pagaría al intentar evadir impuestos.
+    
+    \begin{lstlisting}[style=consola]
+>>> [*print(empresa_mediana(75))*]
+15.75
+>>> [*print(empresa_mediana(68))*]
+18.36
+    \end{lstlisting}
+    \newpage
+    \item[$\theta$] Programe la función \texttt{empresa\_pequena(utilidad)}, la cual recibe un numero indicando la utilidad que recibe una empresa pequeña y retorna lo que pagaría al intentar pagar sus impuestos.
+    \begin{lstlisting}[style=consola]
+>>> [*print(empresa_pequena(35))*]
+8.75
+>>> [*print(empresa_pequena(12))*]
+3.6
+    \end{lstlisting}
+    
+    \item[$\star$] Escriba un \textbf{programa} que reciba los ingresos de distintas empresas y que sume el impuesto que están pagando y el que deberían pagar por ley. Además, el programa debe poder decir cual fue la empresa que pago menos impuestos y la empresa que pago mas. Este programa debe pedir que se ingresen utilidades de empresas hasta que se ingrese el numero 0.
+    
+    Considere que las cantidades ingresadas están en millones.
+    
+
+    \begin{lstlisting}[style=consola]
+Ingrese utilidad empresa 1: [*200*]
+Ingrese utilidad empresa 2: [*18*]
+Ingrese utilidad empresa 3: [*95*]
+Ingrese utilidad empresa 4: [*55*]
+Ingrese utilidad empresa 5: [*0*]
+El impuesto esperado es 139.0 
+pero lo pagado fue 45.65
+La empresa que pago menos impuestos fue la empresa 1 
+la cual pago 0
+La empresa que pago mas impuestos fue la empresa 3 
+la cual pago 23.75
+    \end{lstlisting}
+
+    \begin{lstlisting}[style=consola]
+Ingrese utilidad empresa 1: [*8*]
+Ingrese utilidad empresa 2: [*74*]
+Ingrese utilidad empresa 3: [*68*]
+Ingrese utilidad empresa 4: [*180*]
+Ingrese utilidad empresa 5: [*55*]
+Ingrese utilidad empresa 6: [*92*]
+Ingrese utilidad empresa 7: [*0*]
+El impuesto esperado es 169.9 pero lo pagado fue 75.8
+La empresa que pago menos impuestos fue la empresa 4 la cual pago 0
+La empresa que pago mas impuestos fue la empresa 6 la cual pago 23.0
+
+    \end{lstlisting}
+    
+\end{enumerate}

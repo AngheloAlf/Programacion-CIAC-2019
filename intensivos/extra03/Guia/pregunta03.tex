@@ -1,0 +1,114 @@
+\section{Sistema interno de impuestos}
+
+Usted, como honorable trabajador del \textit{Sistema interno de impuestos} del reino de \textit{Pythonia}, ha notado que estudiantes del reino venden productos y servicios sin entregar boleta, lo cual podría ser problemático.
+
+Dado esto, y como usted es muy benevolente, ha ideado un sistema, en el cual poder almacenar a dichos vendedores y sus ventas, con el objetivo de considerarlos en el flujo económico del reino.
+
+Para poder atacar el problema, ha decidido plantear 2 listas, una con el nombre de los vendedores, y la otra con los datos de sus ventas mensuales. 
+
+La lista de ventas mensuales consistirá en 12 listas, cada una correspondiente a un mes del año fiscal. Cada mes tendrá la misma cantidad de listas que vendedores, en el mismo orden, de modo que la primera lista se corresponde con el primer vendedor. Finalmente, cada una de estas listas tendrán tuplas, donde cada tupla contiene, un string con el nombre del producto/servicio, cuanto fue la cantidad, el dinero obtenido por la venta (no confundir con precio unitario) y el día del mes en que lo vendió. Ojo que estas tuplas están ordenadas según el día de venta, de menor a mayor.
+
+Ojo, que el \textit{Sistema interno de impuestos} se rige por el año fiscal de \textit{Pythonia}, el cual empieza en Mayo y termina en Abril del año siguiente, por ende, la lista de de ventas mensuales debe respetar dicho orden.
+
+A continuación se muestra ejemplo de cada estructura planteada:
+
+\begin{lstlisting}[style=consola]
+vendedores = ["Miguel", "Anghelo"]
+ventas_mensuales_2019 = [ [[("Ayudantia", 2, 6000, 27)],
+ [("Chapitas", 5, 1500, 22), ("Ayudantia", 1, 3000, 24)]],
+[[("Sonrisas", 2, 0, 2), ("Ayudantia", 1, 3000, 3)],  
+ [("Ayudantia", 1, 3000, 4)]],
+[[], []], [[], []], [[], []], [[], []], [[], []],
+[[], []], [[], []], [[], []], [[], []], [[], []]] # los otros meses
+\end{lstlisting}
+
+Según este ejemplo, Miguel hizo 1 venta en el mes de Mayo y 2 ventas el mes de Junio, mientras que Anghelo hizo 2 ventas en Mayo y una venta en Junio.
+
+Para hacer este sistema, se ha planteado hacer las siguientes funciones:
+\begin{enumerate}
+    \item[$\star$] \texttt{agregarVendedor(lista\_vendedores, lista\_ventas, nombre)}, la cual recibe 2 listas con la estructura antes descrita, y un string que contiene el nombre del vendedor. Esta función agrega dicho nombre a la lista de vendedores y agrega una lista vacía a cada mes de la lista de ventas.
+
+\begin{lstlisting}[style=consola]
+>>> [*agregarVendedor(vendedores, ventas_mensuales_2019, "Dolfowo")*]
+>>> [*agregarVendedor(vendedores, ventas_mensuales_2019, "Koskio")*]
+>>> [*print(vendedores)*]
+['Miguel', 'Anghelo', 'Dolfowo', 'Koskio']
+>>> [*print(ventas_mensuales_2019)*]
+[[[('Ayudantia', 2, 6000, 27)], [('Chapitas', 5, 1500, 22), 
+('Ayudantia', 1, 3000, 24)], [], []], [[('Sonrisas', 2, 0, 2), 
+('Ayudantia', 1, 3000, 3)], [('Ayudantia', 1, 3000, 4)], [], []], 
+[[], [], [], []], [[], [], [], []], [[], [], [], []], [[], [], [], []], 
+[[], [], [], []], [[], [], [], []], [[], [], [], []], [[], [], [], []],
+[[], [], [], []], [[], [], [], []]]
+\end{lstlisting}
+
+    
+    \item[$\Omega$] \texttt{resumenMensual(vendedores, ventas, mes)}, la cual recibe ambas listas, y un entero indicando el mes en cuestión (donde 1 seria Enero, 2 Febrero y así sucesivamente hasta 12 Diciembre). Esta función retorna una tupla de 3 elementos, donde el primer elemento es la suma de el dinero recaudado de cada compra en dicho mes, el segundo elemento es la cantidad de elementos vendidos, y el tercer elemento es la suma de los precios unitarios de cada producto.
+
+\begin{lstlisting}[style=consola]
+>>> [*print(resumenMensual(vendedores, ventas_mensuales_2019, 5))*]
+(10500, 8, 6300)
+\end{lstlisting}
+    
+    \item[$\alpha$] \texttt{resumenAnual(vendedores, ventas)}, la cual recibe ambas listas. Esta función retorna una lista de tuplas, donde cada tupla tiene 3 elementos, donde el primer elemento es la suma de el dinero recaudado de cada compra en dicho mes, el segundo elemento es la cantidad de elementos vendidos, y el tercer elemento es la suma de los precios unitarios de cada producto. Se debe respetar el orden de el año fiscal.
+    
+\begin{lstlisting}[style=consola]
+>>> [*print(resumenAnual(vendedores, ventas_mensuales_2019))*]
+[(10500, 8, 6300), (6000, 4, 6000), (0, 0, 0), (0, 0, 0), (0, 0, 0), 
+(0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0)]
+\end{lstlisting}
+
+
+\item[$\&$] \texttt{vendioProducto(vendedores, lista\_ventas, vendedor, nom\_producto, fecha)}, esta función recibe ambas listas antes descritas, un string con el nombre del vendedor, un string con el nombre del producto y una tupla con la fecha, formato \texttt{(dia, mes)}.
+
+    Esta función revisa en la lista de ventas si \texttt{vendedor} vendió \texttt{nom\_producto} en la fecha \texttt{fecha}. Si el vendedor efectivamente vendió el producto en esa fecha, la función retorna la tupla que contiene los datos de dicha venta \texttt{(producto, cantidad, dinero, dia)}. Recordar que los meses están ordenados según el año fiscal. Si no se encuentra el producto en la fecha indicada, la función retorna \texttt{None}.
+
+\begin{lstlisting}[style=consola]
+>>> [*print(vendioProducto(vendedores, ventas_mensuales_2019, "Miguel", 
+"Ayudantia", (3, 6)))*]
+('Ayudantia', 1, 3000, 3)
+>>> [*print(vendioProducto(vendedores, ventas_mensuales_2019, "Anghelo",
+"Chapitas", (3, 6)))*]
+None
+\end{lstlisting}
+
+    \item[$*$] \texttt{agregarVenta(vendedores, ventas, nombre, informacion\_venta)}, la cual recibe 2 listas con la estructura antes descrita, el nombre del vendedor, y una tupla con datos de la venta. Esta tupla contiene una tupla con el formato \texttt{(dia, mes)}, el nombre del producto, la cantidad de producto que se vendió y el precio unitario de dicho producto.
+    
+    Esta función debe agregar la venta a la lista correspondiente del vendedor, considerando que si ese mismo día ya vendió el producto en cuestión, debe aumentar el dinero recaudado por dicha venta, no agregar nuevamente el producto.
+    
+    Recordar que las tuplas deben quedar ordenadas segun el día del mes.
+
+\begin{lstlisting}[style=consola]
+>>> [*venta = ((5, 6), "Turron", 6, 1000)*]
+>>> [*agregarVenta(vendedores, ventas_mensuales_2019, "Dolfowo", venta)*]
+>>> [*venta2 = ((5, 6), "Turron", 4, 1250)*]
+>>> [*agregarVenta(vendedores, ventas_mensuales_2019, "Dolfowo", venta2)*]
+>>> [*print(ventas_mensuales_2019)*]
+[[[('Ayudantia', 2, 6000, 27)], [('Chapitas', 5, 1500, 22), 
+('Ayudantia', 1, 3000, 24)], [], []], [[('Sonrisas', 2, 0, 2),
+('Ayudantia', 1, 3000, 3)], [('Ayudantia', 1, 3000, 4)],
+[('Turron', 10, 11000, 5)], []], [[], [], [], []], [[], [], [], []], 
+[[], [], [], []], [[], [], [], []], [[], [], [], []], [[], [], [], []],
+[[], [], [], []], [[], [], [], []], [[], [], [], []], [[], [], [], []]]
+\end{lstlisting}
+
+    
+    \item[$\epsilon$] \texttt{eliminarVendedor(vendedores, ventas\_mensuales, nombre)}. Esta función recibe como parámetros 2 listas con la estructura antes descrita, y el nombre del vendedor a ser eliminado. 
+    
+    Este vendedor debe ser eliminado tanto de la lista \texttt{vendedores}, como eliminar las listas correspondientes de la lista \texttt{ventas\_mensuales} a dicho vendedor. La lista retorna \texttt{None}.
+
+\begin{lstlisting}[style=consola]
+>>> [*eliminarVendedor(vendedores, ventas_mensuales_2019, "Anghelo")*]
+>>> [*print(vendedores)*]
+['Miguel', 'Dolfowo', 'Koskio']
+>>> [*print(ventas_mensuales_2019)*]
+[[[('Ayudantia', 2, 6000, 27)], [], []], [[('Sonrisas', 2, 0, 2),
+('Ayudantia', 1, 3000, 3)], [('Turron', 10, 11000, 5)], []], [[], [], []],
+[[], [], []], [[], [], []], [[], [], []], [[], [], []], [[], [], []],
+[[], [], []], [[], [], []], [[], [], []], [[], [], []]]
+\end{lstlisting}
+
+\end{enumerate}
+
+
+Nota: Cualquier parecido con la realidad es mera coincidencia.

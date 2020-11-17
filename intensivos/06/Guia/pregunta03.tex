@@ -1,0 +1,37 @@
+
+\section{X-Espacio}
+
+La reconocida internacionalmente empresa \texttt{X-Espacio}, la cual hace investigaciones espaciales ha encontrado señales que parecieran ser de vida inteligente que intenta comunicarse con nosotros.
+
+Después de un arduo estudio de estas señales, se ha llegado a la conclusión de que estas señales siderales son mensajes codificados en binario, por lo que se le ha pedido a usted, experto programador, que construya un programa capaz de descifrar dichas señales.
+
+Según esta investigación, las ondas corresponden a números binarios desde el 1 al 26, y estos corresponden a una letra de nuestro alfabeto.
+
+Se espera que una secuencia de todos estos caracteres nos entregue frases legibles por nosotros los humanos.
+
+Para transformar un número binario a decimal se debe seguir el siguiente procedimiento:
+
+\begin{itemize}
+    \item Se toma el ultimo numero de la secuencia. Debemos llevar un \textit{contador} y una \textit{suma}.
+    \item Si este número es "1", le agregamos $2^{contador}$ a la \textit{suma}.
+    \item Si el número es "0", lo ignoramos.
+    \item Aumentamos en uno al contador.
+    \item Repetimos los pasos recién mencionados, pero con el numero siguiente en la secuencia, es decir el que esta a la izquierda del que acabamos de usar.
+    \item Nos detenemos cuando ya no queden números por procesar.
+\end{itemize}
+
+Tomemos de ejemplo el numero binario \texttt{101110}. El equivalente numérico de dicha secuencia es: $2^{1} + 2^{2} + 2^{3} + 2^{5}$, igual a 46.
+
+Sabiendo esto, su programa debe pedir secuencias binarias hasta que se ingrese un 0, y luego mostrar el mensaje de nuestros amigos espaciales.
+
+Para poder 
+
+\begin{lstlisting}[style=consola]
+Ingrese binario: [*101*]
+Ingrese binario: [*11000*]
+Ingrese binario: [*1001*]
+Ingrese binario: [*10100*]
+Ingrese binario: [*1111*]
+Ingrese binario: [*0*]
+exito
+\end{lstlisting}

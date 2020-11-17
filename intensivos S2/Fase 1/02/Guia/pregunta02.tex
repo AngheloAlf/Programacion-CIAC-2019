@@ -1,0 +1,60 @@
+\section{La matriz de la tierra}
+
+Su jefe le ha pedido crear un software que sea capaz de estimar los costos de los pasajes de avión de la aerolínea en la que trabajan. Pero, debido a las escasas especificaciones que le ha dado su jefe, usted ha tenido que diseñar todo el software en cuestión.
+
+Para empezar, debe ver como almacenar los países del planeta, pero para suerte suya, la tierra es plana, lo cual implica que la puede almacenar en una matriz fácilmente. Dado esto, se ha planteado la siguiente matriz de \textit{ejemplo}:
+
+\begin{lstlisting}[style=consola]
+tierra =[ [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+          [0, 0, 0, 0, 1, 0, 0, 0, 0, 0], 
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+          [0, 2, 9, 0, 0, 5, 0, 0, 0, 6], 
+          [0, 3, 0, 0, 0, 4, 0, 0, 0, 8], 
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+          [0, 0, 0, 0, 0, 0, 7, 0, 0, 0], 
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0] ]
+paises = [(1, "Inglaterra"), (2, "New York"), (3, "Mexico"), (4, "Italia"), 
+(5, "Suiza"), (6, "Japon"), (7, "Egipto"), (8, "Morioh"), (9, "Florida")]
+\end{lstlisting}
+
+La matriz \texttt{tierra} indica la ubicación de los países en los cuales esta aerolínea tiene sedes, donde un 0 indica que no tiene sede en esa ubicación, y algún otro numero significa que si. Dicho número indica un país. Para saber que número corresponde a que país, debe ver la lista de tuplas \texttt{paises}, donde cada tupla tiene el formato \texttt{(numeroPais, nombrePais)}.
+
+Además, esta matriz indica las distancias entre los países de forma implícita. La distancia entre 2 números contiguos es de 1000 kilómetros. Por ejemplo, la distancia entre New York y México son 1000 kilómetros, mientras que la distancia entre Suiza y Florida serian 3000 kilómetros. Aprovechándose de el hecho de que la tierra es plana, cada elemento de la matriz indica su coordenada respectiva, donde el origen estaría ubicado en la esquina superior izquierda.
+
+Otro detalle a considerar es que esta aerolínea cobra 0.2 dolares por kilometro recorrido.
+
+En base a esto, usted decide plantearse las siguientes funciones:
+
+\begin{itemize}
+    \item \texttt{buscarPais(listaPaises, nombre\_del\_pais)}. Esta función recibe la lista de tuplas de países y el nombre de un país. Retorna el numero asociado a dicho país, o 0 si es que no se encuentra el país en cuestión.
+
+\begin{lstlisting}[style=consola]
+>>> [*print(buscarPais(paises, "Italia"))*]
+4
+\end{lstlisting}
+
+    \item \texttt{encontrarCoordenadas(mundo, numero\_del\_pais)}. Esta función recibe la matriz antes descrita y el numero de un país. Retorna una tupla con las coordenadas (x, y) del país. Estas coordenadas son relativas a la matriz.
+
+\begin{lstlisting}[style=consola]
+>>> [*print(encontrarCoordenadas(tierra, 1))*]
+(4, 1)
+\end{lstlisting}
+
+    \item \texttt{estimarPrecio(planeta, listaPaises, origen, destino)}. Esta función recibe la matriz y la lista antes descritas, además de 2 strings que contienen el nombre de 2 ubicaciones. Esta función estima el precio que supondría dicho viaje, considerando los datos anteriormente entregados.
+
+\begin{lstlisting}[style=consola]
+>>> [*print(estimarPrecio(tierra, paises, "Japon", "Egipto"))*]
+848.5281374238571
+\end{lstlisting}
+
+    \item \texttt{calcularRuta(planeta, listaPaises, ruta)}. Esta función recibe la matriz y la lista anteriormente descritas, además de la lista \texttt{ruta}, la cual contiene nombres de lugares. Esta función estima cuanto costaría si un avión siguiese la ruta indicada.
+
+\begin{lstlisting}[style=consola]
+>>> [*camino = ["New York", "Mexico", "Italia", "Suiza"]*]
+>>> [*print(calcularRuta(tierra, paises, camino))*]
+1200.0
+\end{lstlisting}
+
+\end{itemize}

@@ -1,0 +1,70 @@
+\section{Copa América}
+
+¡Este año es la \textit{Copa América}! Y como buen hincha, ha decidido ir a apoyar a la selección, por lo que te has planteado comprar pasajes, hospedaje y entradas a los partidos de toda la \textit{Copa América}.
+
+Con toda la euforia de imaginarse ver ganar a Chile en la \textit{Copa América}, se pone a investigar los precios... y empieza a bajar su moral. ¡Los precios son muy caros! Pero como ya se ha planteado ir a ver a su equipo ganar, decide pedir un crédito.
+
+Antes de ir a un banco a pedir el crédito y endeudarse por el resto de su vida, decide investigar como funcionan los intereses y los créditos, por lo que descubre una bonita tabla llamada "Tabla de amortización (cuota fija)" que le resume la información pertinente al crédito. Un ejemplo, con tasa de interés del 10\%, sería:
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+    \hline
+    Periodo & Capital & Amortización & Interés & Cuota \\
+    \hline
+    0 & \$100,000.00 & & & \\
+    \hline
+	1 & \$83,620.25 & \$16,379.75 & \$10,000.00 & \$26,379.75 \\
+    \hline
+	2 & \$65,602.53 & \$18,017.72 & \$8,362.03 & \$26,379.75 \\
+    \hline
+	3 & \$45,783.03 & \$19,819.50 & \$6,560.25 & \$26,379.75 \\
+    \hline
+	4 & \$23,981.59 & \$21,801.44 & \$4,578.30 & \$26,379.75 \\
+    \hline
+	5 & \$0.00 & \$23,981.59 & \$2,398.16 & \$26,379.75 \\
+    \hline
+\end{tabular}
+\end{center}
+
+La columna \textit{Cuota} (C) indica la cantidad de dinero que va a pagar en cada periodo. Como esta tabla es de cuota fija, esta cantidad la puede calcular una única vez y reutilizarla siempre. Esta se calcula de la siguiente manera (Considere el subindice como el periodo en cuestion):
+\begin{align*}
+    C = Cap_0 * \frac{(1+TasaInteres)^{CantidadPeriodos} * TasaInteres}{(1+TasaInteres)^{CantidadPeriodos}  - 1}
+\end{align*}
+
+El \textit{Interés} (I) es la cantidad de dinero que te cobran cada periodo por lo que te prestaron. Su formula es:
+\begin{align*}
+    I_i = Cap_{i-1} * TasaInteres
+\end{align*}
+
+La \textit{Amortización} (Am) es la cantidad de dinero que abona del capital. Se calcula:
+\begin{align*}
+    Am_i = C_i - I_i
+\end{align*}
+
+
+La columna \textit{Capital} (Cap) indica la cantidad de dinero que usted pidió que todavía le debe al banco. Cuando esta cantidad es cero, significa que ya no le debe dinero al banco. Este sigue la siguiente formula:
+\begin{align*}
+    Cap_i = Cap_{i-1} - Am_i
+\end{align*}
+
+
+En el periodo 0 se ingresa la cantidad de dinero que se pidió en préstamo/crédito, en este ejemplo \$100,000.
+
+Como usted es un programador experto, se pone como objetivo escribir un programa en Python que pida cuanto dinero quiere pedir en el crédito, que tasa de interés le ofrece el banco, y de cuantos periodos sera el pago. 
+
+El programa debe mostrar una tabla similar a la mostrada anteriormente. Además, debe mostrar cuanto es la cantidad total de dinero que va a tener que pagar, y cuanto de eso es solo interés.
+
+\begin{lstlisting}[style=consola]
+Ingrese el capital inicial: [*100000*]
+Ingrese la tasa de interes: [*0.1*]
+Ingrese la cantidad de periodos del credito: [*5*]
+0 100000
+1 83620.25 16379.75 10000.0 26379.75
+2 65602.53 18017.72 8362.03 26379.75
+3 45783.03 19819.5 6560.25 26379.75
+4 23981.59 21801.44 4578.3 26379.75
+5 0.0 23981.59 2398.16 26379.75
+El monto total a pagar es 131898.74  y de eso, 31898.74 son solo intereses.
+\end{lstlisting}
+
+$\text{ }_{\text{HINT:  Escriba una función para cada una de las ecuaciones mostradas mas arriba.}}$

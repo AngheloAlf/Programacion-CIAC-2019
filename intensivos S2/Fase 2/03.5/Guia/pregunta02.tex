@@ -1,0 +1,32 @@
+\subsection*{validarMovimientoTorre}
+
+Cree la función \texttt{validarMovimientoCaballo(tablero, actual, objetivo, pieza)}, que recibe una lista con la misma estructura que la lista de listas de string \texttt{tablero} del ruteo, una tupla de dos enteros \texttt{actual}, una tupla de enteros \texttt{objetivo}, y un string de una sola letra \texttt{pieza}. Esta función retorna \texttt{True} si esta pieza es una torre y puede moverse a la posición indicada, en todo otro caso retorna \texttt{False}.
+
+\begin{lstlisting}[style=consola]
+tablero = [
+    ["t","a","c","a","t"],
+    ["p"," ","p","p","p"],
+    [" "," "," "," "," "],
+    [" ","p","P","P","P"],
+    ["T","A","C","A","T"]]
+\end{lstlisting}
+
+La función debe cuidar los siguientes aspectos.
+\begin{enumerate}
+    \item La torre solo puede moverse de manera horizontal o vertical.
+    \item La torre no puede saltarse otra pieza, por lo que debe verificar que no haya ninguna pieza interponiéndose entre esta y su destino.
+    \item La torre puede caer sobre una pieza enemiga.
+    \item La torre no puede caer sobre una pieza aliada.
+\end{enumerate}
+
+%\begin{outcode}{CodigosImportados/Ajedrez/validarTorre.txt}{0}{100}
+%\end{outcode}
+
+\begin{lstlisting}[style=consola]
+>>> [*print(validarMovimientoTorre(tablero, (0,0), (2,0), 't'))*]
+False
+>>> [*print(validarMovimientoTorre(tablero, (0,0), (1,1), 't'))*]
+False
+>>> [*print(validarMovimientoTorre(tablero, (4,0), (2,0), 'T'))*]
+True
+\end{lstlisting}

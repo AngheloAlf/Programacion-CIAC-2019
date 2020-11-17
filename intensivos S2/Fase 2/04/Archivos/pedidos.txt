@@ -1,0 +1,4 @@
+Felipe:arroz-1;jugo-5;cereal-1;confort-4;alc.gel-1
+Miguel:jugo-6;cereal-1;yogur-4;pan-1;limon-2;cafe-2
+Annette:fideos-2;azucar-1;atun-20;jalea-15;cafe-1
+Manalich:confort-150;alc.gel-200;viagra-3

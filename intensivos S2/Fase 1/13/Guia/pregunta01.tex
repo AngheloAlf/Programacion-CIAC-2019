@@ -1,0 +1,67 @@
+\section{Sumarios}
+
+Una periodista del diario electrónico ``El encubridor'' ha conseguido un archivo con información de los viajes de los Senadores de Chile. Cada línea del archivo posee el rut de un senador, y a continuación tríos con el mes (número), el país de destino y el \textit{índice del costo}. El \textit{índice del costo} es un número entero que identifica el número de la línea en otro archivo con el costo asociado al viaje. Los siguientes archivos son un \textbf{ejemplo} de lo anterior:
+
+\begin{center}
+	\begin{tabular}{c c c}
+    	\begin{tabular}{|l|}
+\multicolumn{1}{c}{\texttt{viajes.txt}}\\
+    		\hline
+9453454-6\#10,Inglaterra,1;10,India,4\\
+654676-3\#10,Francia,5\\
+6546334-4\#3,Cuba,3\\
+8764564-7\#5,Francia,2\\
+    		\hline
+    	\end{tabular} & \phantom{--------------------} & \begin{tabular}{r|l|}
+\multicolumn{1}{r}{} & \multicolumn{1}{c}{\texttt{costos.txt}}\\
+    		\cline{2-2}%\hline
+{\tiny\texttt{1}} & 9000000\\
+{\tiny\texttt{2}} & 10000000\\
+{\tiny\texttt{3}} & 1020100\\
+{\tiny\texttt{4}} & 1500000\\
+{\tiny\texttt{5}} & 10000000\\
+    		\cline{2-2}%\hline
+    	\end{tabular}
+	\end{tabular}
+\end{center}
+
+En el ejemplo, el senador \textit{rut} \texttt{654676-3} viajó a Francia el mes 10 (octubre) a un costo de \$10.000.000. Asuma que los \textit{ruts} en el archivo de viajes no se repiten. El editor en jefe le pide a un sansano en práctica que haga algunas funciones en Python para recopilar información más específica de estos personajes, para así publicar un artículo de alto impacto en la edición del diario del día domingo.
+
+\begin{enumerate}
+    \item[a)] Se necesita saber el total gastado por los senadores en viajes, por lo que se requiere la función \\ \texttt{costo\_total(arch)} donde \texttt{arch} es un archivo tipo \texttt{costos.txt}. La función entrega el costo total gastado por todos los senadores.
+    
+    \begin{lstlisting}[style=consola]
+>>> [*print(costo_total('costos.txt'))*]
+31520100
+    \end{lstlisting}
+    
+    \item[b)] Se requiere la función \texttt{busqueda\_por\_mes(arch, mes)},  donde \texttt{arch} es un archivo tipo \\ \texttt{viajes.txt} y \texttt{mes} es el mes del viaje (el nombre del mes, no su número). Es necesario que la función retorne un diccionario con el \textit{rut} del senador como llave y como valor una lista con los países de destino de aquellos políticos que viajaron en ese \texttt{mes}. Si no viajó nadie en ese periodo, se retorna un diccionario vacío.
+
+    \begin{lstlisting}[style=consola]
+>>> [*print(busqueda_por_mes('viajes.txt', 'octubre'))*]
+{'9453454-6': ['Inglaterra', 'India'], '654676-3': ['Francia']}
+    \end{lstlisting}
+    
+    \item[c)] Existe una ley que no permite a los senadores sobrepasar los montos totales, iguales o superiores, a \$10.000.000, por lo que se quiere crear un archivo \texttt{sumario.txt}, en donde se guarde la información de los senadores que no cumplan dicha ley. 
+    
+    Este archivo debe seguir el formato \texttt{Rut,Monto\_total,destinos}, donde \texttt{destinos} es, a su vez, una serie de destinos separados por '\texttt{;}' (ej: \texttt{destino1;destino2;...;destinoN}). Esta información debe estar ordenada según el monto total en forma ascendente. Los \textit{ruts} no se deben repetir.
+    
+    Se debe crear la función \texttt{realizar\_sumario(arch1, arch2)}, donde \texttt{arch1} es un archivo del tipo \texttt{viajes.txt} y \texttt{arch2} un archivo tipo \texttt{costos.txt}. Toda la información debe ser guardada en un archivo llamado \texttt{sumario.txt}.
+
+    \begin{lstlisting}[style=consola]
+>>> [*realizar_sumario('viajes.txt', 'costos.txt')*]
+>>> 
+    \end{lstlisting}
+    
+\begin{center}
+    \begin{tabular}{|l|}
+\multicolumn{1}{c}{\texttt{sumario.txt}}\\
+    		\hline
+654676-3,10000000,Francia\\
+8764564-7,10000000,Francia\\
+9453454-6,10500000,Inglaterra;India\\
+    		\hline
+	\end{tabular}
+\end{center}
+    
+\end{enumerate}

@@ -1,0 +1,49 @@
+\subsection*{traducirJugada}
+
+El siguiente código calcula un turno y le pide a un jugador que ingrese por el teclado una jugada.
+
+\lstinputlisting[style=mypy]{Code/traducir.py}
+
+Considerando lo anterior, cree la función faltante \texttt{traducirJugada(jugada,turno)}, que recibe un string \texttt{jugada} y un entero \texttt{turno} que vale 0 o 1. Esta función retorna una tupla con 2 elementos. Antes de retornar, la función debe imprimir por pantalla esta tupla. Los elementos de esta tupla son:
+\begin{enumerate}
+    \item Un booleano, \textbf{True} si se cumplen todas las condiciones, o \textbf{False} si no se cumplen todas.
+    \item Una tupla que contiene 2 tuplas del tipo (columna, fila). Estas tuplas corresponden al origen y destino respectivamente. Si el booleano que se retorna termina siendo \texttt{False}, no importan los valores de la segunda tupla.
+\end{enumerate}
+
+Las condiciones del string \texttt{jugada} son:
+\begin{enumerate}
+    \item El string debe tener 7 caracteres, ni mas ni menos.
+    \item El primer y el sexto caracter deben ser una letra mayúscula entre 'A' y 'H', incluyéndolas.
+    \item El segundo y el 'ultimo caracter deben ser números entre el 1 y el 8, incluyéndolos.
+    \item Entre el segundo y el sexto caracter debe estar el string `` a "
+    \item Se intenta mover una pieza del jugador que está de turno (0 mueve las Mayúsculas y 1 las minúsculas).
+\end{enumerate}
+
+Un string \textbf{jugada} correctamente ingresado sería ``C5 a D3". 5 hace referencia a la fila superior y C indica que nos referimos a su tercer elemento. 3 se refiere a la del medio y D indica que hablamos del cuarto elemento de esa lista. 
+
+\begin{lstlisting}[style=consola]
+tablero = [
+    ["t","a","c","a","t"],
+    ["p"," ","p","p","p"],
+    [" "," "," "," "," "],
+    [" ","p","P","P","P"],
+    ["T","A","C","A","T"]]
+\end{lstlisting}
+
+Considerando el tablero anterior, al ejecutar el fragmento de código antes entregado (habiendo implementado la función \texttt{traducirJugada} correctamente), se debería mostrar por pantalla lo siguiente:
+
+\begin{lstlisting}[style=consola]
+Juega el jugador 1
+Ingrese su jugada: [*A2 a Z3*]
+>>> (False,((0,0),(0,0)))  
+Jugador 1 ingrese una jugada valida: [*A2 a A3*]
+>>> (False,((0,0),(0,0)))
+Jugador 1 ingrese una jugada valida: [*B2 a B3*]
+>>> (False,((0,0),(0,0)))
+Jugador 1 ingrese una jugada valida: [*C2 a C3*]
+>>> (True,((3,2),(2,2)))
+Juega el jugador 2
+\end{lstlisting}
+
+
+

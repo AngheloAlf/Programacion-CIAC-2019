@@ -1,0 +1,9 @@
+2014/9/30,19:45,suzuki,vitara,5678
+2014/9/30,20:15,toyota,corolla,4523
+2014/9/30,10:40,suzuki,nomade,6547
+2014/9/30,14:40,suzuki,vitara,5678
+2014/10/1,10:40,toyota,yaris,4523
+2014/10/1,14:40,suzuki,vitara,6547
+2014/10/2,10:40,hyundai,accent,6547
+2014/10/2,12:40,suzuki,vitara,5678
+2014/10/2,13:20,hyundai,santafe,4523

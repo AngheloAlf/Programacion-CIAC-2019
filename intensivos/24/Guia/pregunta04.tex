@@ -1,0 +1,68 @@
+\section{Notas, archivos y ¿diccionarios?}
+
+Considerando el mismo formato de la pregunta anterior, cree las siguientes funciones:
+
+\begin{itemize}
+    %%% Se necesitaron 4 cabezas para pensar en esta palabra.
+    \item \texttt{diccioinador(archivo)}. Esta función recibe el nombre de un archivo con el formato entregado en la pregunta anterior. 
+    
+    Retorna un diccionario, donde las llaves son el nombre de las personas, y el valor es un diccionario de ramos de dicho estudiante. La llave de esta diccionario es la sigla de un ramo, y la llave es una tupla con las notas de este ramo como enteros (no se considera el promedio de notas).
+    
+    \begin{lstlisting}[style=consola]
+>>> [*dicc = diccioinador("notas.txt")*]
+>>> [*print(dicc)*]
+{'anghelo': {'mat021': (76, 78, 54)}, 
+ 'miguel': {'mat021': (80, 56, 67), 'fis100': (95, 86, 75)}, 
+ 'diego': {'iwi131': (100, 99, 98)}
+ }
+    \end{lstlisting}
+    
+    \item \texttt{archivinador(archivo, diccionario)}. Esta función recibe el nombre de un archivo y el diccionario antes descrito. 
+    
+    Esta función escribe en el archivo los datos del diccionario, respetando la estructura del archivo antes descrito.
+    
+    \begin{lstlisting}[style=consola]
+>>> [*dicc = archivinador("notas2.txt", dicc)*]
+>>> 
+    \end{lstlisting}
+    
+\begin{center}
+\begin{tabular}{|l|}
+    \hline
+    \texttt{notas2.txt} \\ 
+    \hline
+    miguel\#mat021\#80;56;67 \\
+    miguel\#fis100\#95;86;75 \\
+    anghelo\#mat021\#76;78;54 \\
+    diego\#iwi131\#100;99;98 \\
+    \hline
+\end{tabular}
+\end{center}
+    
+    \item \texttt{agregar\_alumno\_inador(archivo, nombre, ramos)}. Esta función recibe el nombre de un archivo con la estructura antes dada, un string con el nombre de un alumno y un diccionario, donde las llaves del diccionario son las siglas de los ramos, y las llaves son una tupla con las notas de dicho estudiante.
+    
+    Esta función agrega los ramos en el diccionario \texttt{ramos} de estudiante \texttt{nombre} al archivo en cuestión. Si el estudiante ya tenia ese ramo, entonces se debe reemplazar las notas de ese ramo en el archivo.
+    
+    Lógicamente, si el estudiante no existía en el archivo anteriormente, debe ser agregado.
+    
+    \begin{lstlisting}[style=consola]
+>>> [*ramos = {"iwi131": (42, 69, 90), "fis100": (51, 63, 54)}*]
+>>> [*agregar_alumno_inador("notas2.txt", "anghelo", ramos)*]
+>>> 
+    \end{lstlisting}
+
+\begin{center}
+\begin{tabular}{|l|}
+    \hline
+    \texttt{notas2.txt} \\ 
+    \hline
+    anghelo\#mat021\#76;78;54 \\
+    anghelo\#iwi131\#42;69;90 \\
+    anghelo\#fis100\#51;63;54 \\
+    miguel\#mat021\#80;56;67 \\
+    miguel\#fis100\#95;86;75 \\
+    diego\#iwi131\#100;99;98 \\
+    \hline
+\end{tabular}
+\end{center}
+\end{itemize}

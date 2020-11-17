@@ -1,0 +1,35 @@
+\section{Dígito verificador del RUT.}
+
+El Rol Único Tributario, conocido también por el acrónimo RUT, es un número único implantado en Chile, que fue establecido como identificación tributaria. El RUT consta de dos partes: el \textbf{número} y el \textbf{dígito verificador} separados por un guión. El último se calcula a partir del número. El dígito verificador existe para evitar engaños, suplantaciones de identidad y hacer programar a los estudiantes que van a los intensivos de CIAC. Es calculado con un algoritmo que son simples cálculos aritméticos. Para saber el dígito verificador haga lo siguiente:
+\begin{enumerate}
+	\item Tome los números de su rut, por ejemplo \textbf{30.686.957}-X y léalos de derecha a izquierda
+	\begin{center}
+		7 5 9 6 8 6 0 3
+	\end{center}
+	\item Tome los números y multiplique cada uno por la serie: 2,3,4,5,6,7,2,3... si se acaban comience de nuevo de 2
+	\begin{center}
+		7x2=14\\5x3=15\\9x4=36\\6x5=30\\...\\3x3=9
+	\end{center}
+	\item Sume los resultados obtenidos y obtenga el resto de la división por 11
+	\begin{center}
+		14 + 15 + 36 + 30 + 48 + 42 + 0 + 9 = 194\\ \\ 194:11=17\\ \\Resto: 7
+	\end{center}
+	\item Calcule la diferencia entre el número 11 y el resto obtenido
+	\begin{center}
+		11 - 7 = 4
+	\end{center}
+	\item Ahora analizando el número obtenido hay tres posibilidades
+	\begin{itemize}
+		\item Si el número obtenido es 11, el dígito verificador es 0
+		\item Si el número obtenido es 10 el dígito verificador es K
+		\item En cualquier otro caso, el número obtenido es el dígito verificador
+	\end{itemize}
+\end{enumerate}
+
+En el caso del ejemplo, el dígito verificador del número 30686957 es 4.
+\\ \\
+Desarrolle un programa que solicite al usuario un número y devuelva el dígito verificador.
+\begin{lstlisting}[style=consola]
+Ingrese numero: [*30686957*]
+El RUT es 30686957-4
+\end{lstlisting}

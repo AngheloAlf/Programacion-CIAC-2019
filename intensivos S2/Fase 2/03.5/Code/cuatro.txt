@@ -1,0 +1,9 @@
+restaurant->Casa Lila:4.67:4.53,1.02
+cafe->Salita Biblioteca:4.01:3.43,2.98
+disco->Woo:4.8:80.2,45.3
+restaurant->TiaNony:4.52:5.90,4.34
+restaurant->Donde La Tia:4.10:4.26,21.23
+cafe->Cafe placeres:5.00:7.33,6.89
+pub->Tercer Tiempo:5.00:-13.45,-6.22
+restaurant->XL:2.61:0.00,3.20
+restaurant->Nenita:3.86:3.76,3.55

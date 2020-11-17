@@ -1,0 +1,117 @@
+\section{Cálculo matricial programable}
+
+Una matriz es una forma de agrupar datos bidimensionalmente. Estas se escriben de la siguiente forma:
+\begin{equation*}
+    M=\left[
+        \begin{array}{ccc}
+            1 & 2 & 6 \\
+            3 & 4 & 22 \\
+        \end{array}
+    \right]
+\end{equation*}
+
+Una matriz puede entenderse como muchos vectores juntos, o como una lista con muchas listas. La matriz anterior escrita como lista de listas seria:
+\begin{lstlisting}[style=consola]
+M = [[1, 2, 6], [3, 4 ,22]]
+\end{lstlisting}
+Donde cada lista interior se corresponde con una fila de la matriz.
+
+La matriz también tiene algunas operaciones, como la suma y resta, la multiplicación por escalares y la traspuesta.
+
+La adición (y sustracción) de matrices esta dado por:
+\begin{equation*}
+    \left[
+        \begin{array}{ccc}
+            a_0 & a_1 & a_2 \\
+            a_3 & a_4 & a_5 \\
+            a_6 & a_7 & a_8 \\
+        \end{array}
+    \right]
+    \pm
+    \left[
+        \begin{array}{ccc}
+            a_9 & a_{10} & a_{11} \\
+            a_{12} & a_{13} & a_{14} \\
+            a_{15} & a_{16} & a_{17} \\
+        \end{array}
+    \right]
+    =
+    \left[
+        \begin{array}{ccc}
+            a_0 \pm a_9 & a_1 \pm a_{10} & a_2 \pm a_{11} \\
+            a_3 \pm a_{12} & a_4 \pm a_{13} & a_5 \pm a_{14} \\
+            a_6 \pm a_{15} & a_7 \pm a_{16} & a_8 \pm a_{17} \\
+        \end{array}
+    \right]
+\end{equation*}
+
+La multiplicación de matrices por un escalar (número) esta dado por:
+\begin{equation*}
+    x*
+    \left[
+        \begin{array}{ccc}
+            a_0 & a_1 & a_2 \\
+            a_3 & a_4 & a_5 \\
+            a_6 & a_7 & a_8 \\
+        \end{array}
+    \right]
+    =
+    \left[
+        \begin{array}{ccc}
+            x*a_0 & x*a_1 & x*a_2 \\
+            x*a_3 & x*a_4 & x*a_5 \\
+            x*a_6 & x*a_7 & x*a_8 \\
+        \end{array}
+    \right]
+\end{equation*}
+
+Finalmente la traspuesta de una matriz esta dado como:
+\begin{equation*}
+    \left[
+        \begin{array}{ccc}
+            a_0 & a_1 & a_2 \\
+            a_3 & a_4 & a_5 \\
+        \end{array}
+    \right]
+    =
+    \left[
+        \begin{array}{cc}
+            a_0 & a_3 \\
+            a_1 & a_4 \\
+            a_2 & a_5 \\
+        \end{array}
+    \right]
+\end{equation*}
+
+Sabiendo todo lo anterior, se le pide:
+\begin{enumerate}
+    \item Una función \texttt{producto\_escalar(matriz, escalar}. Retorna la multiplicación de la matriz por el número.
+    \begin{lstlisting}[style=consola]
+>>> [*m = [[5, 7, 8], [4, 3, 2]]*]
+>>> [*producto_punto(m, 0.5)*]
+[[2.5, 3.5, 4.0], [2.0, 1.5, 1.0]]
+    \end{lstlisting}
+    
+    \item[b.] Una función \texttt{suma(matriz\_1, matriz\_2)} que retorna la suma de las 2 matrices. Si las matrices son de distinta dimension, retorna \texttt{None}.
+    \begin{lstlisting}[style=consola]
+>>> [*m1 = [[1, 2, 6], [3, 4, 22]]*]
+>>> [*m2 = [[5, 7, 8], [4, 3, 2]]*]
+>>> [*suma(m1, m2)*]
+[[6, 9, 14], [7, 7, 24]]
+    \end{lstlisting}
+    
+    \item[$\gamma$.] Una función \texttt{resta(matriz1, matriz2)}. Retorna el resultado de la resta entre la matriz1 y la matriz2. Tenga en consideración que puede usar funciones anteriores.
+    \begin{lstlisting}[style=consola]
+>>> [*m1 = [[1, 2, 6], [3, 4, 22]]*]
+>>> [*m2 = [[5, 7, 8], [4, 3, 2]]*]
+>>> [*resta(m1, m2)*]
+[[-4, -5, -2], [-1, 1, 20]]
+    \end{lstlisting}
+    
+    \item[$\square$.] Una función \texttt{traspuesta(matriz)}. Retorna la traspuesta de la matriz.
+    \begin{lstlisting}[style=consola]
+>>> [*traspuesta([[1, 2, 6], [3, 4, 22]])*]
+[[1, 3], [2, 4], [6, 22]]
+    \end{lstlisting}
+    
+\end{enumerate}

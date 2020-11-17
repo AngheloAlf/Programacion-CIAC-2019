@@ -1,0 +1,273 @@
+\section{Re-haciendo una página}
+
+El dueño de la página que tiene la comunidad mas grande en internet \textbf{NOMBRE} está teniendo problemas con el servidor la gestión de los datos de su página, datos se han borrado y/o se han corrompido. 
+
+Esta página consiste en posts de distintos usuarios, los cuales postean enlaces a otras páginas web y el resto de usuarios pueden comentar dicho post.
+
+Además, los usuarios pueden dar un \texttt{upvote} o \texttt{downvote} para indicar si un post o comentario les agrada o no. Este voto es secreto.
+
+Dado que la página tiene problemas, le han pedido ayuda a usted, memero experto, para poder crear un nuevo servidor, el cual no sufra estos problemas. Usted, como fanático y parte de dicha comunidad, ha aceptado.
+
+Le han explicado que, dado que se maneja una cantidad increíblemente grande de datos, prefieren mantener el formato de las bases de datos que han estado usando hasta ahora en vez de migrar a algo mas moderno. Este formato son archivos \texttt{.csv} (\textit{comma separated values} o \textit{valores separados por comas}).
+
+Le han enviado un extracto del archivo que almacena los \textit{posts} para que usted pueda trabajar:
+\begin{center}
+    \texttt{posts.csv} \\
+	\begin{tabular}{|l|}
+		\hline
+post\_id,titulo,meme\_url,usuario\_id,etiquetas,upvotes,downvotes,fecha\\
+74,seal,https://v.redd.it/zy00ryora2b21/DASH\_600\_K,3,mascotas-chistoso-wholesome,6123,248,2017-08-26\\
+42,Como aprobar los ramos,https://youtu.be/dQw4w9WgXcQ,666,secreto-prestigio,7483,67,2009-10-24\\
+53,wholesome,https://i.redd.it/22knpohaj2e41.jpg,42,wholesome-games,4643,193,2019-04-15\\
+34,Music to study,https://youtu.be/GuZzuQvv7uc,42,relajacion-musica,45,125,2009-10-02\\
+39,Die inside; smile outside,https://v.redd.it/ebu0ku09b9j31/DASH\_720,24,baile,10241,134,2013-07-10\\
+47,Saido chesto IRL,https://youtu.be/sfHvgPJPMXk,42,baile-meme-anime-chistoso,48908,720,2019-09-16\\
+67,official python humor,https://www.python.org/doc/humor/,666,humor-meme-python,342,714,2007-11-03\\
+57,aporte,https://www.instagram.com/p/B8cmxlIFqw8,3,chistoso-prestigio-meme-u,113,0,2020-02-11\\
+27,dance jo dance jo,https://i.redd.it/zaqvpdycfed41.png,42,baile-meme-games,1616,16,2019-05-18\\
+1,Gatito,https://v.redd.it/sefhvpc81x541/DASH\_720,3,chistoso-gatos-mascotas,17,4,2016-09-27\\
+45,cocinando como un pro,https://i.redd.it/eo4ic91v3l021.jpg,43,cocina-meme-chistoso,9741,438,2018-11-08\\
+		\hline
+	\end{tabular}
+\end{center}
+
+La primera linea del archivo indica los nombres de cada columna. Esta linea siempre debe ser la primera. El resto de lineas respetan la estructura de esta linea.
+
+\begin{itemize}
+\itemsep0em 
+    \item \texttt{post\_id} es el identificador único de dicho post, es un valor numérico.
+    \item \texttt{titulo} corresponde al titulo del post. No puede contener comas.
+    \item \texttt{meme\_url} es el enlace a algún otro sitio web.
+    \item \texttt{usuario\_id} es el id del usuario que posteó este post.
+    \item \texttt{etiquetas} es una lista de etiquetas relacionadas con el post separadas por guiones ('\texttt{-}'). Un post puede no tener etiquetas.
+    \item \texttt{upvotes} representa la cantidad de votos positivos que ha recibido este post.
+    \item \texttt{downvotes} representa la cantidad de votos negativos que ha recibido este post.
+    \item \texttt{fecha} es la fecha en que se posteó este post. Tiene el formato \texttt{AÑO-MES-DIA}.
+\end{itemize}
+
+Además, le han enviado un extracto del archivo de usuarios:
+\begin{center}
+    \texttt{usuarios.csv} \\
+	\begin{tabular}{|l|}
+		\hline
+user\_id,nombre,fecha\_creacion,puntaje,cantidad\_posts\\
+43,ultimate\_chef,2008-04-13,0,0\\
+3,animal\_lover,2007-09-23,0,0\\
+42,xX\_chico\_cool\_Xx,2012-02-14,0,0\\
+666,jesucritos,0020-07-25,0,0\\
+24,jaja xd,2017-11-11,0,0\\
+		\hline
+	\end{tabular}
+\end{center}
+
+Al igual que en el archivo anterior, la primera linea indica los nombres de cada columna.
+
+\begin{itemize}
+\itemsep0em 
+    \item \texttt{user\_id} es el identificador único de este usuario, es un valor numérico.
+    \item \texttt{nombre} corresponde al nombre del usuario. No puede contener comas.
+    \item \texttt{fecha\_creacion} es la fecha en que se creó este usuario. Tiene el formato \texttt{AÑO-MES-DIA}.
+    \item \texttt{puntaje} indica la suma de \texttt{upvotes} y resta de \texttt{downvotes} que ha conseguido este usuario.
+    \item \texttt{cantidad\_posts} corresponde a la cantidad de posts que ha realizado este usuario.
+\end{itemize}
+
+Para generar los \textit{id}s, el sistema genera un número aleatorio y verifica que dicho número no esté ocupado. Además, no importa si el número generado esta ocupado en otro archivo, por ejemplo, si generamos el \textit{id} 43 para un post y este \textit{id} no ha sido utilizado todavía para ningún post, es válido, a pesar de que exista un usuario con el \textit{id} 43.
+
+Para simplificar el proceso de generación de \textit{id}s, usted simplemente buscará el \textit{id} mayor en dicho archivo, le sumará 1 y usara ese resultado como \textit{id}.
+
+
+Teniendo todo esto en cuenta, se ha propuesto generar un prototipo de servidor que interactué con estos archivos e implemente algunas de las funcionalidades antiguas de esta página. Por lo cual se plantea hacer las siguientes funciones:
+
+\begin{enumerate}
+    \item[1.] \texttt{crearUsuario(archUsuarios, nombre, fecha)}. Esta función recibe el nombre del archivo de usuarios, un \texttt{nombre} de usuario (\textit{string}) y una \texttt{fecha} (\textit{tupla} de 3 \textit{enteros}, con el formato \texttt{(año, mes, día)}).
+
+    Esta función agrega al final del archivo el usuario, sin modificar el orden que tenga el archivo. Se debe verificar que no exista otro usuario con el mismo nombre.
+
+    El \textit{id} debe generarse según lo antes estipulado. \texttt{puntaje} y \texttt{cantidad\_posts} deben ser ceros.
+
+    Esta función retorna \texttt{True} si se pudo crear el usuario, o \texttt{False} en caso contrario.
+
+    \begin{lstlisting}[style=consola]
+>>> [*print(crearUsuario("usuarios.csv", "full detonao", (2020, 2, 12)))*]
+True
+>>> [*print(crearUsuario("usuarios.csv", "jaja xd", (2020, 2, 12)))*]
+False
+    \end{lstlisting}
+
+\end{enumerate}
+
+\begin{center}
+    \texttt{usuarios.csv} \\
+	\begin{tabular}{|l|}
+		\hline
+user\_id,nombre,fecha\_creacion,puntaje,cantidad\_posts\\
+43,ultimate\_chef,2008-04-13,0,0\\
+3,animal\_lover,2007-09-23,0,0\\
+42,xX\_chico\_cool\_Xx,2012-02-14,0,0\\
+666,jesucritos,0020-07-25,0,0\\
+24,jaja xd,2017-11-11,0,0\\
+667,full detonao,2020-2-12,0,0 \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{enumerate}
+
+    \item[b.] \texttt{cambiarNombreUsuario(archUsuarios, idUser, nombreNuevo)}. Esta función recibe el nombre del archivo de usuarios, la \textit{id} de un usuario como \textit{string} y el nombre nuevo de dicho usuario.
+
+    Esta función debe cambiar el nombre de usuario asociado a \texttt{idUser}, y se debe mantener el mismo orden del archivo. Se debe verificar que no exista otro usuario con ya tenga el nuevo nombre de usuario que vamos asignar.
+    
+    Esta función retorna \texttt{True} si se cambió el nombre satisfactoriamente, o \texttt{False} si no existía un usuario con dicho \textit{id} o el nombre de usuario ya estaba ocupado.
+
+    \begin{lstlisting}[style=consola]
+>>> [*print(cambiarNombreUsuario("usuarios.csv", "42", "cool_guy"))*]
+True
+>>> [*print(cambiarNombreUsuario("usuarios.csv", "24", "animal_lover"))*]
+False
+    \end{lstlisting}
+
+\end{enumerate}
+
+\begin{center}
+    \texttt{usuarios.csv} \\
+	\begin{tabular}{|l|}
+		\hline
+user\_id,nombre,fecha\_creacion,puntaje,cantidad\_posts\\
+43,ultimate\_chef,2008-04-13,0,0\\
+3,animal\_lover,2007-09-23,0,0\\
+42,cool\_guy,2012-02-14,0,0\\
+666,jesucritos,0020-07-25,0,0\\
+24,jaja xd,2017-11-11,0,0\\
+667,full detonao,2020-2-12,0,0 \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{enumerate}
+
+    \item[$\gamma$.] \texttt{buscarPostsFechaIncorrecta(archPosts, archUsuarios)}. Esta función recibe el nombre de los archivos de posts y de usuarios.
+
+    Esta función retorna una \textit{lista} de \textit{id}s de posts (como \textit{strings}). Estos posts corresponden a todos aquellos que su fecha de posteo sea menor que la fecha de creación de la cuenta que lo posteó. (¿Como un usuario podría postear algo si todavía no existe dicho usuario?).
+
+    \begin{lstlisting}[style=consola]
+>>> [*print(buscarPostsFechaIncorrecta("posts.csv", "usuarios.csv"))*]
+["34", "39"]
+    \end{lstlisting}
+
+    \item[$\square$.] \texttt{postear(archPosts, archUsers, titulo, url, usuario, etiquetas, fecha)}. Esta función recibe los nombres de los archivos de posts y usuarios, un \texttt{titulo} como \textit{string} para el post, el \texttt{url} que queremos postear (como \textit{string} también), el nombre del \texttt{usuario} que está posteando, una \textit{lista} de \textit{strings} de \texttt{etiquetas} relacionadas, y finalmente una \textit{tupla} de \textit{enteros} la cual indica la fecha en la cual se está posteando el post (esta tupla tiene el formato \texttt{(AÑO, MES, DIA)}).
+
+    Esta función debe agregar al final del archivo de posts el post generado, generando un \textit{id} valido según las reglas especificadas anteriormente, y dejando los valores de \textit{upvotes} y \textit{downvotes} como ceros. Además debe verificar que el usuario entregado exista, en caso de que no exista, no se debe postear el post.
+
+    Además debe considerar que, como estos archivos estan separados por comas, el titulo del post no puede contener comas, por lo cual debe reemplazar las comas ('\texttt{,}') por punto y comas ('\texttt{;}').
+
+    Esta función retorna \texttt{True} si se pudo postear satisfactoriamente, o \texttt{False} si no se pudo postear (el usuario no existía).
+
+    \begin{lstlisting}[style=consola]
+>>> [*titu = "ski-ba-bop,ba-dop-bop"*]
+>>> [*url = "https://www.youtube.com/watch?v=Hy8kmNEo1i8"*]
+>>> [*fecha = (2020, 2, 12)*]
+>>> [*etiquetas = ["musica", "retro"]*]
+>>> [*postear("posts.csv", "usuarios.csv", titu, url, "cool_guy", etiquetas, fecha)*]
+True
+>>> [*url2 = "http://pagina.falsa/meme"*]
+>>> [*postear("posts.csv", "usuarios.csv", "jaja", url2, "hackerman", [], fecha)*]
+False
+    \end{lstlisting}
+
+\end{enumerate}
+
+\begin{center}
+    \texttt{posts.csv} \\
+	\begin{tabular}{|l|}
+		\hline
+post\_id,titulo,meme\_url,usuario\_id,etiquetas,upvotes,downvotes,fecha\\
+\# lineas omitidas...\\
+45,cocinando como un pro,https://i.redd.it/eo4ic91v3l021.jpg,43,cocina-meme-chistoso,9741,438,2018-11-08\\
+75,ski-ba-bop;ba-dop-bop,https://www.youtube.com/watch?v=Hy8kmNEo1i8,42,musica-retro,0,0,2020-2-12\\
+        \hline
+	\end{tabular}
+
+Se omitieron la mayoría de las lineas por comodidad, el archivo real debería tenerlas.
+
+\end{center}
+
+\begin{enumerate}
+
+    \item[c.] \texttt{contarEtiquetas(archPosts)}. Recibe el archivo de posts. Retorna un diccionario, donde las llaves son todas las etiquetas que se han usado para los posts, y los valores son listas de \textit{id}s de posts que han sido etiquetados con la etiqueta respectiva.
+
+    \begin{lstlisting}[style=consola]
+>>> [*print(contarEtiquetas("posts.csv"))*]
+{'mascotas': ['74', '1'], 'chistoso': ['74', '47', '57', '1', '45'], 
+'wholesome': ['74', '53'], 'secreto': ['42'], 'prestigio': ['42', '57'], 
+'games': ['53', '27'], 'relajacion': ['34'], 'musica': ['34', '75'], 
+'baile': ['39', '47', '27'], 'meme': ['47', '67', '57', '27', '45'], 
+'anime': ['47'], 'humor': ['67'], 'python': ['67'], 'u': ['57'], 
+'gatos': ['1'], 'cocina': ['45'], 'retro': ['75']}
+    \end{lstlisting}
+
+    \item[$\beta$. ] \texttt{actualizarCantidadPosts(archUsuarios, archPosts)}. Esta función recibe los archivos de usuarios y de posts. Debe contar todos los posts que ha realizado un usuario y actualizar la cantidad de posts que ha realizado ese usuario. Esto para todos los usuarios.
+
+    Esta función retorna la cantidad total de posts que se han realizado.
+    \begin{lstlisting}[style=consola]
+>>> [*print(actualizarCantidadPosts("usuarios.csv", "posts.csv"))*]
+12
+    \end{lstlisting}
+
+\end{enumerate}
+
+\begin{center}
+    \texttt{usuarios.csv} \\
+	\begin{tabular}{|l|}
+		\hline
+user\_id,nombre,fecha\_creacion,puntaje,cantidad\_posts\\
+43,ultimate\_chef,2008-04-13,0,1\\
+3,animal\_lover,2007-09-23,0,3\\
+42,cool\_guy,2012-02-14,0,5\\
+666,jesucritos,0020-07-25,0,2\\
+24,jaja xd,2017-11-11,0,1\\
+667,full detonao,2020-2-12,0,0\\
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{enumerate}
+
+    \item[\textbullet.] \texttt{ordenarPorId(archivo)}. Esta función recibe el nombre de un archivo. Esta función ordena el archivo según el \texttt{id} (primer elemento de cada fila de los valores separados por comas). Esta función retorna nada.
+
+    Ojo que esta función debe ordenar cualquier archivo que siga alguna de las estructuras antes descritas. También debe considerar que la linea que contiene qué es cada columna siempre es la primera linea y siempre debe ser la primera.
+
+    \begin{lstlisting}[style=consola]
+>>> [*print(ordenarPorId("usuarios.csv"))*]
+>>> 
+    \end{lstlisting}
+
+\end{enumerate}
+
+\begin{center}
+    \texttt{usuarios.csv} \\
+	\begin{tabular}{|l|}
+		\hline
+user\_id,nombre,fecha\_creacion,puntaje,cantidad\_posts\\
+3,animal\_lover,2007-09-23,0,3\\
+24,jaja xd,2017-11-11,0,1\\
+42,cool\_guy,2012-02-14,0,5\\
+43,ultimate\_chef,2008-04-13,0,1\\
+666,jesucritos,0020-07-25,0,2\\
+667,full detonao,2020-2-12,0,0\\
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{enumerate}
+    \item[-0.] \texttt{mostrarPost(archPost, idPost)}. Recibe el nombre del archivo de posts y el \textit{id} de un post. Retorna un diccionario cuyas llaves son las columnas del archivo de posts, y los valores son los valores correspondientes del post asociado a \texttt{idPost}. 
+    
+    Estos valores deben ser convertidos a los tipos de datos apropiados (los números deben ser \textit{int}s, \texttt{etiquetas} debe ser una \textit{lista} y \texttt{fecha} debe ser una \textit{tupla}).
+
+    \begin{lstlisting}[style=consola]
+>>> [*print(mostrarPost("posts.csv", "74"))*]
+{'post_id': 74,  'usuario_id': 3, 'upvotes': 6123, 'downvotes': 248,
+'etiquetas': ['mascotas', 'chistoso', 'wholesome'], 'fecha': (2017, 8, 26),
+'meme_url': 'https://v.redd.it/zy00ryora2b21/DASH_600_K', 'titulo': 'seal'}
+    \end{lstlisting}
+
+\end{enumerate}

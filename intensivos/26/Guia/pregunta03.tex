@@ -1,0 +1,65 @@
+\section{Automotora Pycar}
+
+Nota: en el siguiente enlace puede encontrar los archivos de texto para la realización de esta pregunta: \texttt{https://bit.ly/30zZtJ7}
+
+La automotora PyCar requiere generar información importante con respecto a sus ventas.
+Principalmente requiere realizar un análisis sobre el desempeño de sus vendedores así como también sobre la evolución de las ventas que se van realizando.
+
+Para lograr este propósito, PyCar tiene almacenado en un archivo del tipo \texttt{productos.txt} la información del precio de los automóviles que tiene a la venta. Cada producto viene especificado por la marca del automóvil, el modelo y el precio de venta. Por otro lado, PyCar almacena en un archivo del tipo \texttt{ventas.txt}, cada una de las transacciones realizadas por concepto de la venta
+de un automóvil (ordenadas por fecha), esta información cuenta con el día de la venta, la hora en que se ha realizado, el modelo del automóvil, la marca del mismo y el código del vendedor que ha realizado la transacción. 
+
+\paragraph{Nota:} los archivos son ejemplos, su programa debe funcionar para toda la cantidad de automóviles que puede tener la automotora y para todas las ventas que se han realizado durante el todo año.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.8]{Imagenes/autos.png}
+\end{figure}
+
+Con el fin de ayudar a PyCar en sus requerimientos, Ud. debe realizar lo siguiente:
+
+\begin{itemize}
+    \item[$\Sigma$.] Desarrolle la función \texttt{precios(archivo)} que recibe el nombre del archivo con la información de los productos y retorne un diccionario, donde la llave sea el modelo del automóvil y el valor sea el precio del mismo.
+    
+\begin{lstlisting}[style=consola]
+>>> [*prod = 'productos.txt'*]
+>>> [*dict_precios = precios(prod)*]
+>>> [*print(dict_precios)*]
+{'rav4': 12090000, 'corolla': 9390000, 'accent': 7390000, 
+'nomade': 9990000, 'yaris': 7890000, 'tucson': 11690000, 
+'santafe': 15790000, 'swift': 7190000, 'vitara': 9490000}
+\end{lstlisting}
+
+    \item[$\beta$.] Desarrolle la función \texttt{total\_ventas\_mes(codigo, mes, archivo1, archivo2)} que recibe el código de un vendedor, un mes en particular, el nombre del archivo con la información de los productos y el nombre del archivo con la información de las ventas y retorne el total de ventas que ha realizado el vendedor en ese mes.
+    
+\begin{lstlisting}[style=consola]
+>>> [*vent = 'ventas.txt'*]
+>>> [*total = total_ventas_mes(4523, 10, prod, vent)*]
+>>> [*print(total)*]
+23680000
+\end{lstlisting}
+    \item[$\alpha$.] Desarrolle la función \texttt{venta\_diaria(archivo1,archivo2)} que recibe el nombre del archivo con la información de los productos y el nombre del archivo con la información de las ventas y genere el archivo \texttt{venta\_diaria.txt} indicando la venta total que se ha realizado por día.
+
+
+\begin{center}
+\includegraphics[scale=0.7]{Imagenes/ventadiaria.png}
+\end{center}
+
+    \item[$\heartsuit$.] \texttt{venta\_por\_marca(archivo1, archivo2)}. Esta función recibe nombres de archivos que posean estructuras acordes a las antes descritas.
+    
+    Esta función genera varios archivos. Cada archivo contiene la venta diaria de una marca, el cual indica cuanto dinero se recaudo por ventas de dicha marca ese día. El nombre de cada archivo debe ser "\texttt{marca.txt}", donde \texttt{marca} es la marca correspondiente, por ejemplo "\texttt{toyota.txt}"
+    
+    Si un día no se vendió nada de esa marca, no se agrega esa fecha al archivo.
+    
+\begin{center}
+    \texttt{suzuki.txt} 
+    
+    \begin{tabular}{|l|}
+\hline
+2014/9/30:28970000 \\
+2014/10/1:9490000 \\
+2014/10/2:9490000 \\
+\hline
+    \end{tabular}
+\end{center}
+
+\end{itemize}

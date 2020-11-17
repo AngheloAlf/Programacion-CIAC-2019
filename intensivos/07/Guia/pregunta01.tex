@@ -1,0 +1,43 @@
+\section{Servicio de Inteligencia de Pythonia}
+(Certamen 1, octubre 2017) El servicio de inteligencia de pythonia ha estado monitoreando los mensajes de texto que recibe el líder del país de Javapilis, y ha detectado un patrón en éstos, pero no ha podido descifrar que dicen los mensajes, puesto que requieren de un servicio rápido. Como han estado celebrando la pascua del conejo, nadie ha tenido tiempo de implementar una solución, por lo que han acudido a ud para que los apoye en esta importante misión.
+
+Ellos detectaron que el líder recibe muchas palabras, pero sólo las que contienen una \textbf{clave} en alguna parte, son consideradas en el mensaje. Además notaron que cuando quieren dar por finalizado un mensaje, usan la palabra \textbf{out}. notar que en Javapolois, sólo trabajan con letras minúsculas.
+
+Se le pide a usted programar lo siguiente:
+
+\begin{itemize} 
+
+\item \texttt{get\_pos(palabra,clave)}, la cual recibe dos strings con una palabra y una clave, devuelve la posición en la cual comienza la clave dentro de la palabra y en caso contrario retorna -1. Notar que las posiciones comienzan desde 0.
+
+\begin{lstlisting}[style=consola]
+>>> [*get_pos("repollo", "pollo")*]
+2
+>>> [*get_pos("El conejito tiene los huevos escondidos.", "los")*]
+18
+>>> [*get_pos("El CIAC es un gran lugar para estudiar.", "Javapilis")*]
+-1
+\end{lstlisting}
+
+\item \texttt{get\_palabra(palabra,clave)}, la cual recibe dos strings como parámetro, y retorna la palabra sin la clave, note que si falta clave en palabra, esta función retorna -1.
+
+\begin{lstlisting}[style=consola]
+>>> [*get_palabra("El conejito tiene los huevos escondidos.", "los")*]
+El conejito tiene  huevos escondidos.
+\end{lstlisting}
+
+\item Finalmente, desarrolle un programa que solicite el ingreso de la clave que se usó para encriptar las palabras y luego solicite el ingreso de palabras hasta que se ingrese el texto \textbf{out}. En dicho momento dejará de pedir palabras y desplegará por pantalla el mensaje oculto, descifrado.
+\begin{lstlisting}[style=consola]
+Ingrese clave: [*guau*]
+Ingrese palabra: [*prograguaumar
+Ingrese palabra: [*ayuwoki*]
+Ingrese palabra: [*eguaun*]
+Ingrese palabra: [*CIguauAC*]
+Ingrese palabra: [*stdout*]
+Ingrese palabra: [*shingeki vuelve este domingo*]
+Ingrese palabra: [*eguaus*]
+Ingrese palabra: [*divertiguaudo*]
+Ingrese palabra: [*out*]
+El mensaje oculto es programar en CIAC es divertido
+\end{lstlisting}
+
+\end{itemize}

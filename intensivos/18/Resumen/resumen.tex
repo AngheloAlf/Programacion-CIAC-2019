@@ -1,0 +1,36 @@
+\section*{Resumen}
+
+\texttt{diccionario = \{llave1:valor1, llave2:valor2, ..., llaven:valorn\}}
+
+\begin{itemize}
+    \item Colecciones que asocian un valor a una llave, son indexadas, pero el índice es la llave.
+    \item Para inicializar -> \texttt{diccionario=\{\}}, \texttt{diccionario=dict()}
+    \item Las llaves no se pueden repetir ni cambiar, los valores si.
+    \item Para acceder a un valor:
+\begin{lstlisting}[style=consola]
+>>> diccionario["llave1"]
+"valor1"
+\end{lstlisting}
+
+    \item Para agregar un elemento al diccionario:
+\begin{lstlisting}[style=consola]
+>>> diccionario[llave] = valor
+\end{lstlisting}
+
+    \item Para eliminar un par llave-valor:
+\begin{lstlisting}[style=consola]
+>>> del diccionario[llave]
+\end{lstlisting}
+
+    \item Si se introduce una una llave que no existe, se agrega al diccionario. Si se introduce una llave que ya existe se reemplaza el valor anterior con el ingresado.
+    
+    \item Existen distintas formas de recorrer los diccionarios.
+    
+    \begin{itemize}
+        \item \texttt{for i in diccionario:} Recorre sólo las llaves.
+        \item \texttt{for i in diccionario.keys():} Al igual que el anterior, recorre solo las llaves.
+        \item \texttt{for i in diccionario.values():} Recorre solo los valores.
+        \item \texttt{for i in diccionario.items():} Recorre una lista de tuplas de la forma \texttt{(llave, valor)}
+    \end{itemize}
+    
+\end{itemize}

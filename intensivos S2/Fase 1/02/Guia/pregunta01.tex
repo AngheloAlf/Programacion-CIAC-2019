@@ -1,0 +1,52 @@
+\section{Listas, tuplas y autos}
+
+Una compra-venta de autos tiene la información de sus vehículos en una lista de tuplas de la forma \texttt{modelo, kilometraje, antigüedad, precio, patente}. Este negocio quiere implementar un sistema de filtro en Python para que el usuario encuentre su coche más conveniente, para lo que crea la lista categorías para ayudar al acceso mediante índices de los distintos parámetros a elegir.
+
+\begin{lstlisting}[style=consola]
+autos=[('Impreza',35000,7,9990000,'CC1212'),
+       ('Lancer',20000,4,8500000,'GGWP88'),
+       ('Palio',45000,10,5000000,'XG1907'),
+       ('Camaro',5000,1,30000000,'FMBB80'),
+       ('Corsa',23000,5,3500000,'FGDW20'),
+       ('i20',50000,8,4500000,'IG2030') ]
+        
+categorias=['modelo','kilometraje','antiguedad','precio','patente']
+\end{lstlisting}
+
+Programe las siguientes funciones
+
+\begin{itemize}
+    \item[a.] \texttt{intersectar(lista1,lista2)} que recibe dos listas y retorna una lista con los elementos que se encuentran en ambas listas, sin repetición.
+    
+\begin{lstlisting}[style=consola]
+>>> [*intersectar([1,2,3,4,5,6],[4,5,6,7,8,9])*]
+[4, 5, 6]
+\end{lstlisting}
+    \item[b.] \texttt{filtro\_categoria(categoria,valor,autos)} que reciba como parámetro un string con la categoría a filtrar, un entero con el valor máximo que puede tener el auto filtrado y una lista con tuplas con datos de autos. Esta función retorna una lista con los elementos de la lista principal \texttt{autos} que cumplan con el filtro. En el ejemplo se muestran los autos cuyo precio es menor o igual a 9 millones.
+    
+\begin{lstlisting}[style=consola]
+>>> [*filtro_categoria('precio',9000000,autos)*]
+[('Lancer', 20000, 4, 8500000, 'GGWP88'), 
+('Palio', 45000, 10, 5000000, 'XG1907'), 
+('Corsa', 23000, 5, 3500000, 'FGDW20'), 
+('i20', 50000, 8, 4500000, 'IG2030')]
+\end{lstlisting}
+
+    \item[c.] \texttt{filtro\_compuesto(parametros,valores,autos)} que reciba una lista de parámetros con sus respectivos valores a filtrar (en una lista en el mismo orden) y la estructura de autos. Esta función debe filtrar usando los números de la lista valores como el valor máximo que puede tener el auto. Retorna una lista de tuplas. En el ejemplo se muestran los autos con menos de 8 años de antigüedad y más baratos que 9 millones.
+    
+\begin{lstlisting}[style=consola]
+>>> [*parametros=['antiguedad','precio']*]
+>>> [*valores=[8,9000000]*]
+>>> [*filtro_compuesto(parametros,valores,autos)*]
+[('Lancer', 20000, 4, 8500000, 'GGWP88'), 
+('Corsa', 23000, 5, 3500000, 'FGDW20'), 
+('i20', 50000, 8, 4500000, 'IG2030')]
+\end{lstlisting}
+
+    \item[d.] \texttt{ranking\_con\_filtro(parametros,valores,autos,cantidad)} que recibe los mismos tres datos de la función anterior, pero además un entero que indica la cantidad de autos que se retornará en una lista. Considere que el puntaje de un auto se da por el \textbf{producto de su kilometraje, antigüedad y precio}, donde los mejores autos son los que tienen este número más bajo. La lista que retorna esta función tiene las patentes de los autos ordenadas según el puntaje de menor a mayor.
+
+\begin{lstlisting}[style=consola]
+>>> [*ranking_con_filtro(parametros,valores,autos,2)*]
+['FGDW20', 'GGWP88']
+\end{lstlisting}    
+\end{itemize}

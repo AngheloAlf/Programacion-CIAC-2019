@@ -1,0 +1,52 @@
+\section{Ampolletas}
+
+El maquiavélico archi-enemigo de nuestro noble héroe \textit{Jonh Estrella}, el desalmado sujeto llamado \textit{Brando} ha logrado su objetivo de volverse un vampiro inmortal y súper-poderoso, el cual no pareciera tener debilidades... a excepción de una, la luz solar.
+
+Como este villano es muy inteligente, calculador y precavido, nuestro héroe sabe que no lograra hacer que \textit{Brando} se descuide y salga al exterior de día. Por lo que nuestro héroe, acompañado del veloz e intachable \textit{Wagon}, han decido intentar tenderle una trampa a dicho villano.
+
+Esta trampa consiste en concentrar muchísimas ampolletas, con el objetivo de lograr igualar el poder lumínico del sol, todo esto impulsado por una única batería.
+
+En base a esto, saltan varias inquietudes, como ¿Cuantas ampolletas necesitaran para poder igualar al sol?, ó ¿Cuanta energía necesitarían para tantas ampolletas? Por lo que se ponen a investigar y se dan cuenta de que hay muchas opciones en el mercado, por lo que deben calcular cual es la opción óptima en base a la siguiente ecuación:
+\begin{equation*}
+    C = I*H*\sqrt[1.15]{\frac{t}{H}}
+\end{equation*}
+
+Donde \texttt{C} es Capacidad de la batería [Amperio-Hora], \texttt{I} es Consumo [Amperio], \texttt{H} es Base de tiempo definida por el fabricante [Hora] y \texttt{t} es la Autonomía esperada de la batería [Hora].
+
+Para poder calcular el consumo de las ampolletas, podemos usar la siguiente formula:
+
+\begin{equation*}
+    I = \frac{PotenciaAmpolleta_{1}[Watt] + PotenciaAmpolleta_{2}[Watt] + ...}{VoltajeBateria}
+\end{equation*}
+
+Sabiendo todo esto, nuestros héroes necesitan poder calcular cual sera la mejor opción a comprar, por lo que le piden a usted hacer un programa en Python que los ayude con tan difícil desafío.
+
+El programa debe pedir el \texttt{H}, la autonomía en horas que quieren que tenga esta batería, el voltaje de la batería, los Watts del sol, y la información de las ampolletas. Todas estas cantidades están en el conjunto de los reales.
+Como las ampolletas se venden por packs, donde cada pack tiene un precio, una cantidad de ampolletas y la potencia de cada ampolleta, usted debe ajustarse a eso, pidiendo los datos de cada pack a comprar. Debe dejar de pedir ampolletas cuando la potencia acumulada de todas las ampolletas alcance o supere los Watts del sol. 
+Luego debe mostrar por pantalla cual debe ser la capacidad de la batería a comprar y cuanto se gastaría en ampolletas.
+
+A nuestros héroes les gustaría saber que pack tiene la ampolleta mas barata según su potencia y su precio unitario.
+
+Puede guiarse por el siguiente ejemplo de ejecución:
+
+\begin{lstlisting}[style=consola]
+Base del tiempo de bateria [Amp-Hr]: [*20*]
+Autonomia de bateria [Hr]: [*0.1*]
+Voltaje de bateria [Volt]: [*12*]
+Potencia del sol [Watt]: [*3000000000000000000*]
+
+Precio pack 1 [$]: [*685937500000000000*]
+Cantidad pack 1: 5859375000000000
+Potencia pack 1 [Watt]: [*256*]
+Precio pack 2 [$]: [*987563750000000000*]
+Cantidad pack 2: [*6000000000000000*]
+Potencia pack 2 [Watt]: [*1024*]
+
+La capacidad de la bateria a comprar es 1.271375328680958e+17.
+Se gastaria 1.67350125e+18 en ampolletas.
+El pack mas barato es el 1, con precio unitario 117.06666666666666 por ampolleta
+\end{lstlisting}
+
+${\text{ }}_{\text{Creían que era un ejercicio de programación}_{\text{¡pero era yo, Dio!}}}$
+
+

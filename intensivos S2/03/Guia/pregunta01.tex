@@ -1,0 +1,39 @@
+\section{Impuesto a la renta}
+
+Para practicar su buena creación de funciones, considere que existe un programa para calcular los impuestos generados por varias entidades, ya sean empresas o personas. Con respecto a lo anterior los impuestos se calculan de la siguiente manera
+\begin{itemize}
+    \item En caso de ser una empresa, el impuesto es del 27\%
+    \item En caso de ser una persona, el impuesto varía según su renta
+    \begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\multicolumn{2}{|c|}{\textbf{Renta líquida}} & \textbf{Impuesto} \\ \hline
+\textbf{Desde} & \textbf{Hasta} & \textbf{Porcentaje} \\ \hline
+- & 664.591 & 0 \\ \hline
+664.592 & 1.476.870 & 4 \\ \hline
+1.476.871 & 2.461.450 & 8 \\ \hline
+2.461.451 & 3.446.030 & 13,5 \\ \hline
+3.446.031 & 4.430.610 & 23 \\ \hline
+4.430.611 & 5.907.480 & 30,4 \\ \hline
+5.907.481 & Y MAS & 35 \\ \hline
+\end{tabular}
+\end{table}
+\end{itemize}
+
+El programa tiene una estructura como la siguiente, pero falta completar la información que está tapada con signos de pregunta (?). Complete el algoritmo y cree la función \texttt{impuesto(monto,tipo)} que reciba un entero \texttt{monto} con la renta líquida de la entidad, y un string \texttt{tipo} con el tipo de entidad (\textit{empresa} o \textit{persona}).
+
+\lstinputlisting[style=mypy,caption=\texttt{impuesto.py}]{Code/vacio.py}
+
+El funcionamiento del programa anterior debería ser
+
+\begin{lstlisting}[style=consola]
+Ingrese tipo de entidad: [*empresa*]
+Ingrese renta liquida: [*3000000*]
+Ingrese tipo de entidad: [*persona*]
+Ingrese renta liquida: [*3580000*]
+Ingrese tipo de entidad: [*persona*]
+Ingrese renta liquida: [*300000*]
+Ingrese tipo de entidad: # Aqui se presiona enter sin ingresar nada 
+El total recaudado fue 1633400.0
+\end{lstlisting}

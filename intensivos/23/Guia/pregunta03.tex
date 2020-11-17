@@ -1,0 +1,53 @@
+\section{Valijas}
+
+Una empresa de encomiendas almacena la información de despacho de valijas haciendo uso de las siguientes estructuras:
+
+\begin{itemize}
+    \item \texttt{encomiendas} corresponde a una lista de tuplas, donde el primer valor de cada tupla representa el código de una valija y el segundo valor corresponde a una tupla, con el largo, alto y ancho de esta en centímetros.
+
+    \item \texttt{destinos} es una lista de tuplas. Cada tupla esta compuesta por el código de la valija y la tupla (x, y) correspondiente al punto donde debe ser entregada en km.
+\end{itemize}
+
+A continuación se presenta un ejemplo de las estructuras:
+
+\begin{lstlisting}[style=consola]
+encomiendas = [
+(10234, (90, 90, 50)),
+(34102, (100, 140, 20)),
+(36890, (25, 50, 70)),
+# ...
+]
+destinos = [
+(10234, (-4, 15)),
+(36890, (2, 4)),
+(34102, (40, -13)),
+# ...
+]
+\end{lstlisting}
+
+El ingreso (monetario) que obtiene la empresa por trasladar una valija depende del volumen ($cm^{3}$) y la distancia. La formula para calcular el ingreso en pesos es: 
+
+\begin{center}
+    $ingreso = 0,1 * volumen * distancia$
+\end{center}
+
+Donde el volumen se obtiene multiplicando largo, alto y ancho de la valija ($cm^{3}$) y la distancia se calcula como:
+
+\begin{center}
+    $distancia = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$
+\end{center}
+
+Considere que la empresa esta ubicada en el punto (0, 0) y los camiones se mueven en linea recta desde la empresa al punto de destino a una velocidad de 60km/h.
+
+La empresa dispone de 10 camiones y se desea, de ser posible, asignarle a cada uno un ultimo despacho en el día, el cual no debe tardar mas de 30 minutos en llegar a destino. Por supuesto se desea hacer tal asignación buscando el mayor ingreso para la empresa. 
+
+Para esto, se le solicita a usted crear la función \textbf{viajes\_a\_realizar(encomiendas, destinos)} la cual recibe como parámetro la lista \textbf{encomiendas} y la lista \textbf{destinos} y retorna una lista con a lo mas 10 códigos correspondientes a las valijas a despachar que reportaran el mayor ingreso a la empresa.
+
+Usted puede crear las funciones que estime necesarias para la resolución de este problema. 
+
+
+\begin{lstlisting}[style=consola]
+>>> [*lista_viajes = viajes_a_realizar(encomiendas, destinos)*]
+>>> [*print(lista_viajes)*]
+[10234, 36890]
+\end{lstlisting}

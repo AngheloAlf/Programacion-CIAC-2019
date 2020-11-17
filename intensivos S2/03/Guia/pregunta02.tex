@@ -1,0 +1,51 @@
+\section{Concurso de clavados}
+Piscina USM está organizando un concurso de clavados, para lo cual necesita la ayuda de los estudiantes que van a los intensivos de programación en CIAC para desarrollar un programa que calcule los puntajes de los concursantes.
+
+El programa debe preguntar cuantos puntajes se ingresarán, para después indicar cual fue el puntaje más alto, el más bajo y entregar el puntaje final que es el promedio de los números ingresados \textit{sin considerar ni el más alto ni el más bajo}.
+
+Los puntajes irán en un rango de 0 a 10. Además su programa debe realizar un feedback hacia el concursante dependiendo de su puntaje final.
+\begin{itemize}
+    \item Si el puntaje va desde 8 a 10 responder "\texttt{Excelente!}"
+    \item Si el puntaje va desde 5 a 8 responder "\texttt{Muy bien!}"
+    \item Si el puntaje va desde 3 a 5 responder "\texttt{No esta mal}"
+    \item Si no se cumple ninguna anterior, debe responder "\texttt{Esto no es un concurso de guatazos, sigue practicando!}"
+\end{itemize}
+
+\begin{lstlisting}[style=consola]
+Ingrese numero de puntajes: [*7*]
+Puntaje 1: [*7.7*]
+Puntaje 2: [*3.4*]
+Puntaje 3: [*5.7*]
+Puntaje 4: [*8.9*]
+Puntaje 5: [*6.5*]
+Puntaje 6: [*5.6*]
+Puntaje 7: [*4.2*]
+El puntaje minimo fue 3.4
+El puntaje maximo fue 8.9
+El puntaje final es 5.94
+Muy bien!
+\end{lstlisting}
+
+En el ejemplo se ve como los puntajes \texttt{8.9} y \texttt{3.4} fueron omitidos en el cálculo del promedio.
+
+\begin{lstlisting}[style=consola]
+Ingrese numero de puntajes: [*4*]
+Puntaje 1: [*3.4*]
+Puntaje 2: [*2.2*]
+Puntaje 3: [*1.0*]
+Puntaje 4: [*7.8*]
+El puntaje minimo fue 1.0
+El puntaje maximo fue 7.8
+El puntaje final es 2.8
+Esto no es un concurso de guatazos, sigue practicando!
+\end{lstlisting}
+
+En el ejemplo se ve como los puntajes \texttt{1.0} y \texttt{7.8} fueron omitidos en el cálculo del promedio.
+
+\paragraph{Ejercicio:} \begin{enumerate}
+    \item Escriba una función \texttt{feedback(puntaje)} que reciba como parámetro el puntaje final y retorne un mensaje en string con el feedback respectivo. 
+    \item Escriba el programa respectivo usando la función anterior. Para pedir al usuario un puntaje con un número que va cambiando, procure tener una variable \texttt{i} que vaya desde 1 a n (número de puntajes a ingresar), el código para el mensaje de entrada es
+    \begin{lstlisting}[style=consola]
+puntaje=float(input('Puntaje '+str(i)+': '))
+    \end{lstlisting}
+\end{enumerate}

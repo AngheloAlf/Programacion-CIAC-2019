@@ -1,0 +1,63 @@
+\section{Magíster en Procesamiento de Texto}
+A continuación se muestran distintas tablas, con una columna de entrada y otra de salida. Su tarea es crear una función o un programa que transforme el string de la entrada en el de salida.
+
+\paragraph{Hint:} Suponga que existe una función \texttt{mapear(funcion,lista)} que recibe una lista o iterable y retorna una lista nueva en donde a cada elemento de \texttt{lista} se la aplica \texttt{funcion}.
+
+\lstinputlisting[
+    style  = mypy,
+    caption= \texttt{mapear.py}]{Code/mapear.py}
+
+\begin{lstlisting}[style=consola]
+>>> lista=[1,2,3,4,5]
+>>> mapear(str,lista)
+['1','2','3','4','5']
+\end{lstlisting}
+
+Lo mismo se obtiene usando una función predeterminada de Python llamada \texttt{map}, esta función de por si retorna un iterable, por lo que transformaremos su valor a una lista con la función \texttt{list()}.
+
+\begin{lstlisting}[style=consola]
+>>> list(map(str,lista))
+['1', '2', '3', '4', '5']
+\end{lstlisting}
+
+
+\subsection{Cambiar y borrar elementos}
+\begin{table}[h]
+	\centering
+	\label{replace}
+	\begin{tabular}{|l|l|}
+		\hline
+		\textbf{Entrada}              & \textbf{Salida}                \\ \hline
+		'la tele se apaga'            & 'lo tolo so opogo'             \\ \hline
+		'Miguel es el mejor del CIAC' & 'Miguel es el mejor del mundo' \\ \hline
+		'Ajispirijou'                 & 'Ajosporijou'                  \\ \hline
+		'no tengo barra espaciadora'  & 'notengobarraespaciadora'      \\ \hline
+	\end{tabular}
+\end{table}
+
+\subsection{Separar strings en listas}
+
+\begin{table}[h]
+	\centering
+	\label{split}
+	\begin{tabular}{|l|l|}
+		\hline
+		\textbf{Entrada}                 & \textbf{Salida}                                       \\ \hline
+		'14,15,16,17\textbackslash n'                  & {[}14,15,16,17{]}                                     \\ \hline
+		'a\#3\#b\#5\#c\#7'               & \{'a':3, 'b':5, 'c':7\}                               \\ \hline
+		'oh mira4no gracias4un dos tres' & ( ('ohmira', 6), ('nogracias', 9), ('undostres', 9) ) \\ \hline
+		'Miguel Godoy\#22\#4,3,12\textbackslash n'     & {[}'Miguel',22,{[}4, 3, 12{]} {]}                     \\ \hline
+	\end{tabular}
+\end{table}
+
+\subsection{Unir elementos}
+\begin{table}[h]
+	\centering
+	\label{format y join}
+	\begin{tabular}{|l|l|}
+		\hline
+		\textbf{Entrada}                    & \textbf{Salida}                                                 \\ \hline
+		{[}'panqueques','manjar','pizza'{]} & 'Hoy desayune panqueques con manjar y en la noche cenare pizza' \\ \hline
+		{[}12, 4, 7{]}                      & 'notas\#12,4,7\#semestre1'                                     \\ \hline
+	\end{tabular}
+\end{table}

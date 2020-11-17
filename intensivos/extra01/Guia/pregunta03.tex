@@ -1,0 +1,110 @@
+\section{Hay que mejorar el programa}
+
+Una vez terminado el programa para llevar las notas (ver pagina anterior), ha decidido mostrarle lo que lleva a los profesores. Los profesores se han visto interesados, y le han dado \textit{feedback} para agregar funcionalidades que ellos desean.
+
+Considerando la misma lista anterior, y que ya están implementadas las funcionalidades anteriores, debe programar las siguientes funcionalidades:
+
+\begin{enumerate}
+	\item[\textbullet.] Crear la función \texttt{eliminarEstudiante(estudiantes, nombre)} la cual elimina al estudiante \texttt{nombre} de la lista \texttt{estudiantes}. Retorna \texttt{True} si el estudiante se encontraba en la lista, y \texttt{False} en caso contrario.
+
+\begin{lstlisting}[style=consola]
+>>> [*eliminarEstudiante(estudiantes, "Anghelo")*]
+True
+>>> [*print(estudiantes)*]
+[('Miguel', [45.0, 83.0, 25.0, 70.0], [True, False, True, False, True]), 
+('Diego', [54.0, 94.0, 56.0], [True, True, True, True, True, True])]
+\end{lstlisting}
+
+    \item[$\beta$. ] Crear la función \texttt{promedioGeneral(estudiantes)}, la cual retorna el promedio del promedio de notas de los estudiantes.
+
+\begin{lstlisting}[style=consola]
+>>> [*print(promedioGeneral(estudiantes))*]
+61.875
+\end{lstlisting}
+
+    \item[c.] Crear la función \texttt{cambiarNota(estudiantes, nombre, evaluacion, notaNueva)}, donde \texttt{estudiantes} es la lista anteriormente descrita, \texttt{nombre} es un \textit{string}, \texttt{evaluacion} es un \textit{int} y \texttt{notaNueva} es un \textit{float}. 
+
+    Esta función debe poder modificar la nota numero \texttt{evaluacion} en su lista de notas, eliminando la nota antigua, tomando su lugar \texttt{notaNueva}. 
+
+    Recuerde que los profesores no necesariamente saben de programación. Por ende, si alguno de ellos quiere modificar la nota 1, e indican el 1, debe cambiarse la primera nota, no la segunda. Por lo mismo, tampoco hay nota 0.
+
+    Esta función retorna \texttt{True} si se modifico satisfactoriamente, \texttt{False} si el usuario indico que quería modificar una nota mayor o menor a la cantidad de notas existentes (intento modificar la nota 15, cuando solo hay 11), % chupalo entonce
+    y finalmente retornar \texttt{None} si el alumno \texttt{nombre} no existe en la lista.
+
+\begin{lstlisting}[style=consola]
+>>> [*print(cambiarNota(estudiantes, "Miguel", 3, 75.0))*]
+True
+>>> [*print(cambiarNota(estudiantes, "Anghelo", 1, 100.0))*]
+None
+>>> [*print(estudiantes)*]
+[('Miguel', [45.0, 83.0, 75.0, 70.0], [True, False, True, False, True])
+('Diego', [54.0, 94.0, 56.0], [True, True, True, True, True, True])]
+\end{lstlisting}
+
+    \item[$\frac{d}{dx}$. ] \texttt{desvEstandarEstudiante(estudiantes, nombreEstudiante)}, donde \texttt{estudiantes} es la lista anteriormente descrita y \texttt{nombreEstudiante} es un \textit{string}.
+    
+    Esta función debe calcular la desviación estándar de las notas del estudiante \texttt{nombreEstudiante}. La desviación estándar se calcula segun la formula:
+    \begin{equation*}
+        \sqrt{\sum_{i=1}^{n}{\frac{(x_i - \overline{x})^2}{n}}}
+    \end{equation*}
+
+\begin{lstlisting}[style=consola]
+>>> [*print(desvEstandarEstudiante(estudiantes, "Miguel"))*]
+14.2016724367
+>>> [*print(desvEstandarEstudiante(estudiantes, "Diego"))*]
+18.4028983225
+\end{lstlisting}
+
+    \item[$\sum$. ] \texttt{desvEstandarGeneral(estudiantes)}, donde \texttt{estudiantes} es la lista anteriormente descrita.
+    
+    Al igual que en la pregunta anterior, esta función debe calcular la desviación estándar, pero en vez de que sea para un estudiante especifico, debe calcular la desviación estándar para todo el curso. Use la ecuación planteada en la pregunta anterior.
+
+\begin{lstlisting}[style=consola]
+>>> [*print(desvEstandarGeneral(estudiantes))*]
+16.137177019
+\end{lstlisting}
+
+    \item [$\int$. ] \texttt{aprobadosDelCurso(estudiantes)}, donde \texttt{estudiantes} es la lista anteriormente descrita.
+    
+    Esta función retorna una lista de tuplas, donde cada tupla contiene el nombre de el estudiante aprobado, su promedio de notas y su porcentaje de asistencia. Para que un estudiante apruebe, debe tener al menos un 55 en promedio de notas, y un porcentaje de asistencia mayor al 65\%.
+
+\begin{lstlisting}[style=consola]
+>>> [*print(aprobadosDelCurso(estudiantes))*]
+[('Diego', 68.0, 100.0)]
+\end{lstlisting}
+\newpage
+    \item[$\star$. ] Finalmente debe crear un menú que de acceso a todas estas funcionalidades. Luego de que se ingrese una opción y realice lo correspondiente, el programa debe poder pedir otra opción, o que el usuario pida salir del programa.
+
+\begin{lstlisting}[style=consola]
+Bienvenido al sistema de notas!
+Las opciones son las siguientes:
+1. Agregar nota de un alumno
+2. Indicar asistencia de un alumno
+3. Calcular promedio de notas y porcentaje de asistencia de un alumno
+4. Mostrar al mejor alumno
+5. Mostrar al peor alumno
+6. Eliminar alumno
+7. Calcular promedio general del curso
+8. Cambiar la nota de un alumno
+9. Calcular desviacion estandar de las notas de un estudiante
+10. Calcular desviacion estandar del curso completo
+11. Mostrar lista de aprobados.
+0. Salir
+
+Ingrese el numero de su opcion: [*1*]
+Ingrese el nombre del alumno: [*Gabriel*]
+Ingrese la nota del alumno: [*96*]
+
+Ingrese el numero de su opcion: [*2*]
+Ingrese el nombre del alumno: [*Gabriel*]
+El alumno Gabriel asistio (1) o no asistio (0)? Ingrese opcion: : [*1*]
+
+Ingrese el numero de su opcion: [*4*]
+El mejor estudiante es Gabriel
+
+Ingrese el numero de su opcion: [*0*]
+
+Adios
+\end{lstlisting}
+
+\end{enumerate}

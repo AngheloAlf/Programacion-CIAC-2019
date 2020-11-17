@@ -1,0 +1,82 @@
+\section{Pukemones}
+
+El profesor Pine es un reconocido científico
+del mundo Pukeman y tiene en su haber
+una cantidad considerable de Pukemanes.
+Como buen científico,
+el profesor Pine es muy ordenado
+y tiene a los Pukemanes almacenados
+en un diccionario,
+con sus respectivas características,
+de la siguiente manera:
+
+\begin{lstlisting}[style = consola]
+Pukemanes = {
+# nombre: (puntos de salud, ataque, defensa,
+           at. especial, def.especial, velocidad, tipo),
+'Bulbasaur':(45, 49, 49, 65, 65, 45,'Grass'),
+'Charmander':(39, 52, 43, 60, 50, 65,'Fire'),
+'Pikachu':(35, 55, 40, 50, 50, 90,'Electric'),
+'Jiglypuff': (115, 45, 20, 45, 25, 20,'Normal'),
+# ...
+}
+\end{lstlisting}
+
+El profesor Pine recibe la visita de 3 amigos:
+Nash, fisty y Block.
+El profesor les da a elegir
+un Pukeman a cada uno.
+Dado que cada uno tiene una estrategia distinta
+para elegir,
+y que la cantidad de Pukemanes es muy grande,
+Ud. tiene que ayudarles escribiendo
+una función que retorne al
+(los) Pukeman(es) de acuerdo a sus demandas.
+
+\begin{itemize}
+\item[a)]
+Nash prefiere a los Pukemanes equilibrados,
+por lo que debe escribir una función
+que retorne al Pukeman cuya varianza de las características
+numéricas sea la menor.
+La varianza la puede calcular de la siguiente manera:
+\(var(x) = \left( \frac{1}{N} \sum x^2 \right) - \overline{x}^2\),
+donde \(\overline{x}\) es el promedio.
+
+\begin{lstlisting}[style = consola]
+>>> mejor_Nash(Pukemanes):
+'Charmander'
+\end{lstlisting}
+\item[b)]
+Fisty tiene una predilección por los
+Pukemanes de Césped
+(tipo \texttt{Grass})
+y por los que la suma de su ataque especial
+y defensa especial sea la mayor.
+
+\begin{lstlisting}[style = consola]
+>>> mejor_Fisty(Pukemanes)
+'Bulbasaur'
+\end{lstlisting}
+\item[c)]
+Block es más difícil de satisfacer.
+El no cree mucho en las estadísticas
+por lo que prefiere elegir a su Pakeman
+de acuerdo a sus instintos.
+Pero claro,
+como todos tiene sus preferencias.
+El prefiere a los Pukemanes de tipo
+\texttt{Normal} y \texttt{Electric},
+y además que sus puntos de salud sea
+mayor o igual a cierto valor
+(valor dado como parámetro).
+Ayúdele a Block filtrando a los Pukemanes,
+generando otro diccionario donde los Pukemanes
+agregados cumplan con esas características.
+
+\begin{lstlisting}[style=consola]
+>>> filtro_Block(Pukemanes, 35)
+{'Pikachu': (35, 55, 40, 50, 50, 90, 'Electric'),
+'Jiglypuff': (115, 45, 20, 45, 25, 20, 'Normal')}
+\end{lstlisting}
+\end{itemize}
